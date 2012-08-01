@@ -1,0 +1,4 @@
+pySanaIndeksi
+=============
+
+Tietorakenteet harjoitustyö
