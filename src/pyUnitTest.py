@@ -85,6 +85,7 @@ class  PyWordReaderTestCases(unittest.TestCase):
                              'Did not read correct number of lines from file')
 
     def testWordCount(self):
+        """ Test if the reader finds the correct number of words """
         self.lukija = WordReader(['../Material/50words_in_UTF-8.txt'])
         self.lukija.readWords()
         self.assertEqual(self.lukija.wordcount , wordsInTestFile,
@@ -98,11 +99,15 @@ class  PyTrieTestCases(unittest.TestCase):
         self.trie = Trie(self.lukija)
         
     def testSimpleAddFind(self):
+        """ Add some objects to Trie and see if you can find them """
         checklist = []
         for word in WordsToAdd:
-            self.trie.add(word)
+            self.trie.add(word) # Add words to Trie
         for word in WordsToAdd:
+            # Get the position of each word
             pos, _, _ = self.trie.find(word[0],'exact')
+            # We add the word and the found positions to match list formatting
+            # to the input
             checklist.append((word[0], pos[0][0], pos[0][1]))
         self.assertEqual(checklist , WordsToAdd,
                          'Did not find all words that were supposed to add')        

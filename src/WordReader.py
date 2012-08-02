@@ -18,14 +18,25 @@ class WordReader(object):
     '''
 
 
-    def __init__(self, filenames):
+    def __init__(self, filenames, specialCharacters = ["-", "'"],
+                 acceptNumerals = True, acceptUpperCase = True,
+                 acceptLowerCase = False):
         """
         Upon initializing, there are no words in the word reader
         """
         self.chrMap = [] # used internally to map indices to characters
         self.idxMap = {} # used internally to map characters to indices
         # Any characters added to this list will be accepted:
-        self. acceptedSpecialCharacters = ["-", "'"]
+        self.acceptedSpecialCharacters = specialCharacters
+        self.numerals = acceptNumerals
+        if acceptUpperCase and acceptLowerCase:
+            self.case = 'mixed'
+        elif acceptUpperCase and not acceptLowerCase:
+            self.case = 'upper'
+        elif not acceptUpperCase and acceptLowerCase:
+            self.case = 'lower'
+        else:
+            self.case = 'none'
         self.createChrMap()
 
         self.filenames = filenames
@@ -69,8 +80,17 @@ class WordReader(object):
         for letter in word.strip():
             if letter in self.acceptedSpecialCharacters:
                 newWord = newWord + letter
-            elif letter.isalnum():
-                newWord = newWord + letter.upper()
+            elif letter.isalpha():
+                if self.case == 'none':
+                    break;
+                elif self.case == 'mixed':
+                    newWord = newWord + letter
+                elif self.case == 'upper':
+                    newWord = newWord + letter.upper()
+                elif self.case == 'lower':
+                    newWord = newWord + letter.lower()
+            elif letter.isdigit() and self.numerals:
+                newWord = newWord + letter
             else:
                 break
         return newWord
@@ -78,7 +98,7 @@ class WordReader(object):
 
     def createChrMap(self):
         """
-        Creates a list of indices that correspond to characters 0-9, -, A-Z and '.
+        Creates a list of indices that correspond to accepted characters.
         A complimentary dict that maps these characters to the same indices is also
         created.
         """
@@ -86,19 +106,22 @@ class WordReader(object):
         if self.chrMap:
             return self.chrMap, self.idxMap
 
-        # Create a list to map indices to characters
-        i = 1
-        for number in range(ord('0'), ord('9')+1): # add numbers 0 to 9
-            self.chrMap.append(chr(number))
-            i = i + 1
+        if self.numerals:
+            # Create a list to map indices to characters
+            for number in range(ord('0'), ord('9')+1): # add numbers 0 to 9
+                self.chrMap.append(chr(number))
+
         self.chrMap.append(self.acceptedSpecialCharacters[0]) # add one special character
-        i = i + 1
-        for letter in range(ord('A'), ord('Z')+1): # add letters A to Z
-            self.chrMap.append(chr(letter))
-            i = i + 1
+
+        if self.case in ['mixed', 'lower']:
+            for letter in range(ord('a'), ord('z')+1): # add letters a to z
+                self.chrMap.append(chr(letter))
+        if self.case in ['mixed', 'upper']:
+            for letter in range(ord('A'), ord('Z')+1): # add letters A to Z
+                self.chrMap.append(chr(letter))
+
         for char in self.acceptedSpecialCharacters[1:]:
             self.chrMap.append(char) # add other special characters
-            i = i + 1
 
         # Create a dict to map characters to indices in the self.chrMap list
         for index, char in enumerate(self.chrMap):
