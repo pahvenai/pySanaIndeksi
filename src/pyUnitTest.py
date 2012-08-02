@@ -30,6 +30,9 @@ linesIn2books = 8859 + 9571
 noOfFiles = 2
 wordsInTestFile = 50
 
+WordsToAdd = [('ww3fwG', 99, 1), ('Sana', 3, 2), ('ed', 2222, 1),
+              ('Tampere', 1003, 1), ('Rekka-auto', 2, 1), ("Don't", 22, 2)]
+
 class  PyWordReaderTestCases(unittest.TestCase):
     def setUp(self):
         self.lukija = WordReader(["../Material/Grimm's Fairy Tales.txt",
@@ -74,6 +77,7 @@ class  PyWordReaderTestCases(unittest.TestCase):
                              'getCharMapSize returned wrong map size')
 
     def testLineCount(self):
+        """ Test whether WordReader reads all lines in files """
         self.lukija.readWords()
         self.assertEqual(self.lukija.linecount , linesIn2books,
                              'Did not read correct number of lines from file')
@@ -85,6 +89,24 @@ class  PyWordReaderTestCases(unittest.TestCase):
         self.lukija.readWords()
         self.assertEqual(self.lukija.wordcount , wordsInTestFile,
                              'Did not get the correct number of words')
+
+
+class  PyTrieTestCases(unittest.TestCase):
+    def setUp(self):
+        self.lukija = WordReader(["../Material/Grimm's Fairy Tales.txt",
+                         "../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
+        self.trie = Trie(self.lukija)
+        
+    def testSimpleAddFind(self):
+        checklist = []
+        for word in WordsToAdd:
+            self.trie.add(word)
+        for word in WordsToAdd:
+            pos, _, _ = self.trie.find(word[0],'exact')
+            checklist.append((word[0], pos[0][0], pos[0][1]))
+        self.assertEqual(checklist , WordsToAdd,
+                         'Did not find all words that were supposed to add')        
+        
 
 if __name__ == '__main__':
     unittest.main()

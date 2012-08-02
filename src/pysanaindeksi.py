@@ -22,7 +22,7 @@ if __name__ == "__main__":
     for word in lukija.words:
         trie.add(word)
 
-    #trie.printRandomRoute()
+    trie.printRandomRoute()
 
     #positions, count, linecount = trie.find('wor')
     #print "Found", count, "instances (", linecount, "lines) @", positions
