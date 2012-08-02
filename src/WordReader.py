@@ -17,59 +17,59 @@ class WordReader(object):
     row number in a file where this word appears.
     '''
 
-    chrMap = [] # used internally to map indices to characters
-    idxMap = {} # used internally to map characters to indices
-    # Any characters added to this list will be accepted:
-    acceptedSpecialCharacters = ["-", "'"]
 
-
-    def __init__(self, filename):
+    def __init__(self, filenames):
         """
         Upon initializing, there are no words in the word reader
         """
+        self.chrMap = [] # used internally to map indices to characters
+        self.idxMap = {} # used internally to map characters to indices
+        # Any characters added to this list will be accepted:
+        self. acceptedSpecialCharacters = ["-", "'"]
         self.createChrMap()
-        self.filename = filename
-        self.words = ()
+
+        self.filenames = filenames
+        self.words = []
         self.filecount = 0 # preparation for multiple files
         self.wordcount = 0
         self.linecount = 0
 
-
     def readWords(self):
         """
-        Reads all the words from the file specified in self.filename. Method g
-        getWord specifies the accepted word formatting.
+        Reads all the words from the file specified in self.filenames. Method
+        sanitize specifies the accepted word formatting.
         """
-        self.fh = openFile(self.filename) # exits on failure
-        fileno = 0
-        properWords = []
 
-        self.filecount = self.filecount + 1 # preparation for multiple files
+        for filename in self.filenames:
+            self.fh = openFile(filename) # exits on failure
 
-        lineno = 0
-        for line in self.fh:
-            self.linecount = self.linecount + 1
-            lineno = lineno + 1
+            lineno = 0
+            for line in self.fh:
+                self.linecount = self.linecount + 1
+                lineno = lineno + 1
 
-            words = line.split(' ')
-            if words == '':
-                continue
+                words = line.split()
+                if words == '':
+                    continue
 
-            for word in words:
-                newWord = self.sanitize(word)
-                if newWord:
-                    properWords.append((newWord, lineno, fileno))
-                    self.wordcount = self.wordcount + 1
+                for word in words:
+                    newWord = self.sanitize(word)
+                    if newWord:
+                        self.words.append((newWord, lineno, self.filecount))
+                        self.wordcount = self.wordcount + 1
 
-        self.fh.close()
-        self.words = properWords
+            self.fh.close()
+            self.filecount = self.filecount + 1 # preparation for multiple files
+
 
     def sanitize(self, word):
         """ Returns the sanitized word (remove non-allowed characters) """
         if not word: return None
         newWord = ''
         for letter in word.strip():
-            if letter.isalnum() or letter in self.acceptedSpecialCharacters:
+            if letter in self.acceptedSpecialCharacters:
+                newWord = newWord + letter
+            elif letter.isalnum():
                 newWord = newWord + letter.upper()
             else:
                 break

@@ -10,7 +10,8 @@ name = 'pySanaIndeksi'
 if __name__ == "__main__":
     print '*' * 50, '\n', ' ' * ((50 - (len(name)))/2), name , '\n', '*' * 50
 
-    lukija = WordReader("../Material/Grimm's Fairy Tales.txt")
+    lukija = WordReader(["../Material/Grimm's Fairy Tales.txt",
+                         "../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
 
     lukija.readWords()
 
@@ -26,7 +27,7 @@ if __name__ == "__main__":
     #positions, count, linecount = trie.find('wor')
     #print "Found", count, "instances (", linecount, "lines) @", positions
 
-    print "Searching for words in Grimm's Fairy tales"
+    print "Searching for words in Grimm's Fairy tales and The Adventures of Tom Sawyer"
 
     word = raw_input( "Find a word (or its beginning) in the text: " ).rstrip( '\n' )
 
