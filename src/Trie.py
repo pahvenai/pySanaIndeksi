@@ -2,7 +2,7 @@
 # and open the template in the editor.
 
 from Puu import Puu
-from WordReader import getCharMapSize, char2ind, ind2char, getWord
+from WordReader import getCharMapSize, char2ind, ind2char, sanitize
 import random
 
 __author__="Patrik Ahvenainen"
@@ -16,8 +16,9 @@ if __name__ == "__main__":
 
 class Trie(Puu):
     '''
-    A Trie-type tree that can hold words containing alphanumerals and the '-'-
-    character.
+    A Trie-type tree that can hold words containing alphanumerals, hyphens and
+    aposthrophes. The WordReader module handles in reality the the word
+    sanitizing.
     '''
 
 
@@ -41,7 +42,7 @@ class Trie(Puu):
         in the trie-tree.
         '''
 
-        word = getWord(word) # check that we have no illegal characters
+        word = sanitize(word) # check that we have no illegal characters
         # find this word in the tree recursively and return positions of all the
         # instances
         positions = self.findRecursive(word, 1, type, self.root)

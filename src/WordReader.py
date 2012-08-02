@@ -1,6 +1,3 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-
 __author__="Patrik Ahvenainen"
 __date__ ="$1.8.2012 11:42:53$"
 
@@ -29,6 +26,9 @@ class WordReader(object):
         """
         self.filename = filename
         self.words = ()
+        self.filecount = 0 # preparation for multiple files
+        self.wordcount = 0
+        self.linecount = 0
 
 
     def readWords(self):
@@ -40,8 +40,11 @@ class WordReader(object):
         fileno = 0
         properWords = []
 
+        self.filecount = self.filecount + 1 # preparation for multiple files
+
         lineno = 0
         for line in self.fh:
+            self.linecount = self.linecount + 1
             lineno = lineno + 1
 
             words = line.split(' ')
@@ -49,15 +52,16 @@ class WordReader(object):
                 continue
 
             for word in words:
-                newWord = getWord(word)
+                newWord = sanitize(word)
                 if not newWord == '':
                     properWords.append((newWord, lineno, fileno))
+                    self.wordcount = self.wordcount + 1
 
         self.fh.close()
         self.words = properWords
 
-def getWord(word):
-    """ Returns the word modified to accepted character formatting """
+def sanitize(word):
+    """ Returns the sanitized word (remove non-allowed characters) """
     newWord = ''
     for letter in word.strip():
         if letter.isalnum():
