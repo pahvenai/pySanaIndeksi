@@ -11,18 +11,52 @@ if __name__ == "__main__":
 
 class WordReader(object):
     '''
-    This class can be used to read words from file.
+    This class can be used to read words from one or multiple files. The file 
+    names are given to the object upon initialization.
 
     Words will be stored in tuple self.words which contains the word and the
-    row number in a file where this word appears.
+    row number in a file where this word appears and the file number.
+
+    Accepted characters are determined when a new WordReader object is created.
+    The case can be lower, upper or mixed. For lower and upper case only all
+    letters are converted to lower and upper case, respectively. Numerals are
+    accepted by default but can be excluded. Letters are from A to Z and any
+    other letters and non alphanumerical characters can be passed in to the
+    reader via specialCharacters.
+    
+    Characters can be mapped to an indexed table via char2ind() function.
+
+    functions:
+    WordReader.readWords()      Reads all words with accepted characters from
+                                all files.
+    WordReader.clear()          Forget any read words
+    WordReader.sanitize(word)   Removes non-accepted characters from the word
+    WordReader.ind2char(index)  Returns the character corresponding to index
+    WordReader.char2ind(char)   Returns the index corresponding to character
+    WordReader.getCharMapSize() Returns the number of accepted characters
+    WordReader.addFileName(filename)    Add new files 
+    WordReader.addFileNames(filenames):
+
+    WordReader.createChrMap
     '''
 
 
-    def __init__(self, filenames, specialCharacters = ["-", "'"],
+    def __init__(self, filenames = [], specialCharacters = ["-", "'"],
                  acceptNumerals = True, acceptUpperCase = True,
                  acceptLowerCase = False):
         """
-        Upon initializing, there are no words in the word reader
+        Upon initializing, there are no words in the WordReader.
+        During initialization accepted characters are mapped. They are
+        - all characters in the specialCharacters list
+        - numerals if acceptNumerals equals True
+        - upper case letters if acceptUpperCase equals True
+        - lower case letters if acceptLowerCase equals True.
+        If only one case is accepted all letters are considered to be of that
+        case.
+
+        Filenames list the names of the files from which the words are read.
+        They must be in a list form. After initialization new files can be added
+        with addFileName(...) and addFileNames(...).
         """
         self.chrMap = [] # used internally to map indices to characters
         self.idxMap = {} # used internally to map characters to indices
@@ -37,11 +71,15 @@ class WordReader(object):
             self.case = 'lower'
         else:
             self.case = 'none'
-        self.createChrMap()
+        self._createChrMap()
 
         self.filenames = filenames
+        self.clear()
+
+    def clear(self):
+        """ Clears any words read so far """
         self.words = []
-        self.filecount = 0 # preparation for multiple files
+        self.filecount = 0 
         self.wordcount = 0
         self.linecount = 0
 
@@ -76,10 +114,13 @@ class WordReader(object):
     def sanitize(self, word):
         """ Returns the sanitized word (remove non-allowed characters) """
         if not word: return None
+
         newWord = ''
+        # We traverse the word a letter at a time until we hit non-allowed chars
         for letter in word.strip():
             if letter in self.acceptedSpecialCharacters:
                 newWord = newWord + letter
+
             elif letter.isalpha():
                 if self.case == 'none':
                     break;
@@ -89,14 +130,41 @@ class WordReader(object):
                     newWord = newWord + letter.upper()
                 elif self.case == 'lower':
                     newWord = newWord + letter.lower()
+
             elif letter.isdigit() and self.numerals:
                 newWord = newWord + letter
-            else:
+
+            else: # Bad character, end reading the word here
                 break
-        return newWord
+        return newWord # newWord may be an empty string
+
+    def addFileName(self, filename):
+        self.filenames.append(filename)
+    def addFileNames(self, filenames):
+        for filename in filenames:
+            self.filenames.append(filename)
+
+    def ind2char(self, index):
+        """ Maps indices to characters """
+        if not self.chrMap:
+            self._createChrMap()
+        return(self.chrMap[index])
+
+    def char2ind(self, char):
+        """ Maps characters to indices"""
+        if not self.chrMap:
+            self._createChrMap()
+        return(self.idxMap[self.sanitize(char)])
+
+    def getCharMapSize(self):
+        ''' Returns the number of different accepted characters '''
+        if not self.chrMap:
+            _createChrMap()
+        return len(self.chrMap)
 
 
-    def createChrMap(self):
+
+    def _createChrMap(self):
         """
         Creates a list of indices that correspond to accepted characters.
         A complimentary dict that maps these characters to the same indices is also
@@ -128,22 +196,3 @@ class WordReader(object):
             self.idxMap[char] = index
 
         return self.chrMap, self.idxMap
-
-    def ind2char(self, index):
-        """ Maps indices to characters """
-        if not self.chrMap:
-            self.createChrMap()
-        return(self.chrMap[index])
-
-    def char2ind(self, char):
-        """ Maps characters to indices"""
-        if not self.chrMap:
-            self.createChrMap()
-        return(self.idxMap[self.sanitize(char)])
-
-    def getCharMapSize(self):
-        ''' Returns the number of different accepted characters '''
-        if not self.chrMap:
-            createChrMap()
-        return len(self.chrMap)
-

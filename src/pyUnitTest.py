@@ -35,10 +35,13 @@ WordsToAdd = [('ww3fwG', 99, 1), ('Sana', 3, 2), ('ed', 2222, 1),
 
 class  PyWordReaderTestCases(unittest.TestCase):
     def setUp(self):
-        self.lukija = WordReader(["../Material/Grimm's Fairy Tales.txt",
-                         "../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
-    #    self.foo = PyUnit()
-    #
+        self.lukija = WordReader(["../Material/Grimm's Fairy Tales.txt"],
+                                 specialCharacters = ["-", "'"],
+                                 acceptNumerals = True, acceptUpperCase = True,
+                                 acceptLowerCase = False)
+        # test addFileName
+        self.lukija.addFileName("../Material/The Adventures of Tom Sawyer by Mark Twain.txt")
+
 
     #def tearDown(self):
     #    self.foo.dispose()
@@ -55,7 +58,7 @@ class  PyWordReaderTestCases(unittest.TestCase):
 
     def testCreateChrMap(self):
         """ Test whether index and character maps are okay """
-        self.chrMap, self.idxMap = self.lukija.createChrMap()
+        self.chrMap, self.idxMap = self.lukija._createChrMap()
         self.assertEqual(self.chrMap, properChrMap, 'Bad character map')
         self.assertEqual(self.idxMap, properIdxMap, 'Bad index map')
 
@@ -84,17 +87,24 @@ class  PyWordReaderTestCases(unittest.TestCase):
         self.assertEqual(self.lukija.filecount , noOfFiles,
                              'Did not read correct number of lines from file')
 
-    def testWordCount(self):
+    def testWordCountAndClear(self):
         """ Test if the reader finds the correct number of words """
         self.lukija = WordReader(['../Material/50words_in_UTF-8.txt'])
         self.lukija.readWords()
         self.assertEqual(self.lukija.wordcount , wordsInTestFile,
                              'Did not get the correct number of words')
+        # After clearing, we should not have any words in memory
+        self.lukija.clear()
+        self.assertEqual((self.lukija.words, self.lukija.wordcount,
+                          self.lukija.filecount, self.lukija.linecount),
+                          ([], 0, 0, 0))
 
 
 class  PyTrieTestCases(unittest.TestCase):
     def setUp(self):
-        self.lukija = WordReader(["../Material/Grimm's Fairy Tales.txt",
+        self.lukija = WordReader()
+        # test addFileNames
+        self.lukija.addFileNames(["../Material/Grimm's Fairy Tales.txt",
                          "../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
         self.trie = Trie(self.lukija)
         
@@ -111,7 +121,28 @@ class  PyTrieTestCases(unittest.TestCase):
             checklist.append((word[0], pos[0][0], pos[0][1]))
         self.assertEqual(checklist , WordsToAdd,
                          'Did not find all words that were supposed to add')        
+
+class  PyRedBlackTestCases(unittest.TestCase):
+    def setUp(self):
+        self.lukija = WordReader()
+        # test addFileNames
+        self.lukija.addFileNames(["../Material/Grimm's Fairy Tales.txt",
+                         "../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
+        self.redblack = RedBlack(self.lukija)
         
+    def _testSimpleAddFind(self): # Red Black would fail this test now
+        """ Add some objects to Red Black tree and see if you can find them """
+        checklist = []
+        for word in WordsToAdd:
+            self.redblack.add(word) # Add words to Trie
+        for word in WordsToAdd:
+            # Get the position of each word
+            pos, _, _ = self.redblack.find(word[0],'exact')
+            # We add the word and the found positions to match list formatting
+            # to the input
+            checklist.append((word[0], pos[0][0], pos[0][1]))
+        self.assertEqual(checklist , WordsToAdd,
+                         'Did not find all words that were supposed to add')
 
 if __name__ == '__main__':
     unittest.main()
