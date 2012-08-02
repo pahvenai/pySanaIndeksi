@@ -2,7 +2,7 @@
 # and open the template in the editor.
 
 from Puu import Puu
-from WordReader import getCharMapSize, char2ind, ind2char, sanitize
+from WordReader import WordReader
 import random
 
 __author__="Patrik Ahvenainen"
@@ -23,15 +23,17 @@ class Trie(Puu):
 
 
 
-    def __init__(self):
+    def __init__(self, wordreader):
         self.root = None
+        self.lukija = wordreader
+        self.charMapSize = self.lukija.getCharMapSize()
 
     def add(self, object):
         '''
         Adds a new word to the tree.
         '''
         if self.root == None:
-            self.root = TrieBranch()
+            self.root = TrieBranch(self.charMapSize)
         self.addBranch(object)
 
     def find(self, word, type='startswith'):
@@ -42,7 +44,7 @@ class Trie(Puu):
         in the trie-tree.
         '''
 
-        word = sanitize(word) # check that we have no illegal characters
+        word = self.lukija.sanitize(word) # check that we have no illegal characters
         # find this word in the tree recursively and return positions of all the
         # instances
         positions = self.findRecursive(word, 1, type, self.root)
@@ -63,7 +65,7 @@ class Trie(Puu):
         letter move on recursively to the next letter.
         """
         char = word[charNo-1]
-        index = char2ind(char)
+        index = self.lukija.char2ind(char)
 
         if not branch.children[index]:
             return None # Required letter not found
@@ -83,7 +85,7 @@ class Trie(Puu):
         '''
         word = object[0]
         letter = word[charNo]
-        index = char2ind(letter)
+        index = self.lukija.char2ind(letter)
 
         if branch == 'root': 
             branch = self.root
@@ -96,7 +98,7 @@ class Trie(Puu):
 
         if not branchExists:
             # create a new branch and add it to the tree
-            newBranch = TrieBranch(object, exact)
+            newBranch = TrieBranch(self.charMapSize, object, exact)
             branch.children[index] = newBranch
             nextBranch = newBranch # tree may continue here
         else:
@@ -126,7 +128,7 @@ class Trie(Puu):
                     indices = []
                     for index, child in enumerate(parent.children):
                         if child:
-                            print word + ind2char(index), 
+                            print word + self.lukija.ind2char(index),
                             indices.append(index)
                             lastindex = index
                     if lastindex == None:
@@ -134,10 +136,10 @@ class Trie(Puu):
                     else:
                         lastindex = random.choice(indices)
                         parent = parent.children[lastindex]
-                    print '; route: ', ind2char(lastindex), ' found n=', \
+                    print '; route: ', self.lukija.ind2char(lastindex), ' found n=', \
                           len(parent.match), ' (', len(set(parent.match)), \
                           'lines) @ ', parent.match
-                    word = word + ind2char(lastindex)
+                    word = word + self.lukija.ind2char(lastindex)
 
 
 class TrieBranch(object):
@@ -145,16 +147,13 @@ class TrieBranch(object):
     Contains the information of one branch.
     '''
 
-    NO_DIFF_CHARS = 0
 
-    def __init__(self, object = '', exact = False):
+    def __init__(self, charMapSize, object = '', exact = False):
         self.exact = []
         self.match = []
         if object:
             self.updateBranch(object, exact)
-        if TrieBranch.NO_DIFF_CHARS == 0:
-            TrieBranch.NO_DIFF_CHARS = getCharMapSize()
-        self.children = [None] * (TrieBranch.NO_DIFF_CHARS)
+        self.children = [None] * (charMapSize)
 
 
     def updateBranch(self, object, exact):

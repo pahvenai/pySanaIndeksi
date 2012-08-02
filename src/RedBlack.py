@@ -15,8 +15,9 @@ class RedBlack(Puu):
 
 
 
-    def __init__(self):
+    def __init__(self, lukija):
         self.root = None
+        self.lukija = lukija
 
     def add(self, word):
         '''

@@ -2,7 +2,6 @@ __author__="Patrik Ahvenainen"
 __date__ ="$31.7.2012 12:14:26$"
 
 from WordReader import WordReader
-from WordReader import ind2char, char2ind
 from RedBlack import RedBlack
 from Trie import Trie
 
@@ -16,9 +15,8 @@ if __name__ == "__main__":
     lukija.readWords()
 
 
-    punamusta = RedBlack()
-    trie = Trie()
-
+    punamusta = RedBlack(lukija)
+    trie = Trie(lukija)
 
     for word in lukija.words:
         trie.add(word)
