@@ -9,6 +9,8 @@ if __name__ == "__main__":
 
 chrMap = [] # used internally to map indices to characters
 idxMap = {} # used internally to map characters to indices
+# Any characters added to this list will be accepted:
+acceptedSpecialCharacters = ["-", "'"]
 
 class WordReader(object):
     '''
@@ -64,7 +66,7 @@ def sanitize(word):
     """ Returns the sanitized word (remove non-allowed characters) """
     newWord = ''
     for letter in word.strip():
-        if letter.isalnum():
+        if letter.isalnum() or letter in acceptedSpecialCharacters:
             newWord = newWord + letter.upper()
         else:
             break
@@ -83,13 +85,14 @@ def createChrMap():
     for number in range(ord('0'), ord('9')+1): # add numbers 0 to 9
         chrMap.append(chr(number))
         i = i + 1
-    chrMap.append('-') # add special character -
+    chrMap.append(acceptedSpecialCharacters[0]) # add one special character
     i = i + 1
     for letter in range(ord('A'), ord('Z')+1): # add letters A to Z
         chrMap.append(chr(letter))
         i = i + 1
-    chrMap.append("'") # add special character '
-    i = i + 1
+    for char in acceptedSpecialCharacters[1:]:
+        chrMap.append(char) # add other special characters
+        i = i + 1
 
     # Create a dict to map characters to indices in the chrMap list
     for index, char in enumerate(chrMap):
