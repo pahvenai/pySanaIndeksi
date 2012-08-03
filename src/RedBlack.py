@@ -18,15 +18,21 @@ class RedBlack(Puu):
 
 
     def __init__(self, lukija):
-        self.root = None
         self.lukija = lukija
+        self.empty = RedBlackNode(None) # leaves are 'empty'
+        self.root = self.empty
+        self.root.parent = self.empty
 
-    def add(self, word):
+    def add(self, object):
         '''
         Adds a new word to the tree.
         '''
-        newNode = self.binaryInsert(self.root, RedBlackNode(word))
-        self.insert1(newNode)
+#        newNode = self.binaryInsert(self.root, RedBlackNode(word))
+#        self.insert1(newNode)
+        word = object[0]
+        pos = object[1:3]
+        self.binaryInsert(RedBlackNode(word, pos))
+
 
     def find(self, word, type='startswith'):
         '''
@@ -34,87 +40,136 @@ class RedBlack(Puu):
         the file and a file number for each found instance. Can be used to find
         exact matches only.
         '''
-        pass
+
+        node = self.root
+        while (not node == self.empty) and (not node.str == word):
+            if word < node.str:
+                node = node.left
+            else:
+                node = node.right
+
+        return node.pos
+
+# def search(self, key, x=None):
+#        """
+#        Search the subtree rooted at x (or the root if not given) iteratively for the key.
+#
+#        @return: self.nil if it cannot find it.
+#        """
+#        if None == x:
+#            x = self.root
+#        while x != self.nil and key != x.key:
+#            if key < x.key:
+#                x = x.left
+#            else:
+#                x = x.right
+#        return x
 
 
-    def binaryInsert(self, oldNode, newNode):
-        if oldNode == None:
-            oldNode = newNode
-            newNode.parent = oldNode
-            return newNode
-        elif newNode.str < oldNode.str:
-            return self.binaryInsert(oldNode.left, newNode)
+
+
+
+
+
+    def binaryInsert(self, node):
+
+        if not self.root == self.empty:
+            #find parent for node
+            newParent = self.empty
+            nextNode = self.root
+            while nextNode != self.empty:
+                newParent = nextNode
+                print nextNode, node, self.root
+                if node.str < nextNode.str:
+                    nextNode = nextNode.le
+                else:
+                    nextNode = nextNode.ri
         else:
-            return self.binaryInsert(newNode, oldNode.left)
+            newParent = self.root
+        node.pa = newParent
 
-    def insert1(self, node):
-        if (node.parent == None):
-            n.red = False
-        else: self.insert2(node)
-
-    def insert2(self, node):
-        if not node.parent.red:
-            return
-        else: self.insert3(node)
-
-    def insert3(self, node):
-        u = node.uncle()
-        if u and u.red:
-            node.parent.red = False
-            u.red = False
-            g = node.grandpa()
-            g.red = True
-            self.insert1(g)
-        else: self.insert4(node)
-
-    def insert4(self, node):
-        g = node.grandpa()
-        if node == node.parent.right and node.parent == g.left:
-            self.rotateLeft(node.parent)
-            node = node.left
-        elif node == node.parent.left and node.parent == g.right:
-            self.rotateRight(node.parent)
-            node = node.right
-        self.insert5(node)
-
-    def insert5(self, node):
-        g = node.grandpa()
-        node.parent.red = False
-        g.red = True
-        if node == node.parent.left:
-            self.rotateRight(g)
+        # empty tree: new node as root
+        if newParent == self.empty:
+            self.root = node
+        elif node.str < newParent.str:
+            newParent.le = node
         else:
-            self.rotateLeft(g)
+            newParent.ri = node
+        node.le = node.ri = self.empty # tree ends in empty nodes
 
-    def rotateLeft(self, node):
-        r = node.right
-        node.right = r.left
-        if r.left:
-            r.left.parent = node
-        r.parent = node.parent
-        if not node.parent:
-            self.root = r
-        elif node == x.parent.left:
-            x.parent.left = r
-        else:
-            x.parent.right = r
-        r.left = node
-        node.parent = r
+        # node is set to red
+        node.red = True
+        # Red Black tree properties may not be intact, fix them from new node
+        self.restoreProperties(node)
 
-    def rotateRight(self, node):
-        l = node.left
-        node.left = l.right
-        if l.right:
-            l.right.parent = node
-        l.parent = node.parent
-        if not node.parent:
-            self.root = l
-        elif node == x.parent.right:
-            x.parent.right = l
+
+    def restoreProperties(self, node):
+        "Restore red-black properties after insert."
+
+        # Two red nodes cannot follow each other
+        while node.pa.red:
+            uncle = node.uncle()
+            if uncle == node.grandpa().ri:
+                if uncle.red:
+                    node.pa.red = False
+                    uncle.red = False
+                    node.grandpa().red = True
+                    node = node.grandpa()
+                else:
+                    if node == node.pa.ri:
+                        node = node.pa
+                        self.leftRotate(node)
+                    node.pa.red = False
+                    node.grandpa().red = True
+                    self.rightRotate(node.grandpa())
+            else:
+                if uncle.red:
+                    node.pa.red = False
+                    uncle.red = False
+                    node.grandpa().red = True
+                    node = node.grandpa()
+                else:
+                    if node == node.pa.le:
+                        node = node.pa
+                        self.rightRotate(node)
+                    node.pa.red = False
+                    node.grandpa().red = True
+                    self.leftRotate(node.grandpa())
+        self.root.red = False # root is black
+
+
+    def leftRotate(self, node):
+        """ Left rotate node """
+        pivot = node.ri
+        node.ri = pivot.le
+        if pivot.le != self.empty:
+            pivot.le.pa = node
+        pivot.pa = node.pa
+        if node.pa == self.empty:
+            self.root = pivot
+        elif node == node.pa.le:
+            node.pa.le = pivot
         else:
-            x.parent.left = l
-        l.right = node
-        node.parent = l
+            node.pa.ri = pivot
+        pivot.le = node
+        node.pa = pivot
+
+
+    def rightRotate(self, node):
+        """ Right rotate node """
+        pivot = node.le
+        node.le = pivot.ri
+        if pivot.ri != self.empty:
+            pivot.ri.pa = node
+        pivot.pa = node.pa
+        if node.pa == self.empty:
+            self.root = pivot
+        elif node == node.pa.ri:
+            node.pa.ri = pivot
+        else:
+            node.p.le = pivot
+        pivot.ri = node
+        node.pa = pivot
 
 
 class RedBlackNode(object):
@@ -122,35 +177,38 @@ class RedBlackNode(object):
     Contains the information of one branch.
     '''
 
-    def __init__(self, object, parent=None, red=True):
-        self.exact = []
-        self.parent = parent
-        self.left = None
-        self.right = None
+    def __init__(self, str='', pos=None, pa=None, red=True):
+        self.pa = pa
+        self.le = None #left
+        self.ri = None #right
         self.red = red
-        self.str = object[0]
-        self.pos = object[1:3]
+        self.str = str
+        self.pos = pos
+        if self.pos:
+            self.empty = False
+        else:
+            self.empty = True
 
     def grandpa(self):
-        if not self.parent == None:
-            return self.parent.parent
+        if not self.pa.empty:
+            return self.pa.pa
         else:
-            return None
+            return RedBlackNode()
 
     def uncle(self):
         grandpa = self.grandpa()
-        if grandpa == None:
-            return None
-        elif grandpa.left == self.parent:
+        if grandpa.empty:
+            return RedBlackNode()
+        elif grandpa.left == self.pa:
             return grandpa.right
         else:
             return grandpa.left
 
     def sibling(self):
-        if self == self.parent.left:
-            return self.parent.right
+        if self == self.pa.left:
+            return self.pa.right
         else:
-            return self.parent.left 
+            return self.pa.left 
 
     def updateNode(self, object):
         pass
