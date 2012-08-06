@@ -30,8 +30,13 @@ linesIn2books = 8859 + 9571
 noOfFiles = 2
 wordsInTestFile = 50
 
-WordsToAdd = [('ww3fwG', 99, 1), ('Sana', 3, 2), ('ed', 2222, 1),
+WordsToAdd = [('ww3fwG', 99, 1), ('Sana', 3, 2), ('ed', 2222, 1), 
               ('Tampere', 1003, 1), ('Rekka-auto', 2, 1), ("Don't", 22, 2)]
+
+MultiWordAdd = [('a', 1, 1), ('b', 2, 1), ('a', 3, 1), 
+                ('a', 1 ,2 ), ('b', 2, 2), ('a', 3, 2)]
+MultiWordFindA = [(1,1), (3,1), (1,2), (3,2)]
+MultiWordFindB = [(2,1), (2,2)]
 
 class  PyWordReaderTestCases(unittest.TestCase):
     def setUp(self):
@@ -120,7 +125,20 @@ class  PyTrieTestCases(unittest.TestCase):
             # to the input
             checklist.append((word[0], pos[0][0], pos[0][1]))
         self.assertEqual(checklist , WordsToAdd,
-                         'Did not find all words that were supposed to add')        
+                         'Trie: Did not find all words that were supposed to add')
+
+    def _testMultiWordFind(self):
+        for word in MultiWordAdd:
+            self.trie.add(word) # Add words to Trie
+        pos, _, _ = self.trie.find('a','exact')
+        print pos, MultiWordFindA
+        self.assertEqual(pos, MultiWordFindA,
+                         'Trie: Error finding multiple instances of a word')
+        pos, _, _ = self.trie.find('b','exact')
+        print pos, MultiWordFindB
+        self.assertEqual(pos, MultiWordFindB, 
+                         'Trie: Error finding multiple instances of a word')
+        
 
 class  PyRedBlackTestCases(unittest.TestCase):
     def setUp(self):
@@ -137,12 +155,26 @@ class  PyRedBlackTestCases(unittest.TestCase):
             self.redblack.add(word) # Add words to Trie
         for word in WordsToAdd:
             # Get the position of each word
-            pos = self.redblack.find(word[0],'exact')
+            pos, _,  _, _= self.redblack.find(word[0],'exact')
             # We add the word and the found positions to match list formatting
             # to the input
-            checklist.append((word[0], pos[0], pos[1]))
+            checklist.append((word[0], pos[0][0], pos[0][1]))
         self.assertEqual(checklist , WordsToAdd,
                          'Did not find all words that were supposed to add')
+
+    def testMultiWordFind(self):
+        for word in MultiWordAdd:
+            self.redblack.add(word) # Add words to Trie
+            print word
+        pos, _, _, _ = self.redblack.find('a','exact')
+        print pos, MultiWordFindA
+        self.assertEqual(pos, MultiWordFindA,
+                         'RB: Error finding multiple instances of a word')
+        pos, _,  _, _= self.redblack.find('b','exact')
+        print pos, MultiWordFindB
+        self.assertEqual(pos, MultiWordFindB,
+                         'RB: Error finding multiple instances of a word')
+
 
 if __name__ == '__main__':
     unittest.main()

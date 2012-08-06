@@ -3,6 +3,7 @@
 
 from Puu import Puu
 from WordReader import WordReader
+from LinkedList import LinkedList
 import random
 
 __author__="Patrik Ahvenainen"
@@ -73,9 +74,9 @@ class Trie(Puu):
             # if the next letter is the last letter, we found our letter
             if charNo == len(word):
                 if type == 'exact':
-                    return branch.children[index].exact
+                    return branch.children[index].exact.values()
                 else:
-                    return branch.children[index].match
+                    return branch.children[index].match.values()
 
             return self.findRecursive(word, charNo+1, type, branch.children[index])
 
@@ -137,8 +138,8 @@ class Trie(Puu):
                         lastindex = random.choice(indices)
                         parent = parent.children[lastindex]
                     print '; route: ', self.lukija.ind2char(lastindex), ' found n=', \
-                          len(parent.match), ' (', len(set(parent.match)), \
-                          'lines) @ ', parent.match
+                          parent.match.count, ' (', len(set(parent.match.values())), \
+                          'lines) @ ', parent.match.values()
                     word = word + self.lukija.ind2char(lastindex)
 
 
@@ -149,8 +150,8 @@ class TrieBranch(object):
 
 
     def __init__(self, charMapSize, object = '', exact = False):
-        self.exact = []
-        self.match = []
+        self.exact = LinkedList()
+        self.match = LinkedList()
         if object:
             self.updateBranch(object, exact)
         self.children = [None] * (charMapSize)
@@ -158,6 +159,6 @@ class TrieBranch(object):
 
     def updateBranch(self, object, exact):
         """ Add position info for this object """
-        self.match.append(object[1:3])
+        self.match.addLast(object[1:3])
         if exact:
-            self.exact.append(object[1:3])
+            self.exact.addLast(object[1:3])

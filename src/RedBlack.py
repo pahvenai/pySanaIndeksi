@@ -1,4 +1,5 @@
 from Puu import Puu
+from LinkedList import LinkedList
 
 __author__="Patrik Ahvenainen"
 __date__ ="$31.7.2012 17:35:35$"
@@ -31,6 +32,10 @@ class RedBlack(Puu):
 #        self.insert1(newNode)
         word = object[0]
         pos = object[1:3]
+        exists, _, _, existingNode = self.find(word)
+        if exists:
+            existingNode.pos.addLast(pos)
+            return
         self.binaryInsert(RedBlackNode(word, pos))
 
 
@@ -48,30 +53,18 @@ class RedBlack(Puu):
             else:
                 node = node.ri
 
-        return node.pos
-
-# def search(self, key, x=None):
-#        """
-#        Search the subtree rooted at x (or the root if not given) iteratively for the key.
-#
-#        @return: self.nil if it cannot find it.
-#        """
-#        if None == x:
-#            x = self.root
-#        while x != self.nil and key != x.key:
-#            if key < x.key:
-#                x = x.left
-#            else:
-#                x = x.right
-#        return x
-
-
-
-
+        if not node.str == word:
+            return [], 0, 0, self.empty
+        vals = node.pos.values()
+        return vals, len(vals), len(set(vals)), node
 
 
 
     def binaryInsert(self, node):
+        """
+        First add node as in a regular non-balanced binary tree. Then fix the
+        binary tree to be a balanced Red Black tree.
+        """
 
         if not self.root == self.empty:
             #find parent for node
@@ -79,7 +72,6 @@ class RedBlack(Puu):
             nextNode = self.root
             while nextNode != self.empty:
                 newParent = nextNode
-                print nextNode, node, self.root
                 if node.str < nextNode.str:
                     nextNode = nextNode.le
                 else:
@@ -100,41 +92,46 @@ class RedBlack(Puu):
         # node is set to red
         node.red = True
         # Red Black tree properties may not be intact, fix them from new node
-        #self.restoreProperties(node)
+        self.restoreProperties(node)
 
 
     def restoreProperties(self, node):
-        "Restore red-black properties after insert."
+        """
+        This restores the Red Black tress properties so that the tree remains
+        balanced.
+        """
 
+        pa = node.pa
         # Two red nodes cannot follow each other
-        while node.pa.red:
+        while pa and pa.red:
             uncle = node.uncle()
-            if uncle == node.grandpa().ri:
+            grandpa = node.grandpa()
+            if uncle == grandpa.ri:
                 if uncle.red:
-                    node.pa.red = False
+                    pa.red = False
                     uncle.red = False
-                    node.grandpa().red = True
-                    node = node.grandpa()
+                    grandpa.red = True
+                    node = grandpa
                 else:
-                    if node == node.pa.ri:
-                        node = node.pa
+                    if node == pa.ri:
+                        node = pa
                         self.leftRotate(node)
-                    node.pa.red = False
-                    node.grandpa().red = True
-                    self.rightRotate(node.grandpa())
+                    pa.red = False
+                    grandpa.red = True
+                    self.rightRotate(grandpa)
             else:
                 if uncle.red:
-                    node.pa.red = False
+                    pa.red = False
                     uncle.red = False
-                    node.grandpa().red = True
-                    node = node.grandpa()
+                    grandpa.red = True
+                    node = grandpa
                 else:
-                    if node == node.pa.le:
-                        node = node.pa
+                    if node == pa.le:
+                        node = pa
                         self.rightRotate(node)
-                    node.pa.red = False
-                    node.grandpa().red = True
-                    self.leftRotate(node.grandpa())
+                    pa.red = False
+                    grandpa.red = True
+                    self.leftRotate(grandpa)
         self.root.red = False # root is black
 
 
@@ -167,7 +164,7 @@ class RedBlack(Puu):
         elif node == node.pa.ri:
             node.pa.ri = pivot
         else:
-            node.p.le = pivot
+            node.pa.le = pivot
         pivot.ri = node
         node.pa = pivot
 
@@ -183,8 +180,9 @@ class RedBlackNode(object):
         self.ri = None #right
         self.red = red
         self.str = str
-        self.pos = pos
-        if self.pos:
+        self.pos = LinkedList()
+        self.pos.addLast(pos)
+        if pos:
             self.empty = False
         else:
             self.empty = True
@@ -199,16 +197,17 @@ class RedBlackNode(object):
         grandpa = self.grandpa()
         if grandpa.empty:
             return RedBlackNode()
-        elif grandpa.left == self.pa:
-            return grandpa.right
+        elif grandpa.le == self.pa:
+            return grandpa.ri
         else:
-            return grandpa.left
+            return grandpa.le
 
     def sibling(self):
-        if self == self.pa.left:
-            return self.pa.right
+        if self == self.pa.le:
+            return self.pa.ri
         else:
-            return self.pa.left 
+            return self.pa.le 
 
     def updateNode(self, object):
         pass
+
