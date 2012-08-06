@@ -116,8 +116,8 @@ class  PyTrieTestCases(unittest.TestCase):
     def testSimpleAddFind(self):
         """ Add some objects to Trie and see if you can find them """
         checklist = []
-        for word in WordsToAdd:
-            self.trie.add(word) # Add words to Trie
+        for object in WordsToAdd:
+            self.trie.add(object[0], object[1:]) # Add words to Trie
         for word in WordsToAdd:
             # Get the position of each word
             pos, _, _ = self.trie.find(word[0],'exact')
@@ -128,8 +128,8 @@ class  PyTrieTestCases(unittest.TestCase):
                          'Trie: Did not find all words that were supposed to add')
 
     def _testMultiWordFind(self):
-        for word in MultiWordAdd:
-            self.trie.add(word) # Add words to Trie
+        for object in MultiWordAdd:
+            self.trie.add(object[0], object[1:]) # Add words to Trie
         pos, _, _ = self.trie.find('a','exact')
         print pos, MultiWordFindA
         self.assertEqual(pos, MultiWordFindA,
@@ -151,8 +151,8 @@ class  PyRedBlackTestCases(unittest.TestCase):
     def testSimpleAddFind(self): # Red Black would fail this test now
         """ Add some objects to Red Black tree and see if you can find them """
         checklist = []
-        for word in WordsToAdd:
-            self.redblack.add(word) # Add words to Trie
+        for object in WordsToAdd:
+            self.redblack.add(object[0], object[1:]) # Add words to Trie
         for word in WordsToAdd:
             # Get the position of each word
             pos, _,  _, _= self.redblack.find(word[0],'exact')
@@ -163,15 +163,12 @@ class  PyRedBlackTestCases(unittest.TestCase):
                          'Did not find all words that were supposed to add')
 
     def testMultiWordFind(self):
-        for word in MultiWordAdd:
-            self.redblack.add(word) # Add words to Trie
-            print word
+        for object in MultiWordAdd:
+            self.redblack.add(object[0], object[1:]) # Add words to Trie
         pos, _, _, _ = self.redblack.find('a','exact')
-        print pos, MultiWordFindA
         self.assertEqual(pos, MultiWordFindA,
                          'RB: Error finding multiple instances of a word')
         pos, _,  _, _= self.redblack.find('b','exact')
-        print pos, MultiWordFindB
         self.assertEqual(pos, MultiWordFindB,
                          'RB: Error finding multiple instances of a word')
 

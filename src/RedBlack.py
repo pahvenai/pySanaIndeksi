@@ -24,14 +24,14 @@ class RedBlack(Puu):
         self.root = self.empty
         self.root.parent = self.empty
 
-    def add(self, object):
+    def add(self, key, value):
         '''
         Adds a new word to the tree.
         '''
 #        newNode = self.binaryInsert(self.root, RedBlackNode(word))
 #        self.insert1(newNode)
-        word = object[0]
-        pos = object[1:3]
+        word = key
+        pos = value
         exists, _, _, existingNode = self.find(word)
         if exists:
             existingNode.pos.addLast(pos)

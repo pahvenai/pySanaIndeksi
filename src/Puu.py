@@ -12,10 +12,19 @@ class Puu(object):
     classes are working properly.
     """
 
-    def add( self, item):
+    @accepts(Puu, String, object)
+    def add(self, key, value):
+
         raise NotImplementedError( "Adding not implemented" )
 
+    @returns(list, int, int)
     def find( self, item, type):
+        """
+        returns:
+        1:  A list of positions where this word was found
+        2:  Number of found instances
+        3:  Number of lines where the word was foudn
+        """
         raise NotImplementedError( "Finding not implemented" )
 
 

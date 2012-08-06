@@ -29,13 +29,13 @@ class Trie(Puu):
         self.lukija = wordreader
         self.charMapSize = self.lukija.getCharMapSize()
 
-    def add(self, object):
+    def add(self, key, value):
         '''
         Adds a new word to the tree.
         '''
         if self.root == None:
             self.root = TrieBranch(self.charMapSize)
-        self.addBranch(object)
+        self.addBranch(key, value)
 
     def find(self, word, type='startswith'):
         '''
@@ -80,11 +80,11 @@ class Trie(Puu):
 
             return self.findRecursive(word, charNo+1, type, branch.children[index])
 
-    def addBranch(self, object, charNo = 0, branch = 'root'):
+    def addBranch(self, key, value, charNo = 0, branch = 'root'):
         '''
         Add one branches until whole word is added.
         '''
-        word = object[0]
+        word = key
         letter = word[charNo]
         index = self.lukija.char2ind(letter)
 
@@ -99,7 +99,7 @@ class Trie(Puu):
 
         if not branchExists:
             # create a new branch and add it to the tree
-            newBranch = TrieBranch(self.charMapSize, object, exact)
+            newBranch = TrieBranch(self.charMapSize, value, exact)
             branch.children[index] = newBranch
             nextBranch = newBranch # tree may continue here
         else:
@@ -110,7 +110,7 @@ class Trie(Puu):
         # If not the last letter in the word, continue recursively
         if not exact:
             charNo = charNo + 1
-            self.addBranch(object,charNo,nextBranch)
+            self.addBranch(key, value ,charNo,nextBranch)
         pass
     
 
@@ -149,16 +149,16 @@ class TrieBranch(object):
     '''
 
 
-    def __init__(self, charMapSize, object = '', exact = False):
+    def __init__(self, charMapSize, value = '', exact = False):
         self.exact = LinkedList()
         self.match = LinkedList()
         if object:
-            self.updateBranch(object, exact)
+            self.updateBranch(value, exact)
         self.children = [None] * (charMapSize)
 
 
-    def updateBranch(self, object, exact):
+    def updateBranch(self, value, exact):
         """ Add position info for this object """
-        self.match.addLast(object[1:3])
+        self.match.addLast(value)
         if exact:
-            self.exact.addLast(object[1:3])
+            self.exact.addLast(value)
