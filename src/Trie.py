@@ -58,7 +58,7 @@ class Trie(Puu):
         return positions, count, linecount
 
 
-    def findRecursive(self, word, charNo, type, branch):
+    def findRecursive(self, word, charNo, type, node):
         """
         First we check that a required letter exist in the tree. If not, we did
         not find the word. If we find it and it's the last letter to find,
@@ -68,44 +68,43 @@ class Trie(Puu):
         char = word[charNo-1]
         index = self.lukija.char2ind(char)
 
-        if not branch.children[index]:
+        if not node.children[index]:
             return None # Required letter not found
         else:
             # if the next letter is the last letter, we found our letter
             if charNo == len(word):
                 if type == 'exact':
-                    return branch.children[index].exact.values()
+                    return node.children[index].exact.values()
                 else:
-                    return branch.children[index].match.values()
+                    return node.children[index].match.values()
 
-            return self.findRecursive(word, charNo+1, type, branch.children[index])
+            return self.findRecursive(word, charNo+1, type, node.children[index])
 
-    def addBranch(self, key, value, charNo = 0, branch = 'root'):
+    def addBranch(self, key, value, charNo = 0, node = 'root'):
         '''
         Add one branches until whole word is added.
         '''
-        word = key
-        letter = word[charNo]
+        letter = key[charNo]
         index = self.lukija.char2ind(letter)
 
-        if branch == 'root': 
-            branch = self.root
+        if node == 'root':
+            node = self.root
 
         exact = False
-        if charNo == len(word) - 1:
+        if charNo == len(key) - 1:
             exact = True
 
-        branchExists = branch.children[index] # Empty list means no such branch
+        nodeExists = node.children[index] # Empty list means no such branch
 
-        if not branchExists:
+        if nodeExists:
+            # branch exists, update only the newly found position to the branch
+            node.updateBranch(value, exact)
+            nextBranch = node.children[index] # tree may continue here
+        else:
             # create a new branch and add it to the tree
             newBranch = TrieBranch(self.charMapSize, value, exact)
-            branch.children[index] = newBranch
+            node.children[index] = newBranch
             nextBranch = newBranch # tree may continue here
-        else:
-            # branch exists, update only the newly found position to the branch
-            branch.updateBranch(object, exact)
-            nextBranch = branch.children[index] # tree may continue here
 
         # If not the last letter in the word, continue recursively
         if not exact:
@@ -152,7 +151,7 @@ class TrieBranch(object):
     def __init__(self, charMapSize, value = '', exact = False):
         self.exact = LinkedList()
         self.match = LinkedList()
-        if object:
+        if value:
             self.updateBranch(value, exact)
         self.children = [None] * (charMapSize)
 

@@ -10,9 +10,9 @@ name = 'pySanaIndeksi'
 if __name__ == "__main__":
     print '*' * 50, '\n', ' ' * ((50 - (len(name)))/2), name , '\n', '*' * 50
 
-    #lukija = WordReader(["../Material/Grimm's Fairy Tales.txt",
-    #                     "../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
-    lukija = WordReader(['../Material/50words_in_UTF-8.txt'])
+    lukija = WordReader(["../Material/Grimm's Fairy Tales.txt"])
+#                         "../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
+#    lukija = WordReader(['../Material/50words_in_UTF-8.txt'])
 
     lukija.readWords()
 
@@ -20,9 +20,16 @@ if __name__ == "__main__":
     punamusta = RedBlack(lukija)
     trie = Trie(lukija)
 
+    print "Adding words from selected material..."
+    intti = 0; setti = 0
     for word in lukija.words:
-        trie.add(word)
-        punamusta.add(word)
+        trie.add(word[0], word[1:])
+        #punamusta.add(word[0], word[1:])
+        intti = intti + 1
+        if intti > lukija.wordcount / 100:
+            setti = setti + 1
+            print setti, '% of words added'
+            intti = 0
 
     #trie.printRandomRoute()
 
@@ -34,6 +41,6 @@ if __name__ == "__main__":
     word = raw_input( "Find a word (or its beginning) in the text: " ).rstrip( '\n' )
 
     positions, count, linecount = trie.find(word)
-    RBpositions, _, _, _ = punamusta.find(word)
+    RBpositions, _, _ = punamusta.find(word)
     print "Found", count, "instances (", linecount, "lines) @", positions
     print "Found", None, "instances (", None, "lines) @", RBpositions

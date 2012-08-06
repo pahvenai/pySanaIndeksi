@@ -109,8 +109,7 @@ class  PyTrieTestCases(unittest.TestCase):
     def setUp(self):
         self.lukija = WordReader()
         # test addFileNames
-        self.lukija.addFileNames(["../Material/Grimm's Fairy Tales.txt",
-                         "../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
+        self.lukija.addFileNames(["../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
         self.trie = Trie(self.lukija)
         
     def testSimpleAddFind(self):
@@ -127,7 +126,7 @@ class  PyTrieTestCases(unittest.TestCase):
         self.assertEqual(checklist , WordsToAdd,
                          'Trie: Did not find all words that were supposed to add')
 
-    def _testMultiWordFind(self):
+    def testMultiWordFind(self):
         for object in MultiWordAdd:
             self.trie.add(object[0], object[1:]) # Add words to Trie
         pos, _, _ = self.trie.find('a','exact')
@@ -135,17 +134,17 @@ class  PyTrieTestCases(unittest.TestCase):
         self.assertEqual(pos, MultiWordFindA,
                          'Trie: Error finding multiple instances of a word')
         pos, _, _ = self.trie.find('b','exact')
-        print pos, MultiWordFindB
+        print ppos, MultiWordFindB
         self.assertEqual(pos, MultiWordFindB, 
                          'Trie: Error finding multiple instances of a word')
-        
+
+
 
 class  PyRedBlackTestCases(unittest.TestCase):
     def setUp(self):
         self.lukija = WordReader()
         # test addFileNames
-        self.lukija.addFileNames(["../Material/Grimm's Fairy Tales.txt",
-                         "../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
+        self.lukija.addFileNames(["../Material/50words_in_UTF-8.txt"])
         self.redblack = RedBlack(self.lukija)
         
     def testSimpleAddFind(self): # Red Black would fail this test now
@@ -155,20 +154,26 @@ class  PyRedBlackTestCases(unittest.TestCase):
             self.redblack.add(object[0], object[1:]) # Add words to Trie
         for word in WordsToAdd:
             # Get the position of each word
-            pos, _,  _, _= self.redblack.find(word[0],'exact')
+            pos, _,  _ = self.redblack.find(word[0],'exact')
             # We add the word and the found positions to match list formatting
             # to the input
             checklist.append((word[0], pos[0][0], pos[0][1]))
         self.assertEqual(checklist , WordsToAdd,
                          'Did not find all words that were supposed to add')
 
+        self.redblack.clear()
+        self.lukija.readWords()
+        self.redblack.addFromReader()
+
+
+
     def testMultiWordFind(self):
         for object in MultiWordAdd:
             self.redblack.add(object[0], object[1:]) # Add words to Trie
-        pos, _, _, _ = self.redblack.find('a','exact')
+        pos, _, _ = self.redblack.find('a','exact')
         self.assertEqual(pos, MultiWordFindA,
                          'RB: Error finding multiple instances of a word')
-        pos, _,  _, _= self.redblack.find('b','exact')
+        pos, _, _ = self.redblack.find('b','exact')
         self.assertEqual(pos, MultiWordFindB,
                          'RB: Error finding multiple instances of a word')
 

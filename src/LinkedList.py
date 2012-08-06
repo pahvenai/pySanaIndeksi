@@ -15,6 +15,7 @@ class LinkedList:
         self.count = 0
 
     def addLast(self, value):
+        """ Add one value to the end of the list """
         newNode = LinkedListNode(value, parent = self.end)
         if not self.root:
             self.root = newNode
@@ -22,6 +23,7 @@ class LinkedList:
         self.count = self.count + 1
 
     def values(self):
+        """ Return a list containing all value in this linked list """
         list = []
         node = self.root
         while node:

@@ -20,6 +20,9 @@ class RedBlack(Puu):
 
     def __init__(self, lukija):
         self.lukija = lukija
+        self.clear()
+
+    def clear(self):
         self.empty = RedBlackNode(None) # leaves are 'empty'
         self.root = self.empty
         self.root.parent = self.empty
@@ -28,24 +31,33 @@ class RedBlack(Puu):
         '''
         Adds a new word to the tree.
         '''
-#        newNode = self.binaryInsert(self.root, RedBlackNode(word))
-#        self.insert1(newNode)
-        word = key
         pos = value
-        exists, _, _, existingNode = self.find(word)
+        exists, _, _, existingNode = self.internalFind(key)
         if exists:
             existingNode.pos.addLast(pos)
             return
-        self.binaryInsert(RedBlackNode(word, pos))
+        self.binaryInsert(RedBlackNode(key, pos))
 
+    def addFromReader(self):
+        for word in self.lukija.words:
+            self.add(word[0], word[1:])
+            print word[0], word[1:]
 
-    def find(self, word, type='startswith'):
+    def find(self, key, type='startswith'):
         '''
+        Calls an internal function.
+        '''
+        values, itemCount, RowCount, _ = self.internalFind(key, type)
+        return values, itemCount, RowCount
+
+
+
+    def internalFind(self, word, type='startswith'):
+        """
         Tries to find the asked word from the tree. Returns a number indicating
         the file and a file number for each found instance. Can be used to find
         exact matches only.
-        '''
-
+        """
         node = self.root
         while (not node == self.empty) and (not node.str == word):
             if word < node.str:
@@ -57,7 +69,6 @@ class RedBlack(Puu):
             return [], 0, 0, self.empty
         vals = node.pos.values()
         return vals, len(vals), len(set(vals)), node
-
 
 
     def binaryInsert(self, node):
@@ -208,6 +219,4 @@ class RedBlackNode(object):
         else:
             return self.pa.le 
 
-    def updateNode(self, object):
-        pass
 

@@ -12,12 +12,12 @@ class Puu(object):
     classes are working properly.
     """
 
-    @accepts(Puu, String, object)
+    #@accepts(Puu, String, object)
     def add(self, key, value):
 
         raise NotImplementedError( "Adding not implemented" )
 
-    @returns(list, int, int)
+    #@returns(list, int, int)
     def find( self, item, type):
         """
         returns:
