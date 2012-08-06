@@ -44,9 +44,9 @@ class RedBlack(Puu):
         node = self.root
         while (not node == self.empty) and (not node.str == word):
             if word < node.str:
-                node = node.left
+                node = node.le
             else:
-                node = node.right
+                node = node.ri
 
         return node.pos
 
@@ -100,7 +100,7 @@ class RedBlack(Puu):
         # node is set to red
         node.red = True
         # Red Black tree properties may not be intact, fix them from new node
-        self.restoreProperties(node)
+        #self.restoreProperties(node)
 
 
     def restoreProperties(self, node):

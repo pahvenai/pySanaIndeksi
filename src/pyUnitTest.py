@@ -130,17 +130,17 @@ class  PyRedBlackTestCases(unittest.TestCase):
                          "../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
         self.redblack = RedBlack(self.lukija)
         
-    def _testSimpleAddFind(self): # Red Black would fail this test now
+    def testSimpleAddFind(self): # Red Black would fail this test now
         """ Add some objects to Red Black tree and see if you can find them """
         checklist = []
         for word in WordsToAdd:
             self.redblack.add(word) # Add words to Trie
         for word in WordsToAdd:
             # Get the position of each word
-            pos, _, _ = self.redblack.find(word[0],'exact')
+            pos = self.redblack.find(word[0],'exact')
             # We add the word and the found positions to match list formatting
             # to the input
-            checklist.append((word[0], pos[0][0], pos[0][1]))
+            checklist.append((word[0], pos[0], pos[1]))
         self.assertEqual(checklist , WordsToAdd,
                          'Did not find all words that were supposed to add')
 
