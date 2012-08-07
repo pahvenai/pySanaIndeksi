@@ -40,6 +40,7 @@ class RedBlack(Puu):
         calls for a function that restores the tree to red and black if the
         addition of this word damaged those properties.
         '''
+        key = self.lukija.sanitize(key)
         self.binaryInsert(RedBlackNode(key, value), value)
 
     def addFromReader(self):
@@ -51,6 +52,8 @@ class RedBlack(Puu):
     def find(self, key):
         '''
         Calls an internal function which does the actual finding.
+
+        The word is first sanitized.
         '''
         key = self.lukija.sanitize(key)
         _, values, itemCount, RowCount = self._internalFind(key, type)

@@ -37,6 +37,7 @@ class Trie(Puu):
         Adds a new word to the tree. The addition is done via recursive addNode
         function.
         '''
+        key = self.lukija.sanitize(key)
         if self.root == None:
             self.root = TrieNode(self.charMapSize)
         self.addNode(key, value)
@@ -105,11 +106,11 @@ class Trie(Puu):
         if charNo == len(key) - 1:
             exact = True
 
-        nodeExists = node.children[index] # Empty list means no such branch
+        nodeExists = node.children[index] # Empty list means no such node
 
         if nodeExists:
-            # branch exists, update only the newly found position to the branch
-            node.updateNode(value, exact)
+            # node exists, update only the newly found position to the node
+            nodeExists.updateNode(value, exact)
             nextNode = node.children[index] # tree may continue here
         else:
             # create a new branch and add it to the tree

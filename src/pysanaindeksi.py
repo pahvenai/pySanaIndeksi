@@ -40,8 +40,8 @@ def testRun():
     word = raw_input( "Find a word (or its beginning) in the text: " ).rstrip( '\n' )
 
     positions, count, linecount = trie.find(word)
-    RBpositions, RBcount, RBlinecount = punamusta.find(word)
     print "Found", count, "instances (", linecount, "lines) @", positions
+    RBpositions, RBcount, RBlinecount = punamusta.find(word)
     print "Found", RBcount, "instances (", RBlinecount, "lines) @", RBpositions
 
 if __name__ == "__main__":

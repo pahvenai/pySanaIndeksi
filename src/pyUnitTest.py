@@ -2,7 +2,7 @@
 
 import unittest
 from WordReader import WordReader
-from RedBlack import RedBlack, dotWrite
+from RedBlack import RedBlack
 from Trie import Trie
 from LinkedList import LinkedList
 
@@ -27,7 +27,7 @@ properIdxMap = {'0':0, '1':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '
                 'Y':35, 'Z':36,
                 "'": 37}
 
-linesIn2books = 8859 + 9571
+linesIn2books = 8860 + 9571
 noOfFiles = 2
 wordsInTestFile = 50
 
@@ -108,6 +108,18 @@ class  PyWordReaderTestCases(unittest.TestCase):
                           ([], 0, 0, 0))
 
 
+class PyLinkedListTestCases(unittest.TestCase):
+    def setUp(self):
+        self.list = LinkedList()
+
+    def testAddition(self):
+        """ Test adding multiple values to a linked list """
+        for val in linkedListVals:
+            self.list.addLast(val)
+        self.assertEqual(self.list.values() , linkedListVals,
+                         'Linked list did not add values properly')
+
+
 class  PyTrieTestCases(unittest.TestCase):
     def setUp(self):
         self.lukija = WordReader()
@@ -129,29 +141,16 @@ class  PyTrieTestCases(unittest.TestCase):
         self.assertEqual(checklist , WordsToAdd,
                          'Trie: Did not find all words that were supposed to add')
 
-    def _testMultiWordFind(self):
+    def testMultiWordFind(self):
         for object in MultiWordAdd:
             self.trie.add(object[0], object[1:]) # Add words to Trie
         pos, _, _ = self.trie.find('a','exact')
-        print pos, MultiWordFindA
         self.assertEqual(pos, MultiWordFindA,
                          'Trie: Error finding multiple instances of a word')
         pos, _, _ = self.trie.find('b','exact')
-        print ppos, MultiWordFindB
         self.assertEqual(pos, MultiWordFindB, 
                          'Trie: Error finding multiple instances of a word')
 
-
-class PyLinkedListTestCases(unittest.TestCase):
-    def setUp(self):
-        self.list = LinkedList()
-
-    def testAddition(self):
-        """ Test adding multiple values to a linked list """
-        for val in linkedListVals:
-            self.list.addLast(val)
-        self.assertEqual(self.list.values() , linkedListVals,
-                         'Linked list did not add values properly')
 
 
 class  PyRedBlackTestCases(unittest.TestCase):
