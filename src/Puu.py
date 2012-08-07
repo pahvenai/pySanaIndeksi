@@ -14,16 +14,21 @@ class Puu(object):
 
     #@accepts(Puu, String, object)
     def add(self, key, value):
-
+        """
+        This method is used to add items to the tree. Each item contains a key
+        which should be a string and an arbitrary value corresponding to that
+        key.
+        """
         raise NotImplementedError( "Adding not implemented" )
 
+    #@accepts(Puu, String)
     #@returns(list, int, int)
-    def find( self, item, type):
+    def find(self, key):
         """
-        returns:
+        Finds the key from the tree. If the key is found return the following:
         1:  A list of positions where this word was found
         2:  Number of found instances
-        3:  Number of lines where the word was foudn
+        3:  Number of lines where the word was found
         """
         raise NotImplementedError( "Finding not implemented" )
 

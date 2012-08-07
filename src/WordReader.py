@@ -26,18 +26,20 @@ class WordReader(object):
     
     Characters can be mapped to an indexed table via char2ind() function.
 
-    functions:
-    WordReader.readWords()      Reads all words with accepted characters from
-                                all files.
-    WordReader.clear()          Forget any read words
-    WordReader.sanitize(word)   Removes non-accepted characters from the word
-    WordReader.ind2char(index)  Returns the character corresponding to index
-    WordReader.char2ind(char)   Returns the index corresponding to character
-    WordReader.getCharMapSize() Returns the number of accepted characters
-    WordReader.addFileName(filename)    Add new files 
-    WordReader.addFileNames(filenames):
+    methods:
+    self.readWords()                Reads all words with accepted characters
+                                    from all files.
+    self.clear()                    Forget any read words
+    self.sanitize(word)             Removes non-accepted characters from the word
+    self.ind2char(index)            Returns the character corresponding to index
+    self.char2ind(char)             Returns the index corresponding to character
+    self.getCharMapSize()           Returns the number of accepted characters
+    self.addFileName(filename)      Add a new file by giving its filename.
+    self.addFileNames(filenames):   Add multiple files by giving a list
+                                    containing their filenames.
 
-    WordReader.createChrMap
+    self._createChrMap()            Creates the character-index-character
+                                    mapping.
     '''
 
 

@@ -20,6 +20,10 @@ class Trie(Puu):
     A Trie-type tree that can hold words containing alphanumerals, hyphens and
     aposthrophes. The WordReader module handles in reality the the word
     sanitizing.
+
+    A trie instance is tied to its WordReader object: it gets the size of the
+    child node list from it and the mapping of characters to indices in that
+    list.
     '''
 
 
@@ -31,18 +35,22 @@ class Trie(Puu):
 
     def add(self, key, value):
         '''
-        Adds a new word to the tree.
+        Adds a new word to the tree. The addítion is done via recursive addNode
+        function.
         '''
         if self.root == None:
-            self.root = TrieBranch(self.charMapSize)
-        self.addBranch(key, value)
+            self.root = TrieNode(self.charMapSize)
+        self.addNode(key, value)
 
     def find(self, word, type='startswith'):
         '''
-        Tries to find the asked word from the tree. Returns a number indicating
-        the file and a file number for each found instance. Can be used to find
+        Tries to find the asked word from the tree. Can be used to find
         exact matches or the beginnings of the words. Uses recursion to travel
-        in the trie-tree.
+        in the trie-tree. Returns a list of the positions where that word was
+        found (if any), the number of found instances and the number of
+        different line where that word was found.
+
+        The word is first sanitized.
         '''
 
         word = self.lukija.sanitize(word) # check that we have no illegal characters
@@ -80,9 +88,13 @@ class Trie(Puu):
 
             return self.findRecursive(word, charNo+1, type, node.children[index])
 
-    def addBranch(self, key, value, charNo = 0, node = 'root'):
+
+
+
+    def addNode(self, key, value, charNo = 0, node = 'root'):
         '''
-        Add one branches until whole word is added.
+        Add a node at a time until the whole word is added. Each node represents
+        a letter of that word.
         '''
         letter = key[charNo]
         index = self.lukija.char2ind(letter)
@@ -98,18 +110,18 @@ class Trie(Puu):
 
         if nodeExists:
             # branch exists, update only the newly found position to the branch
-            node.updateBranch(value, exact)
-            nextBranch = node.children[index] # tree may continue here
+            node.updateNode(value, exact)
+            nextNode = node.children[index] # tree may continue here
         else:
             # create a new branch and add it to the tree
-            newBranch = TrieBranch(self.charMapSize, value, exact)
-            node.children[index] = newBranch
-            nextBranch = newBranch # tree may continue here
+            newNode = TrieNode(self.charMapSize, value, exact)
+            node.children[index] = newNode
+            nextNode = newNode # tree may continue here
 
         # If not the last letter in the word, continue recursively
         if not exact:
             charNo = charNo + 1
-            self.addBranch(key, value ,charNo,nextBranch)
+            self.addNode(key, value ,charNo,nextNode)
         pass
     
 
@@ -142,22 +154,36 @@ class Trie(Puu):
                     word = word + self.lukija.ind2char(lastindex)
 
 
-class TrieBranch(object):
+class TrieNode(object):
     '''
-    Contains the information of one branch.
-    '''
+    Contains the information of one node. It contains two lists of the positions
+    where the string corresponding to that node is found. One stores only the
+    positions of exact matches and the other all words that start with that
+    string.
 
+    Child maintenance is handled with a minimum list. A new TrieNode is given
+    the maximum amount of children (number of acceptable characters).
+
+    self.updateNode(value, exact):
+        Adds the value to the value lists of that node. Exact-flag determines
+        whether the value is added also to the list of exact matches.
+    '''
 
     def __init__(self, charMapSize, value = '', exact = False):
+        """
+        Trie node contains two linked lists for its values: one is intended for
+        exact matches (it is updated only with exact-flag raised). Upon
+        creation, the minimum list type child list is created for that node.
+        """
         self.exact = LinkedList()
         self.match = LinkedList()
         if value:
-            self.updateBranch(value, exact)
+            self.updateNode(value, exact)
         self.children = [None] * (charMapSize)
 
 
-    def updateBranch(self, value, exact):
+    def updateNode(self, position, exact):
         """ Add position info for this object """
-        self.match.addLast(value)
+        self.match.addLast(position)
         if exact:
-            self.exact.addLast(value)
+            self.exact.addLast(position)

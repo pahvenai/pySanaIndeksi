@@ -5,10 +5,13 @@ from WordReader import WordReader
 from RedBlack import RedBlack
 from Trie import Trie
 
+import cProfile
+import pstats
+
 name = 'pySanaIndeksi'
 
-if __name__ == "__main__":
-    print '*' * 50, '\n', ' ' * ((50 - (len(name)))/2), name , '\n', '*' * 50
+
+def testRun():
 
     lukija = WordReader(["../Material/Grimm's Fairy Tales.txt"])
 #                         "../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
@@ -24,23 +27,33 @@ if __name__ == "__main__":
     intti = 0; setti = 0
     for word in lukija.words:
         trie.add(word[0], word[1:])
-        #punamusta.add(word[0], word[1:])
+        punamusta.add(word[0], word[1:])
         intti = intti + 1
         if intti > lukija.wordcount / 100:
             setti = setti + 1
             print setti, '% of words added'
             intti = 0
 
+
+if __name__ == "__main__":
+
+
+    print '*' * 50, '\n', ' ' * ((50 - (len(name)))/2), name , '\n', '*' * 50
+    cProfile.run('testRun()', 'testProf')
+    p = pstats.Stats('testProf')
+    p.sort_stats('cumulative').print_stats(10)
+
+
     #trie.printRandomRoute()
 
     #positions, count, linecount = trie.find('wor')
     #print "Found", count, "instances (", linecount, "lines) @", positions
 
-    print "Searching for words in Grimm's Fairy tales and The Adventures of Tom Sawyer"
-
-    word = raw_input( "Find a word (or its beginning) in the text: " ).rstrip( '\n' )
-
-    positions, count, linecount = trie.find(word)
-    RBpositions, _, _ = punamusta.find(word)
-    print "Found", count, "instances (", linecount, "lines) @", positions
-    print "Found", None, "instances (", None, "lines) @", RBpositions
+#    print "Searching for words in Grimm's Fairy tales and The Adventures of Tom Sawyer"
+#
+#    word = raw_input( "Find a word (or its beginning) in the text: " ).rstrip( '\n' )
+#
+#    positions, count, linecount = trie.find(word)
+#    RBpositions, RBcount, RBlinecount = punamusta.find(word)
+#    print "Found", count, "instances (", linecount, "lines) @", positions
+#    print "Found", RBcount, "instances (", RBlinecount, "lines) @", RBpositions

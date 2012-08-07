@@ -9,7 +9,24 @@ if __name__ == "__main__":
 
 
 class LinkedList:
+    """
+    A simple linked list class that provides two public methods; one for
+    adding an item at the end of the list and one for retrieving a list of
+    all of the values stored in that list. Includes a counter for the number of
+    items in the list. The list can also be cleared.
+
+    self.clear():       Clears the list
+    self.addLast(value):Adds the value to the end of the list.
+    self.values():      Retrieve a list of all values in the linked list.
+    """
+
+
     def __init__(self):
+        """ Can only be used to create an empty list """
+        self.clear()
+
+    def clear(self):
+        """ Clearing removes all the items from the list """
         self.root = None
         self.end = None
         self.count = 0
@@ -23,7 +40,7 @@ class LinkedList:
         self.count = self.count + 1
 
     def values(self):
-        """ Return a list containing all value in this linked list """
+        """ Return a list containing all values in this linked list """
         list = []
         node = self.root
         while node:
@@ -32,10 +49,21 @@ class LinkedList:
         return list
 
 class LinkedListNode:
+    """
+    The nodes are bidirectional: each node has a reference to its parent and to
+    its child. If the item is added to a non-empty list (child or parent given)
+    the corresponding child or parent attribute is modified in the list
+    (i.e. giving the node a child will make that child have the new node as its
+    parent).
+    """
 
     def __init__(self, value, parent=None, child=None):
         self.value = value
+
         self.parent = parent
         if self.parent:
             self.parent.child = self
+
         self.child = child
+        if self.child:
+            self.child.parent = self
