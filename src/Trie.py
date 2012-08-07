@@ -1,5 +1,4 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
+# -*- coding: utf-8 -*-
 
 from Puu import Puu
 from WordReader import WordReader
@@ -35,7 +34,7 @@ class Trie(Puu):
 
     def add(self, key, value):
         '''
-        Adds a new word to the tree. The addítion is done via recursive addNode
+        Adds a new word to the tree. The addition is done via recursive addNode
         function.
         '''
         if self.root == None:

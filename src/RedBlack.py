@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from Puu import Puu
 from LinkedList import LinkedList
 
@@ -40,7 +41,7 @@ class RedBlack(Puu):
         '''
         existingNode, exists, _, _ = self._internalFind(key)
         if exists:
-            existingNode.pos.addLast(value)
+            existingNode.val.addLast(value)
             return
         self.binaryInsert(RedBlackNode(key, value))
 
