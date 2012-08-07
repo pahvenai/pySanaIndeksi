@@ -2,8 +2,9 @@
 
 import unittest
 from WordReader import WordReader
-from RedBlack import RedBlack
+from RedBlack import RedBlack, dotWrite
 from Trie import Trie
+from LinkedList import LinkedList
 
 # Note: the test cases are written for a version of the WordReader that accepts
 # only alphanumerals, hyphens and apostrophes. The code itself allows one to
@@ -33,10 +34,12 @@ wordsInTestFile = 50
 WordsToAdd = [('ww3fwG', 99, 1), ('Sana', 3, 2), ('ed', 2222, 1), 
               ('Tampere', 1003, 1), ('Rekka-auto', 2, 1), ("Don't", 22, 2)]
 
-MultiWordAdd = [('a', 1, 1), ('b', 2, 1), ('a', 3, 1), 
-                ('a', 1 ,2 ), ('b', 2, 2), ('a', 3, 2)]
+MultiWordAdd = [('c', 20, 3), ('a', 1, 1), ('c', 23, 1), ('b', 2, 1), ('a', 3, 1),
+                ('a', 1 ,2 ), ('b', 2, 2), ('a', 3, 2), ('ade', 2, 3)]
 MultiWordFindA = [(1,1), (3,1), (1,2), (3,2)]
 MultiWordFindB = [(2,1), (2,2)]
+linkedListVals = [1, 2, 3, 4]
+
 
 class  PyWordReaderTestCases(unittest.TestCase):
     def setUp(self):
@@ -139,6 +142,17 @@ class  PyTrieTestCases(unittest.TestCase):
                          'Trie: Error finding multiple instances of a word')
 
 
+class PyLinkedListTestCases(unittest.TestCase):
+    def setUp(self):
+        self.list = LinkedList()
+
+    def testAddition(self):
+        """ Test adding multiple values to a linked list """
+        for val in linkedListVals:
+            self.list.addLast(val)
+        self.assertEqual(self.list.values() , linkedListVals,
+                         'Linked list did not add values properly')
+
 
 class  PyRedBlackTestCases(unittest.TestCase):
     def setUp(self):
@@ -170,6 +184,7 @@ class  PyRedBlackTestCases(unittest.TestCase):
     def testMultiWordFind(self):
         for object in MultiWordAdd:
             self.redblack.add(object[0], object[1:]) # Add words to Trie
+
         pos, _, _ = self.redblack.find('a')
         self.assertEqual(pos, MultiWordFindA,
                          'RB: Error finding multiple instances of a word')

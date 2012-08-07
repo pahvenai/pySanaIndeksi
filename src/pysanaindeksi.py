@@ -30,11 +30,19 @@ def testRun():
         trie.add(word[0], word[1:])
         punamusta.add(word[0], word[1:])
         intti = intti + 1
-        if intti > lukija.wordcount / 100:
+        if intti > lukija.wordcount / 100.0:
             setti = setti + 1
             print setti, '% of words added'
             intti = 0
 
+    print "Searching for words in Grimm's Fairy tales and The Adventures of Tom Sawyer"
+
+    word = raw_input( "Find a word (or its beginning) in the text: " ).rstrip( '\n' )
+
+    positions, count, linecount = trie.find(word)
+    RBpositions, RBcount, RBlinecount = punamusta.find(word)
+    print "Found", count, "instances (", linecount, "lines) @", positions
+    print "Found", RBcount, "instances (", RBlinecount, "lines) @", RBpositions
 
 if __name__ == "__main__":
 

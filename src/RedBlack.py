@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from Puu import Puu
 from LinkedList import LinkedList
+from sys import stdout
 
 __author__="Patrik Ahvenainen"
 __date__ ="$31.7.2012 17:35:35$"
@@ -39,11 +40,7 @@ class RedBlack(Puu):
         calls for a function that restores the tree to red and black if the
         addition of this word damaged those properties.
         '''
-        existingNode, exists, _, _ = self._internalFind(key)
-        if exists:
-            existingNode.val.addLast(value)
-            return
-        self.binaryInsert(RedBlackNode(key, value))
+        self.binaryInsert(RedBlackNode(key, value), value)
 
     def addFromReader(self):
         """ Adds all the words in the WordReader object to this tree """
@@ -55,6 +52,7 @@ class RedBlack(Puu):
         '''
         Calls an internal function which does the actual finding.
         '''
+        key = self.lukija.sanitize(key)
         _, values, itemCount, RowCount = self._internalFind(key, type)
         return values, itemCount, RowCount
 
@@ -80,24 +78,35 @@ class RedBlack(Puu):
         return node, vals, len(vals), len(set(vals))
 
 
-    def binaryInsert(self, node):
+    def binaryInsert(self, node, value=None):
         """
         First add node as in a regular non-balanced binary tree. Then fix the
         binary tree to be a balanced Red Black tree.
         """
 
         if not self.root == self.empty:
+            if self.root.key == node.key: # special case: update root
+                self.root.val.addLast(value)
+                return
             #find parent for node
             newParent = self.empty
             nextNode = self.root
             while nextNode != self.empty:
                 newParent = nextNode
-                if node.key < nextNode.key:
+                if node.key == nextNode.key: # if node already exists ...
+                    nextNode.updateNode(value) # ... just update its value
+                    return
+                elif node.key < nextNode.key:
                     nextNode = nextNode.le
                 else:
                     nextNode = nextNode.ri
         else:
             newParent = self.root
+
+#        if newParent.key == node.key: # if node already exists ...
+#            newParent.updateNode(value) # ... just update its value
+#            return
+
         node.pa = newParent
 
         # update parent's child
@@ -189,6 +198,34 @@ class RedBlack(Puu):
         pivot.ri = node
         node.pa = pivot
 
+def dotWrite(tree, out = stdout, showNone=False):
+    "Write the tree in the dot language format to f."
+    def nodeID(node):
+        return 'N%d' % id(node)
+
+    def nodeColor(node):
+        if node.red:
+            return "red"
+        else:
+            return "black"
+
+    def visitNode(node):
+        "Visit a node."
+        print >> out, "  %s [label=\"%s\", color=\"%s\"];" % (nodeID(node), node, nodeColor(node))
+        if node.le:
+            if node.le != tree.empty or showNone:
+                visitNode(node.le)
+                print >> out, "  %s -> %s ;" % (nodeID(node), nodeID(node.le))
+        if node.ri:
+            if node.ri != tree.empty or showNone:
+                visitNode(node.ri)
+                print >> out, "  %s -> %s ;" % (nodeID(node), nodeID(node.ri))
+
+    print >> out, "// Created by rbtree.write_dot()"
+    print >> out, "digraph red_black_tree {"
+    visitNode(tree.root)
+    print >> out, "}"
+
 
 class RedBlackNode(object):
     '''
@@ -199,9 +236,10 @@ class RedBlackNode(object):
 
     Nodes know their family through
     methods:
-    self.grandpa(): return the grandpa node or empty node
-    self.uncle():   return the uncle node or empty node
-    self.sibling(): return the sibling node
+    self.updateNode(val):   Add the val(ue) to this node
+    self.grandpa():         return the grandpa node or empty node
+    self.uncle():           return the uncle node or empty node
+    self.sibling():         return the sibling node
     '''
 
     def __init__(self, str='', val=None, pa=None, red=True):
@@ -214,9 +252,13 @@ class RedBlackNode(object):
         self.val = LinkedList()
         if val:
             self.empty = False
-            self.val.addLast(val)
+            self.updateNode(val)
         else:
             self.empty = True
+
+    def updateNode(self, value):
+        """ Add the value to this node """
+        self.val.addLast(value)
 
     def grandpa(self):
         """ Return the parent of a parent or empty node """
@@ -243,3 +285,12 @@ class RedBlackNode(object):
             return self.pa.le 
 
 
+
+    def __str__(self):
+        "String representation."
+        return str(self.key)
+
+
+    def __repr__(self):
+        "String representation."
+        return str(self.key)
