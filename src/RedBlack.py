@@ -49,19 +49,29 @@ class RedBlack(Puu):
             for item in self.lukija.words:
                 self.add(item[0], item[1:])
 
-    def find(self, key):
+    def find(self, key, type='full'):
         '''
         Calls an internal function which does the actual finding.
 
         The word is first sanitized.
         '''
         key = self.lukija.sanitize(key)
-        _, values, itemCount, RowCount = self._internalFind(key, type)
-        return values, itemCount, RowCount
+        _, values, itemCount, RowCount = self._internalFind(key)
+        if type == 'list':
+            return values
+        elif type == 'count':
+            return itemCount
+        elif type == 'full':
+            return values, itemCount, RowCount
+        else:
+            return None
 
+#    def findMultiple(self, keys):
+#        for key in keys:
+#            values[key], itemCount[key], RowCount[key] = self.find(key)
+#
 
-
-    def _internalFind(self, word, type='startswith'):
+    def _internalFind(self, word):
         """
         Tries to find the asked word from the tree. Can be used to find
         exact matches only. Returns the node where that word was found, the

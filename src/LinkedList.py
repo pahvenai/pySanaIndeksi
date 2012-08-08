@@ -16,6 +16,7 @@ class LinkedList:
 
     self.clear():       Clears the list
     self.addLast(value):Adds the value to the end of the list.
+    self.removeLast():  Removes the last value in the list and returns its value
     self.values():      Retrieve a list of all values in the linked list.
     """
 
@@ -37,6 +38,19 @@ class LinkedList:
             self.root = newNode
         self.end = newNode
         self.count = self.count + 1
+
+    def removeLast(self):
+        """ Removes the last value in the list and returns its value """
+        if self.end == None:
+            return None
+        self.count = self.count - 1
+        returnValue = self.end.value
+        if self.end == self.root:
+            self.end = self.root = None
+        else:
+            self.end = self.end.parent
+            self.end.child = None
+        return returnValue
 
     def values(self):
         """ Return a list containing all values in this linked list """
