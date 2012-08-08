@@ -52,8 +52,11 @@ class Searcher(object):
         self._checkString() #may flag status as bad
         self.set = set()
 
-    def search(self):
+    def search(self, searchPhrase=None):
         """ Search the given search phrase using recursive search """
+        if searchPhrase:
+            self.words = searchPhrase.split()
+            self._checkString()
         if not self.status == 'ok':
             return None
         return self._recursiveSearch(0)
@@ -137,9 +140,9 @@ class Searcher(object):
             # Find the word and return its positions as a set
             if self.types[index] == 'W':
                 if left == None:
-                    left = set(self.finder.find(self.words[index], type='list'))
+                    left = set(self.finder.find(self.words[index], output='list'))
                 else:
-                    right = set(self.finder.find(self.words[index], type='list'))
+                    right = set(self.finder.find(self.words[index], output='list'))
 
             # Set the operator tag to the desired operation
             if self.types[index] == 'O':
@@ -172,10 +175,18 @@ if __name__ == "__main__":
     finder.addFromReader()
     searchPhrase = "brothers AND ( grimm OR Grimms' )"
     print 'Searching the search phrase "' + searchPhrase + '" in', inputFiles
-    tyyppi = Searcher(searchPhrase, finder, lukija)
+    tyyppi = Searcher(finder, searchPhrase, lukija)
     print "The status of the search phrase is:", tyyppi.status
-    search = sorted(list(tyyppi.recursiveSearch(0)))
+    search = sorted(list(tyyppi.search()))
     print "Position(s) in the text where the word was found:"
     print search
     print 'The search returned', len(search), 'unique hits.'
 #    print tyyppi.pList
+
+    searchPhrase2 = " human OR ( cat AND mouse )"
+    print 'Searching the search phrase "' + searchPhrase2 + '" in', inputFiles
+    print "The status of the search phrase is:", tyyppi.status
+    search = sorted(list(tyyppi.search(searchPhrase2)))
+    print "Position(s) in the text where the word was found:"
+    print search
+    print 'The search returned', len(search), 'unique hits.'

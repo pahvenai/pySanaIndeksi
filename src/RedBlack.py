@@ -49,7 +49,7 @@ class RedBlack(Puu):
             for item in self.lukija.words:
                 self.add(item[0], item[1:])
 
-    def find(self, key, type='full'):
+    def find(self, key, output='full'):
         '''
         Calls an internal function which does the actual finding.
 
@@ -57,11 +57,11 @@ class RedBlack(Puu):
         '''
         key = self.lukija.sanitize(key)
         _, values, itemCount, RowCount = self._internalFind(key)
-        if type == 'list':
+        if output == 'list':
             return values
-        elif type == 'count':
+        elif output == 'count':
             return itemCount
-        elif type == 'full':
+        elif output == 'full':
             return values, itemCount, RowCount
         else:
             return None

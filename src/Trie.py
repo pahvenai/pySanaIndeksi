@@ -42,7 +42,7 @@ class Trie(Puu):
             self.root = TrieNode(self.charMapSize)
         self.addNode(key, value)
 
-    def find(self, word, type='startswith'):
+    def find(self, word, type='startswith', output='full'):
         '''
         Tries to find the asked word from the tree. Can be used to find
         exact matches or the beginnings of the words. Uses recursion to travel
@@ -63,7 +63,15 @@ class Trie(Puu):
             linecount = len(set(positions))
         else: #did not find the word
             count = 0; linecount = 0
-        return positions, count, linecount
+
+        if output == 'list':
+            return positions
+        elif output == 'count':
+            return count
+        elif output == 'full':
+            return positions, count, linecount
+        else:
+            return None
 
 
     def findRecursive(self, word, charNo, type, node):

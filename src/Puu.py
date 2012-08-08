@@ -24,15 +24,15 @@ class Puu(object):
 
     #@accepts(Puu, String)
     #@returns(list, int, int)
-    def find(self, key, type='list'):
+    def find(self, key, output='list'):
         """
         Finds the key from the tree. If the key is found return the following:
-        type == 'list';
+        output == 'list';
         1:  A list of positions where this word was found
-        type == 'count':
+        output == 'count':
         1:  Number of found instances
         2:  Number of lines where the word was found
-        type == 'full';
+        output == 'full';
         1:  A list of positions where this word was found
         2:  Number of found instances
         3:  Number of lines where the word was found
