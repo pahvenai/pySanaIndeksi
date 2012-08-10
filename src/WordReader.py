@@ -2,7 +2,7 @@
 __author__="Patrik Ahvenainen"
 __date__ ="$1.8.2012 11:42:53$"
 
-from dataHandling import openFile
+from DataHandling import openFile
 
 if __name__ == "__main__":
     print "Class that contains methods for reading words from a file"

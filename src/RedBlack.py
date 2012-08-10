@@ -41,7 +41,8 @@ class RedBlack(Puu):
         addition of this word damaged those properties.
         '''
         key = self.lukija.sanitize(key)
-        self.binaryInsert(RedBlackNode(key, value), value)
+        if key:
+            self.binaryInsert(RedBlackNode(key, value), value)
 
     def addFromReader(self):
         """ Adds all the words in the WordReader object to this tree """

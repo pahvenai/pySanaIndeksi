@@ -12,6 +12,7 @@ parts
 bin
 var
 sdist
+private.xml
 develop-eggs
 .installed.cfg
 
