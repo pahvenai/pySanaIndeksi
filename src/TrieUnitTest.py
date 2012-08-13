@@ -51,6 +51,20 @@ class  PyTrieTestCases(unittest.TestCase):
         self.assertEqual(pos, MultiWordFindB,
                          'Trie: Error finding multiple instances of a word')
 
+
+    def testWordCounter(self):
+        """ Tests that both the reader and the tree can count the words """
+        self.lukija.clear('all')
+        self.lukija.addFileNames(["../Material/50words_in_UTF-8.txt"])
+        self.assertEqual(self.lukija.wordcount, 0,
+                         'Trie: WordReader clearing failed')
+        self.lukija.readWords()
+        self.assertEqual(self.lukija.wordcount, 50,
+                         'Trie: WordReader failed in reading words')
+        self.trie.clear()
+        self.trie.addFromReader()
+        self.assertEqual(self.trie.wordCount(), 50,
+                         'Trie: word counting failed')
                        
 def suite():
     return unittest.makeSuite(PyTrieTestCases,'test')

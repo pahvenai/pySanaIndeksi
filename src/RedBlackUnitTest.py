@@ -24,7 +24,6 @@ class  PyRedBlackTestCases(unittest.TestCase):
     def setUp(self):
         self.lukija = WordReader()
         # test addFileNames
-        self.lukija.addFileNames(["../Material/50words_in_UTF-8.txt"])
         self.redblack = RedBlack(self.lukija)
 
     def testSimpleAddFind(self): # Red Black would fail this test now
@@ -57,6 +56,20 @@ class  PyRedBlackTestCases(unittest.TestCase):
         pos, _, _ = self.redblack.find('b')
         self.assertEqual(pos, MultiWordFindB,
                          'RB: Error finding multiple instances of a word')
+
+    def testWordCounter(self):
+        """ Tests that both the reader and the tree can count the words """
+        self.lukija.clear('all')
+        self.lukija.addFileNames(["../Material/50words_in_UTF-8.txt"])
+        self.assertEqual(self.lukija.wordcount, 0,
+                         'RB: WordReader clearing failed')
+        self.lukija.readWords()
+        self.assertEqual(self.lukija.wordcount, 50,
+                         'RB: WordReader failed in reading words')
+        self.redblack.clear()
+        self.redblack.addFromReader()
+        self.assertEqual(self.redblack.wordCount(), 50,
+                         'RB: word counting failed')
 
 def suite():
     return unittest.makeSuite(PyRedBlackTestCases,'test')

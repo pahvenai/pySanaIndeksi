@@ -33,6 +33,7 @@ class RedBlack(Puu):
         self.empty = RedBlackNode(None) # leaves are 'empty'
         self.root = self.empty
         self.root.parent = self.empty
+        self._wordCount = 0
 
     def add(self, key, value):
         '''
@@ -42,13 +43,16 @@ class RedBlack(Puu):
         '''
         key = self.lukija.sanitize(key)
         if key:
+            self._wordCount = self.wordCount() + 1
             self.binaryInsert(RedBlackNode(key, value), value)
 
-    def addFromReader(self):
+    def addFromReader(self, wordCount = None):
         """ Adds all the words in the WordReader object to this tree """
         if self.lukija:
             for item in self.lukija.words:
                 self.add(item[0], item[1:])
+                if wordCount and self.wordCount() == wordCount:
+                    break
 
     def find(self, key, output='full'):
         '''
@@ -66,6 +70,9 @@ class RedBlack(Puu):
             return values, itemCount, RowCount
         else:
             return None
+        
+    def wordCount(self):
+        return self._wordCount
 
 #    def findMultiple(self, keys):
 #        for key in keys:

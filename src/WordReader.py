@@ -38,6 +38,7 @@ class WordReader(object):
     self.addFileName(filename)      Add a new file by giving its filename.
     self.addFileNames(filenames):   Add multiple files by giving a list
                                     containing their filenames.
+    self.clearFileNames()           Empties the filename list
 
     self._createChrMap()            Creates the character-index-character
                                     mapping.
@@ -79,12 +80,14 @@ class WordReader(object):
         self.filenames = filenames
         self.clear()
 
-    def clear(self):
+    def clear(self, type='empty'):
         """ Clears any words read so far """
         self.words = []
         self.filecount = 0 
         self.wordcount = 0
         self.linecount = 0
+        if type == 'all':
+            self.clearFileNames()
 
     def readWords(self):
         """
@@ -146,6 +149,8 @@ class WordReader(object):
     def addFileNames(self, filenames):
         for filename in filenames:
             self.filenames.append(filename)
+    def clearFileNames(self):
+        self.filenames = []
 
     def ind2char(self, index):
         """ Maps indices to characters """

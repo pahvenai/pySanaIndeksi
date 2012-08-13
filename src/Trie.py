@@ -26,11 +26,18 @@ class Trie(Puu):
     '''
 
 
+    def wordCount(self):
+        return self._wordCount
 
     def __init__(self, wordreader):
-        self.root = None
         self.lukija = wordreader
         self.charMapSize = self.lukija.getCharMapSize()
+        self.clear()
+
+    def clear(self):
+        """ Clears all words from the tree """
+        self.root = None
+        self._wordCount = 0
 
     def add(self, key, value):
         '''
@@ -38,6 +45,9 @@ class Trie(Puu):
         function.
         '''
         key = self.lukija.sanitize(key)
+        if not key:
+            return None
+        self._wordCount = self.wordCount() + 1
         if self.root == None:
             self.root = TrieNode(self.charMapSize)
         self.addNode(key, value)
@@ -72,6 +82,14 @@ class Trie(Puu):
             return positions, count, linecount
         else:
             return None
+
+    def addFromReader(self, wordCount = None):
+        """ Adds all the words in the WordReader object to this tree """
+        if self.lukija:
+            for item in self.lukija.words:
+                self.add(item[0], item[1:])
+                if wordCount and self.wordCount() == wordCount:
+                    break
 
 
     def findRecursive(self, word, charNo, type, node):
