@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 __author__="Patrik Ahvenainen"
 __date__ ="$6.8.2012 13:26:52$"
 

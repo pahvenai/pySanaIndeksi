@@ -28,18 +28,20 @@ class WordReader(object):
     Characters can be mapped to an indexed table via char2ind() function.
 
     methods:
-    self.readWords()                Reads all words with accepted characters
-                                    from all files.
-    self.clear()                    Forget any read words
-    self.sanitize(word)             Removes non-accepted characters from the word
-    self.ind2char(index)            Returns the character corresponding to index
-    self.char2ind(char)             Returns the index corresponding to character
-    self.getCharMapSize()           Returns the number of accepted characters
+
     self.addFileName(filename)      Add a new file by giving its filename.
     self.addFileNames(filenames):   Add multiple files by giving a list
                                     containing their filenames.
+    self.char2ind(char)             Returns the index corresponding to character
+    self.clear()                    Forget any read words
     self.clearFileNames()           Empties the filename list
+    self.getCharMapSize()           Returns the number of accepted characters
+    self.ind2char(index)            Returns the character corresponding to index
+    self.readWords()                Reads all words with accepted characters
+                                    from all files.
+    self.sanitize(word)             Removes non-accepted characters from the word
 
+    private methods:
     self._createChrMap()            Creates the character-index-character
                                     mapping.
     '''
@@ -80,6 +82,22 @@ class WordReader(object):
         self.filenames = filenames
         self.clear()
 
+###############
+### METHODS ###
+###############
+
+    def addFileName(self, filename):
+        self.filenames.append(filename)
+    def addFileNames(self, filenames):
+        for filename in filenames:
+            self.filenames.append(filename)
+
+    def char2ind(self, char):
+        """ Maps characters to indices"""
+        if not self.chrMap:
+            self._createChrMap()
+        return(self.idxMap[self.sanitize(char)])
+
     def clear(self, type='empty'):
         """ Clears any words read so far """
         self.words = []
@@ -88,6 +106,21 @@ class WordReader(object):
         self.linecount = 0
         if type == 'all':
             self.clearFileNames()
+            
+    def clearFileNames(self):
+        self.filenames = []
+
+    def getCharMapSize(self):
+        ''' Returns the number of different accepted characters '''
+        if not self.chrMap:
+            _createChrMap()
+        return len(self.chrMap)
+
+    def ind2char(self, index):
+        """ Maps indices to characters """
+        if not self.chrMap:
+            self._createChrMap()
+        return(self.chrMap[index])
 
     def readWords(self):
         """
@@ -144,33 +177,11 @@ class WordReader(object):
                 break
         return newWord # newWord may be an empty string
 
-    def addFileName(self, filename):
-        self.filenames.append(filename)
-    def addFileNames(self, filenames):
-        for filename in filenames:
-            self.filenames.append(filename)
-    def clearFileNames(self):
-        self.filenames = []
-
-    def ind2char(self, index):
-        """ Maps indices to characters """
-        if not self.chrMap:
-            self._createChrMap()
-        return(self.chrMap[index])
-
-    def char2ind(self, char):
-        """ Maps characters to indices"""
-        if not self.chrMap:
-            self._createChrMap()
-        return(self.idxMap[self.sanitize(char)])
-
-    def getCharMapSize(self):
-        ''' Returns the number of different accepted characters '''
-        if not self.chrMap:
-            _createChrMap()
-        return len(self.chrMap)
 
 
+#######################
+### PRIVATE METHODS ###
+#######################
 
     def _createChrMap(self):
         """

@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
-
-
 __author__="Patrik Ahvenainen"
 __date__ ="$10.8.2012 11:47:25$"
 
 from RedBlack import RedBlack
 from WordReader import WordReader
 import unittest
-
-if __name__ == "__main__":
-    print "This module contains unit tests for module RedBlack"
 
 WordsToAdd = [('ww3fwG', 99, 1), ('Sana', 3, 2), ('ed', 2222, 1),
               ('Tampere', 1003, 1), ('Rekka-auto', 2, 1), ("Don't", 22, 2)]
@@ -25,6 +20,10 @@ class  PyRedBlackTestCases(unittest.TestCase):
         self.lukija = WordReader()
         # test addFileNames
         self.redblack = RedBlack(self.lukija)
+
+    def tearDown(self):
+        self.lukija.clear('all')
+        self.redblack.clear()
 
     def testSimpleAddFind(self): # Red Black would fail this test now
         """ Add some objects to Red Black tree and see if you can find them """
@@ -73,3 +72,10 @@ class  PyRedBlackTestCases(unittest.TestCase):
 
 def suite():
     return unittest.makeSuite(PyRedBlackTestCases,'test')
+
+
+
+if __name__ == "__main__":
+    print "Running unit tests for RedBlack module"
+    runner = unittest.TextTestRunner()
+    runner.run(suite())

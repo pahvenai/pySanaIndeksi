@@ -49,7 +49,8 @@ def testRun():
 if __name__ == "__main__":
 
 
-    print '*' * 50, '\n', ' ' * ((50 - (len(name)))/2), name , '\n', '*' * 50
+    print '*' * 50, '\n', ' ' * ((50 - (len(name)))/2-1), name , '\n', '*' * 50
+
     cProfile.run('testRun()', 'testProf')
     p = pstats.Stats('testProf')
     p.sort_stats('cumulative').print_stats(10)

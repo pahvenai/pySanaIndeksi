@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
-
-
 __author__="Patrik Ahvenainen"
 __date__ ="$10.8.2012 11:50:51$"
 
 from Trie import Trie
 from WordReader import WordReader
 import unittest
-
-if __name__ == "__main__":
-    print "This module contains units tests for module Trie"
 
 WordsToAdd = [('ww3fwG', 99, 1), ('Sana', 3, 2), ('ed', 2222, 1),
               ('Tampere', 1003, 1), ('Rekka-auto', 2, 1), ("Don't", 22, 2)]
@@ -27,6 +22,10 @@ class  PyTrieTestCases(unittest.TestCase):
         self.lukija.addFileNames(["../Material/The Adventures of Tom Sawyer by Mark Twain.txt"])
         self.trie = Trie(self.lukija)
 
+    def tearDown(self):
+        self.lukija.clear('all')
+        self.trie.clear()
+
     def testSimpleAddFind(self):
         """ Add some objects to Trie and see if you can find them """
         checklist = []
@@ -34,7 +33,7 @@ class  PyTrieTestCases(unittest.TestCase):
             self.trie.add(object[0], object[1:]) # Add words to Trie
         for word in WordsToAdd:
             # Get the position of each word
-            pos, _, _ = self.trie.find(word[0],'exact')
+            pos, _, _ = self.trie.find(word[0])
             # We add the word and the found positions to match list formatting
             # to the input
             checklist.append((word[0], pos[0][0], pos[0][1]))
@@ -44,10 +43,10 @@ class  PyTrieTestCases(unittest.TestCase):
     def testMultiWordFind(self):
         for object in MultiWordAdd:
             self.trie.add(object[0], object[1:]) # Add words to Trie
-        pos, _, _ = self.trie.find('a','exact')
+        pos, _, _ = self.trie.find('a')
         self.assertEqual(pos, MultiWordFindA,
                          'Trie: Error finding multiple instances of a word')
-        pos, _, _ = self.trie.find('b','exact')
+        pos, _, _ = self.trie.find('b')
         self.assertEqual(pos, MultiWordFindB,
                          'Trie: Error finding multiple instances of a word')
 
@@ -68,3 +67,10 @@ class  PyTrieTestCases(unittest.TestCase):
                        
 def suite():
     return unittest.makeSuite(PyTrieTestCases,'test')
+
+
+
+if __name__ == "__main__":
+    print "Running unit tests for Trie module"
+    runner = unittest.TextTestRunner()
+    runner.run(suite())

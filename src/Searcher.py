@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-
 __author__="Patrik Ahvenainen"
 __date__ ="$8.8.2012 12:32:57$"
 
 
 from RedBlack import RedBlack
+from Trie import Trie
 from WordReader import WordReader
 from LinkedList import LinkedList
-
+import httplib
 
 class Searcher(object):
     '''
@@ -27,6 +27,8 @@ class Searcher(object):
 
     methods:
     self.search():                  Completes the search and returns the hits
+    self.status():                  Returns 'ok' if search phrase is ok
+    self.randomWord():              Fetches a random English word from Internet
 
     internal functions:
     self._checkString():            Checks that the seach phrase is good
@@ -48,18 +50,38 @@ class Searcher(object):
         self.words = searchString.split()
         self.operations = ['AND', 'OR', 'NOT', 'XOR']
         self.paranthesis = ['(', ')']
-        self.status = 'ok'
+        self._status = 'ok'
         self._checkString() #may flag status as bad
         self.set = set()
+
+    def status(self):
+        return self._status
 
     def search(self, searchPhrase=None):
         """ Search the given search phrase using recursive search """
         if searchPhrase:
             self.words = searchPhrase.split()
             self._checkString()
-        if not self.status == 'ok':
+        if not self.status() == 'ok':
             return None
         return self._recursiveSearch(0)
+
+    def randomWord(self, count = 1):
+        """ Returns a random English word fetched from randomword.setgetgo.com """
+        conn = httplib.HTTPConnection("randomword.setgetgo.com")
+        conn.request("GET", "/get.php")
+        r1 = conn.getresponse()
+        word = r1.read().strip('\xef').strip('\xbb').strip('\xbf').strip()
+        if count == 1:
+            return word
+
+        list = [word]
+        for _ in range(1, count):
+            conn.request("GET", "/get.php")
+            r1 = conn.getresponse()
+            word = r1.read().strip('\xef').strip('\xbb').strip('\xbf').strip()
+            list.append( word )
+        return list
 
 
     def _checkString(self):
@@ -70,7 +92,11 @@ class Searcher(object):
             elif word in self.paranthesis:
                 self.types.append(word)
             else:
-                self.types.append('W')
+                # last element is a star and reader reads in partial words
+                if word[-1] == '*' and self.finder.type() == 'partial':
+                    self.types.append('P')
+                else:
+                    self.types.append('W')
 
         itemCount = len(self.types)
         paranthesisList = LinkedList()
@@ -80,7 +106,12 @@ class Searcher(object):
             if self.types[index] == 'W':
                 # Words cannot be empty
                 if self.sanitizer.sanitize(word) == '':
-                    self.status = 'bad'
+                    self._status = 'bad'
+                    return
+            if self.types[index] == 'P':
+                # Words cannot be empty
+                if self.sanitizer.sanitize(word) == '':
+                    self._status = 'bad'
                     return
             if self.types[index] == '(':
                 paranthesisList.addLast('(')
@@ -92,24 +123,25 @@ class Searcher(object):
                 if paranthesisList.values():
                     paranthesisList.removeLast()
                 else:
-                    self.status = 'bad'
+                    self._status = 'bad'
                     return
             if self.types[index] == 'O':
                 if index > 0:
                     if not self.types[index-1] == 'O':
                         pass
                 else:
-                    self.status = 'bad'
+                    self._status = 'bad'
                     return
                 if index < itemCount - 1:
                     if not self.types[index+1] == 'O':
                         pass
                 else:
-                    self.status = 'bad'
+                    self._status = 'bad'
                     return
         if paranthesisList.values():
-            self.status = 'bad'
+            self._status = 'bad'
             return
+
 
     def _recursiveSearch(self, index):
         pSkip = 0 # parenthesis skip: this word is handled elsewhere
@@ -144,6 +176,13 @@ class Searcher(object):
                 else:
                     right = set(self.finder.find(self.words[index], output='list'))
 
+            # If we have partial words find them using findPartial
+            if self.types[index] == 'P':
+                if left == None:
+                    left = set(self.finder.findPartial(self.words[index], output='list'))
+                else:
+                    right = set(self.finder.findPartial(self.words[index], output='list'))
+
             # Set the operator tag to the desired operation
             if self.types[index] == 'O':
                 operator = self.words[index]
@@ -170,22 +209,22 @@ class Searcher(object):
 if __name__ == "__main__":
     inputFiles = ["../Material/Grimm's Fairy Tales.txt"]
     lukija = WordReader(inputFiles)
-    finder = RedBlack(lukija)
+    finder = Trie(lukija)
     lukija.readWords()
     finder.addFromReader()
+    
     searchPhrase = "brothers AND ( grimm OR Grimms' )"
     print 'Searching the search phrase "' + searchPhrase + '" in', inputFiles
     tyyppi = Searcher(finder, searchPhrase, lukija)
-    print "The status of the search phrase is:", tyyppi.status
+    print "The status of the search phrase is:", tyyppi.status()
     search = sorted(list(tyyppi.search()))
     print "Position(s) in the text where the word was found:"
     print search
     print 'The search returned', len(search), 'unique hits.'
-#    print tyyppi.pList
 
-    searchPhrase2 = " human OR ( cat AND mouse )"
-    print 'Searching the search phrase "' + searchPhrase2 + '" in', inputFiles
-    print "The status of the search phrase is:", tyyppi.status
+    searchPhrase2 = " huma* OR ( cat AND mouse )"
+    print '\nSearching the search phrase "' + searchPhrase2 + '" in', inputFiles
+    print "The status of the search phrase is:", tyyppi.status()
     search = sorted(list(tyyppi.search(searchPhrase2)))
     print "Position(s) in the text where the word was found:"
     print search

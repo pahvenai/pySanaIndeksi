@@ -2,14 +2,14 @@
 
 import unittest
 # Import unit test of each module:
-import WordReaderUnitTest
-import TrieUnitTest
-import SearcherUnitTest
-import RedBlackUnitTest
-import LinkedListUnitTest
-import TreeUnitTest
 import DataHandlingUnitTest
-
+import LinkedListUnitTest
+import PartialTreeUnitTest
+import RedBlackUnitTest
+import SearcherUnitTest
+import TrieUnitTest
+import TreeUnitTest
+import WordReaderUnitTest
 
 if __name__ == '__main__':
     # Get all tests from each module unit test object
@@ -19,7 +19,8 @@ if __name__ == '__main__':
                                 RedBlackUnitTest.suite(),
                                 LinkedListUnitTest.suite(),
                                 TreeUnitTest.suite(),
-                                DataHandlingUnitTest.suite()))
+                                DataHandlingUnitTest.suite(),
+                                PartialTreeUnitTest.suite()))
     #    unittest.main()
     runner = unittest.TextTestRunner()
     runner.run(suite)

@@ -19,16 +19,29 @@ class Tree(object):
     Guarantees that the following properties and methods have been defined:
     properties:
     wordCount:  number of words added to the tree (not number of nodes)
+    type:       finds 'exact' or 'partial' matches for words
     methods:
     self.add(key, value):   Adds one value with the given key to the tree
+    self.addFromReader():   Adds words from own reader if possible
     self.clear():           Removes all words from the tree
     self.find(key):         Returns the hits when searching for key
-    self.addFromReader():   Adds words from own reader if possible
     """
+
+##################
+### PROPERTIES ###
+##################
 
     @abstractproperty
     def wordCount(self):
         raise NotImplementedError( "WordCount not implemented" )
+
+    @abstractproperty
+    def type(self):
+        raise NotImplementedError( "Type not implemented" )
+
+###############
+### METHODS ###
+###############
 
     #@accepts(Puu, String, object)
     @abstractmethod
@@ -41,13 +54,6 @@ class Tree(object):
         raise NotImplementedError( "Adding not implemented" )
 
     @abstractmethod
-    def clear(self):
-        """
-        This method is used to clear all the words from the tree.
-        """
-        raise NotImplementedError( "Clearing not implemented" )
-
-    @abstractmethod
     def addFromReader(self, wordCount = None):
         """
         This method should take the words from self.lukija and add them to the
@@ -57,6 +63,12 @@ class Tree(object):
         """
         raise NotImplementedError( "Adding from reader not implemented" )
 
+    @abstractmethod
+    def clear(self):
+        """
+        This method is used to clear all the words from the tree.
+        """
+        raise NotImplementedError( "Clearing not implemented" )
 
     #@accepts(Puu, String)
     #@returns(list, int, int)

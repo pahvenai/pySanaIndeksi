@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-
 __author__="Patrik Ahvenainen"
 __date__ ="$10.8.2012 11:52:12$"
 
@@ -28,9 +26,6 @@ linesIn2books = 8860 + 9571
 noOfFiles = 2
 wordsInTestFile = 50
 
-if __name__ == "__main__":
-    print "This module contains units tests for module WordReader"
-
 class  PyWordReaderTestCases(unittest.TestCase):
     def setUp(self):
         self.lukija = WordReader(["../Material/Grimm's Fairy Tales.txt"],
@@ -40,7 +35,8 @@ class  PyWordReaderTestCases(unittest.TestCase):
         # test addFileName
         self.lukija.addFileName("../Material/The Adventures of Tom Sawyer by Mark Twain.txt")
 
-
+    def tearDown(self):
+        self.lukija.clear('all')
 
     def testSanitize(self):
         """ Test whether word sanitizing works """
@@ -95,3 +91,10 @@ class  PyWordReaderTestCases(unittest.TestCase):
 
 def suite():
     return unittest.makeSuite(PyWordReaderTestCases,'test')
+
+
+
+if __name__ == "__main__":
+    print "Running unit tests for WordReader module"
+    runner = unittest.TextTestRunner()
+    runner.run(suite())
