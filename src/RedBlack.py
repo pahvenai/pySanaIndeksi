@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Puu import Puu
+from Tree import Tree
 from LinkedList import LinkedList
 from sys import stdout
 
@@ -10,7 +10,7 @@ if __name__ == "__main__":
     print "Contains a class for red-black tree"
 
 
-class RedBlack(Puu):
+class RedBlack(Tree):
     '''
     A Trie-type tree that can hold words containing characters. The WordReader
     is optional, it can be passed to facilitate reading words from it.

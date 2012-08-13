@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from Puu import Puu
+from Tree import Tree
 from WordReader import WordReader
 from LinkedList import LinkedList
 import random
@@ -14,7 +14,7 @@ if __name__ == "__main__":
 # egrep "( sana|^sana)" *.txt -i --count
 # egrep "( sana|^sana)" *.txt -ni
 
-class Trie(Puu):
+class Trie(Tree):
     '''
     A Trie-type tree that can hold words containing alphanumerals, hyphens and
     aposthrophes. The WordReader module handles in reality the the word

@@ -8,7 +8,7 @@ from abc import ABCMeta, abstractmethod, abstractproperty
 if __name__ == "__main__":
     print "This is an abstract class, implemented with the abc class"
 
-class Puu(object):
+class Tree(object):
     __metaclass__ = ABCMeta
     """
     This is an abstract class. Classes that inherit from this class should have

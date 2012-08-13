@@ -7,7 +7,7 @@ import TrieUnitTest
 import SearcherUnitTest
 import RedBlackUnitTest
 import LinkedListUnitTest
-import PuuUnitTest
+import TreeUnitTest
 import DataHandlingUnitTest
 
 
@@ -18,7 +18,7 @@ if __name__ == '__main__':
                                 SearcherUnitTest.suite(),
                                 RedBlackUnitTest.suite(),
                                 LinkedListUnitTest.suite(),
-                                PuuUnitTest.suite(),
+                                TreeUnitTest.suite(),
                                 DataHandlingUnitTest.suite()))
     #    unittest.main()
     runner = unittest.TextTestRunner()
