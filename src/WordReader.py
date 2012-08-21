@@ -104,6 +104,7 @@ class WordReader(object):
         self.filecount = 0 
         self.wordcount = 0
         self.linecount = 0
+        self.readCount = 0
         if type == 'all':
             self.clearFileNames()
             
@@ -128,7 +129,10 @@ class WordReader(object):
         sanitize specifies the accepted word formatting.
         """
 
-        for filename in self.filenames:
+        for index, filename in enumerate(self.filenames):
+            if self.readCount > index:
+                continue
+            self.readCount = self.readCount + 1
             self.fh = openFile(filename) # exits on failure
 
             lineno = 0

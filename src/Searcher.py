@@ -8,6 +8,7 @@ from Trie import Trie
 from WordReader import WordReader
 from LinkedList import LinkedList
 import httplib
+import sys # for printing without a newline or space ...
 
 class Searcher(object):
     '''
@@ -32,6 +33,8 @@ class Searcher(object):
 
     internal functions:
     self._checkString():            Checks that the seach phrase is good
+    self._linesByFiles(results):    Returns the search results sorted by file
+    self._prettyResults(results):   Prints the results using pretty formatting
     self._recursiveSearch(index):   Starting from given index goes through the
                                     search string until it finds a closing
                                     paranthesis or runs out of search string
@@ -57,14 +60,19 @@ class Searcher(object):
     def status(self):
         return self._status
 
-    def search(self, searchPhrase=None):
+    def search(self, searchPhrase=None, printPretty = False):
         """ Search the given search phrase using recursive search """
         if searchPhrase:
             self.words = searchPhrase.split()
             self._checkString()
         if not self.status() == 'ok':
             return None
-        return self._recursiveSearch(0)
+        results = self._recursiveSearch(0)
+        linesByRows = self._linesByFiles(results)
+        if printPretty: self._prettyResults(results, linesByRows)
+        if linesByRows: return linesByRows
+        return results
+
 
     def randomWord(self, count = 1):
         """ Returns a random English word fetched from randomword.setgetgo.com """
@@ -143,10 +151,44 @@ class Searcher(object):
             return
 
 
+    def _linesByFiles(self, results):
+        """ Returns the results listed in a dict by file name key """
+        if not self.sanitizer == self.finder.lukija:
+            return None
+        # Make a list of all row numbers found in
+        list = {}
+        for item in results:
+            filename = self.finder.lukija.filenames[item[1]]
+            if not filename in list:
+                list[filename] = [item[0]]
+            else:
+                list[filename].append(item[0])
+        for file in list:
+            list[file] = sorted(list[file])
+        return list
+
+
+
+    def _prettyResults(self, results, linesByRows = None):
+        """ Prints the search results using pretty formatting """
+        if not self.sanitizer == self.finder.lukija:
+            return None
+        if not linesByRows:
+            linesByRows = self._linesByFiles(results)
+
+        for file in linesByRows:
+            print 'In file "' + file + '":'
+            print "Lines:",
+            for line in linesByRows[file]:
+                if not line == linesByRows[file][0]: sys.stdout.write(', ')
+                print line,
+            print
+
     def _recursiveSearch(self, index):
         pSkip = 0 # parenthesis skip: this word is handled elsewhere
         left = None
         right = None
+        operator = None
         for index in range(index, len(self.types)):
             # skip words that are inside parenthesis
             if pSkip:
@@ -189,8 +231,10 @@ class Searcher(object):
             else:
                 # If two sides of the operation exist, operate on them
                 if (not left==None) and (not right == None):
+                    if not operator: operator = 'AND' # default operator
                     left = self._setOperate(left, right, operator)
                     right = None
+                    operator = None
 
         return left # return the positions searched for
 
@@ -217,15 +261,15 @@ if __name__ == "__main__":
     print 'Searching the search phrase "' + searchPhrase + '" in', inputFiles
     tyyppi = Searcher(finder, searchPhrase, lukija)
     print "The status of the search phrase is:", tyyppi.status()
-    search = sorted(list(tyyppi.search()))
+    search = tyyppi.search()
     print "Position(s) in the text where the word was found:"
     print search
-    print 'The search returned', len(search), 'unique hits.'
+#    print 'The search returned', len(search), 'unique hits.'
 
     searchPhrase2 = " huma* OR ( cat AND mouse )"
     print '\nSearching the search phrase "' + searchPhrase2 + '" in', inputFiles
     print "The status of the search phrase is:", tyyppi.status()
-    search = sorted(list(tyyppi.search(searchPhrase2)))
+    search = tyyppi.search(searchPhrase2)
     print "Position(s) in the text where the word was found:"
     print search
-    print 'The search returned', len(search), 'unique hits.'
+#    print 'The search returned', len(search), 'unique hits.'
