@@ -3,7 +3,6 @@ __author__="Patrik Ahvenainen"
 __date__ ="$8.8.2012 12:32:57$"
 
 
-from RedBlack import RedBlack
 from Trie import Trie
 from WordReader import WordReader
 from LinkedList import LinkedList
@@ -169,18 +168,22 @@ class Searcher(object):
 
 
 
-    def _prettyResults(self, results, linesByRows = None):
+    def _prettyResults(self, results, linesByFiles = None):
         """ Prints the search results using pretty formatting """
         if not self.sanitizer == self.finder.lukija:
             return None
-        if not linesByRows:
-            linesByRows = self._linesByFiles(results)
+        if not linesByFiles:
+            linesByFiles = self._linesByFiles(results)
 
-        for file in linesByRows:
-            print 'In file "' + file + '":'
-            print "Lines:",
-            for line in linesByRows[file]:
-                if not line == linesByRows[file][0]: sys.stdout.write(', ')
+        if not linesByFiles:
+            print 'Search term was not found.'
+        else:
+            print 'Search terms found:'
+        for file in linesByFiles:
+            print '  In file "' + file + '":'
+            print "    on line(s):",
+            for line in linesByFiles[file]:
+                if not line == linesByFiles[file][0]: sys.stdout.write(', ')
                 print line,
             print
 
@@ -212,18 +215,21 @@ class Searcher(object):
                     right = self._recursiveSearch(index + 1)
 
             # Find the word and return its positions as a set
-            if self.types[index] == 'W':
-                if left == None:
-                    left = set(self.finder.find(self.words[index], output='list'))
-                else:
-                    right = set(self.finder.find(self.words[index], output='list'))
+            if self.types[index] in ['W', 'P']:
+                # whole words; use find method and for ...
+                if self.types[index] == 'W':
+                    findfunc = self.finder.find
+                # ... partial words use findPartial method
+                elif self.types[index] == 'P':
+                    findfunc = self.finder.findPartial
 
-            # If we have partial words find them using findPartial
-            if self.types[index] == 'P':
-                if left == None:
-                    left = set(self.finder.findPartial(self.words[index], output='list'))
-                else:
-                    right = set(self.finder.findPartial(self.words[index], output='list'))
+                results = findfunc(self.words[index], output='list')
+                if left == None: # update left side
+                    if not results: left = set()
+                    else: left = set(results)
+                else: # left side exists; update right side
+                    if not results: right = set()
+                    else: right = set(results)
 
             # Set the operator tag to the desired operation
             if self.types[index] == 'O':

@@ -27,17 +27,22 @@ def closeFile(filehandle):
     filehandle.close()
 
 
-def getFileNames(mypath):
+def getFileNames(mypath, path=True):
     """ Returns paths to all files in the given path """
     fileList= []
     for file in os.listdir(mypath):
         fullPath = os.path.join(mypath,file)
         if os.path.isfile(fullPath):
-            fileList.append(fullPath)
+            if path:
+                fileList.append(fullPath)
+            else:
+                fileList.append(file)
     return fileList
 
-def printFileList(mypath):
+def printFileList(mypath, noPath=True):
     """ Prints a list containing all files in the given path """
-    fileList = getFileNames(mypath)
+    path = not noPath
+    fileList = getFileNames(mypath, path=path)
     for index, file in enumerate(fileList):
         print index, '\t', file
+    return fileList

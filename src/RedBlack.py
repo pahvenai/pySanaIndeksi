@@ -82,6 +82,8 @@ class RedBlack(Tree):
 
         The word is first sanitized.
         '''
+        if self.wordCount() == 0:
+            return None
         key = self.lukija.sanitize(key)
         _, values, itemCount, RowCount = self._internalFind(key)
         if output == 'list':

@@ -82,9 +82,13 @@ class Trie(PartialTree):
         self._wordCount = 0
 
     def find(self, word, output='full'):
+        if self.wordCount() == 0:
+            return None
         return self._find(word, 'exact', output)
 
     def findPartial(self, word, output='full'):
+        if self.wordCount() == 0:
+            return None
         return self._find(word, 'partial', output)
 
     def printRandomRoute(self):
