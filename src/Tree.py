@@ -73,7 +73,7 @@ class Tree(object):
     #@accepts(Puu, String)
     #@returns(list, int, int)
     @abstractmethod
-    def find(self, key, output='list'):
+    def find(self, key, output='list', sanitized=False):
         """
         Finds the key from the tree. If the key is found return the following:
         output == 'list';
@@ -85,6 +85,9 @@ class Tree(object):
         1:  A list of positions where this word was found
         2:  Number of found instances
         3:  Number of lines where the word was found
+
+        By using the tag sanitized you can skip word sanitizing. If the word is
+        not actually sanitized, behavior is not guaranteed.
         """
         raise NotImplementedError( "Finding not implemented" )
 

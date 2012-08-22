@@ -76,7 +76,7 @@ class RedBlack(Tree):
         self._wordCount = 0
 
 
-    def find(self, key, output='full'):
+    def find(self, key, output='full', sanitized=False):
         '''
         Calls an internal function which does the actual finding.
 
@@ -84,7 +84,10 @@ class RedBlack(Tree):
         '''
         if self.wordCount() == 0:
             return None
-        key = self.lukija.sanitize(key)
+        if not sanitized:
+            key = self.lukija.sanitize(key)
+        if output == 'boolean':
+            return self._internalFind(key, boolean=True)
         _, values, itemCount, RowCount = self._internalFind(key)
         if output == 'list':
             return values
@@ -140,7 +143,7 @@ class RedBlack(Tree):
         # Red Black tree properties may not be intact, fix them from new node
         self._restoreProperties(node)
 
-    def _internalFind(self, word):
+    def _internalFind(self, word, boolean=False):
         """
         Tries to find the asked word from the tree. Can be used to find
         exact matches only. Returns the node where that word was found, the
@@ -154,6 +157,11 @@ class RedBlack(Tree):
             else:
                 node = node.ri
 
+        if boolean:
+            if not node.key == word:
+                return False
+            else:
+                return True
         if not node.key == word:
             return self.empty, [], 0, 0
         vals = node.val.values()

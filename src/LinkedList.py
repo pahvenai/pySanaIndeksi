@@ -6,7 +6,7 @@ if __name__ == "__main__":
     print "This module contains a simple linked list class"
 
 
-class LinkedList:
+class LinkedList(object):
     """
     A simple linked list class that provides two public methods; one for
     adding an item at the end of the list and one for retrieving a list of
@@ -60,7 +60,7 @@ class LinkedList:
             node = node.child
         return list
 
-class LinkedListNode:
+class LinkedListNode(object):
     """
     The nodes are bidirectional: each node has a reference to its parent and to
     its child. If the item is added to a non-empty list (child or parent given)

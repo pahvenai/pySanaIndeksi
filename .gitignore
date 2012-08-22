@@ -9,12 +9,22 @@ dist
 build
 eggs
 parts
+test/
 bin
 var
 sdist
 *private.xml
 develop-eggs
 .installed.cfg
+
+# Data files
+src/punamustaAddToEmpty
+src/punamustaFindWordCoun
+src/punamustaFindWordLength
+src/trieAddToEmpty
+src/trieFindWordCount
+src/trieFindWordLength
+
 
 # Installer logs
 pip-log.txt

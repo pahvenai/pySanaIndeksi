@@ -149,16 +149,16 @@ if __name__ == "__main__":
 
     print '*' * 50, '\n', ' ' * ((50 - (len(name)))/2-1), name , '\n', '*' * 50
 
-#    cProfile.run('testRun()', 'testProf')
-#    p = pstats.Stats('testProf')
-#    p.sort_stats('cumulative').print_stats(10)
+    cProfile.run('testRun()', 'testProf')
+    p = pstats.Stats('testProf')
+    p.sort_stats('cumulative').print_stats(10)
 
-    status = 'empty'
-    while(input):
-        printOperationOptions(status)
-        input = prompt('Choose option (0 to quit):',
-                       limits = [0, len(operationOptions)-1])
-        tree, status = operator(input, tree, materialPath, status)
+#    status = 'empty'
+#    while(input):
+#        printOperationOptions(status)
+#        input = prompt('Choose option (0 to quit):',
+#                       limits = [0, len(operationOptions)-1])
+#        tree, status = operator(input, tree, materialPath, status)
 
 
 

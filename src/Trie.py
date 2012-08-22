@@ -81,15 +81,15 @@ class Trie(PartialTree):
         self.root = None
         self._wordCount = 0
 
-    def find(self, word, output='full'):
+    def find(self, word, output='full', sanitized=False):
         if self.wordCount() == 0:
             return None
-        return self._find(word, 'exact', output)
+        return self._find(word, 'exact', output, sanitized)
 
-    def findPartial(self, word, output='full'):
+    def findPartial(self, word, output='full', sanitized=False):
         if self.wordCount() == 0:
             return None
-        return self._find(word, 'partial', output)
+        return self._find(word, 'partial', output, sanitized)
 
     def printRandomRoute(self):
         """
@@ -129,7 +129,7 @@ class Trie(PartialTree):
         a letter of that word.
         '''
         letter = key[charNo]
-        index = self.lukija.char2ind(letter)
+        index = self.lukija.idxMap[letter]
 
         if node == 'root':
             node = self.root
@@ -158,7 +158,7 @@ class Trie(PartialTree):
 
 
 
-    def _find(self, word, type='partial', output='full'):
+    def _find(self, word, type='partial', output='full', sanitized=False):
         '''
         Tries to find the asked word from the tree. Can be used to find
         exact matches or the beginnings of the words. Uses recursion to travel
@@ -166,12 +166,14 @@ class Trie(PartialTree):
         found (if any), the number of found instances and the number of
         different line where that word was found.
 
-        The word is first sanitized.
+        The word is first sanitized unless sanitized flag is up.
         '''
-
-        word = self.lukija.sanitize(word) # check that we have no illegal characters
+        if not sanitized:
+            word = self.lukija.sanitize(word) # check that we have no illegal characters
         # find this word in the tree recursively and return positions of all the
         # instances
+        if output == 'boolean':
+            return self._findRecursive(word, 1, type, self.root, boolean=True)
         positions = self._findRecursive(word, 1, type, self.root)
 
         if positions: #found
@@ -191,7 +193,7 @@ class Trie(PartialTree):
 
 
 
-    def _findRecursive(self, word, charNo, type, node):
+    def _findRecursive(self, word, charNo, type, node, boolean=False):
         """
         First we check that a required letter exist in the tree. If not, we did
         not find the word. If we find it and it's the last letter to find,
@@ -199,19 +201,21 @@ class Trie(PartialTree):
         letter move on recursively to the next letter.
         """
         char = word[charNo-1]
-        index = self.lukija.char2ind(char)
+        index = self.lukija.idxMap[char]
 
         if not node.children[index]:
             return None # Required letter not found
         else:
             # if the next letter is the last letter, we found our letter
             if charNo == len(word):
+                if boolean:
+                    return True
                 if type == 'exact':
                     return node.children[index].exact.values()
                 else:
                     return node.children[index].match.values()
 
-            return self._findRecursive(word, charNo+1, type, node.children[index])
+            return self._findRecursive(word, charNo+1, type, node.children[index], boolean)
 
 
 
