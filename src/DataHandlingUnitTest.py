@@ -6,12 +6,19 @@ import DataHandling
 import unittest
 
 class  PyDataHandlingTestCases(unittest.TestCase):
-    def setUp(self):
-        pass
 
+    def testRaisesError(self):
+       self.assertRaises(IOError, DataHandling.openFile, 'Non-existing_file', 'r')
 
-    def _testSomeTest(self):
-       pass
+    def testOpensFile(self):
+       filu = DataHandling.openFile( 'DataHandlingUnitTest.py', 'r')
+       DataHandling.closeFile(filu)
+
+    def testFileList(self):
+        filesInThisPath = DataHandling.getFileNames('.', path = False)
+        self.assertTrue('DataHandlingUnitTest.py' in filesInThisPath,
+                        'DataHandling: Did not find find files')
+
 
 def suite():
     return unittest.makeSuite(PyDataHandlingTestCases,'test')

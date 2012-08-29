@@ -76,15 +76,17 @@ class Tree(object):
     def find(self, key, output='list', sanitized=False):
         """
         Finds the key from the tree. If the key is found return the following:
-        output == 'list';
+        output == 'list':
         1:  A list of positions where this word was found
         output == 'count':
         1:  Number of found instances
         2:  Number of lines where the word was found
-        output == 'full';
+        output == 'full':
         1:  A list of positions where this word was found
         2:  Number of found instances
         3:  Number of lines where the word was found
+        output == 'boolean':
+        1:  A boolean value indicating whether the file was found 
 
         By using the tag sanitized you can skip word sanitizing. If the word is
         not actually sanitized, behavior is not guaranteed.

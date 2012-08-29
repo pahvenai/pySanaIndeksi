@@ -6,6 +6,7 @@ __date__ ="$8.8.2012 12:32:57$"
 from Trie import Trie
 from WordReader import WordReader
 from LinkedList import LinkedList
+import linecache
 import httplib
 import sys # for printing without a newline or space ...
 
@@ -43,7 +44,7 @@ class Searcher(object):
 
 
 
-    def __init__(self, finder, searchString, sanitizer=None):
+    def __init__(self, finder, searchString, sanitizer=None, maxHitPrint = 10):
         self.str = searchString
         self.finder = finder
         self.sanitizer = sanitizer
@@ -51,6 +52,7 @@ class Searcher(object):
             self.sanitizer = self.finder.lukija
         self.words = searchString.split()
         self.operations = ['AND', 'OR', 'NOT', 'XOR']
+        self._maxHitPrint = maxHitPrint # maximum number of lines printed
         self.paranthesis = ['(', ')']
         self._status = 'ok'
         self._checkString() #may flag status as bad
@@ -59,8 +61,16 @@ class Searcher(object):
     def status(self):
         return self._status
 
-    def search(self, searchPhrase=None, printPretty = False):
+    def maxHitPrint(self):
+        """ Returns the maximum number of lines printed per file when search
+            term is found
+        """
+        return self._maxHitPrint
+
+    def search(self, searchPhrase=None, printPretty = False, maxHitPrint=None):
         """ Search the given search phrase using recursive search """
+        if maxHitPrint:
+            self._maxHitPrint = maxHitPrint
         if searchPhrase:
             self.words = searchPhrase.split()
             self._checkString()
@@ -181,11 +191,16 @@ class Searcher(object):
             print 'Search terms found:'
         for file in linesByFiles:
             print '  In file "' + file + '":'
-            print "    on line(s):",
-            for line in linesByFiles[file]:
-                if not line == linesByFiles[file][0]: sys.stdout.write(', ')
-                print line,
-            print
+            if len(linesByFiles[file]) <= self.maxHitPrint():
+                for line in linesByFiles[file]:
+                    print '%s%4d%s%s'  % (' '*4, line, ': ',
+                                          linecache.getline(file, line) ),
+            else:
+                print "    on line(s):",
+                for line in linesByFiles[file]:
+                    if not line == linesByFiles[file][0]: sys.stdout.write(', ')
+                    print line,
+                print
 
     def _recursiveSearch(self, index):
         pSkip = 0 # parenthesis skip: this word is handled elsewhere

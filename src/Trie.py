@@ -23,7 +23,7 @@ class Trie(PartialTree):
     child node list from it and the mapping of characters to indices in that
     list.
 
-    properties
+    properties:
     wordCount:  number of words added to the tree (not number of nodes)
     type:       finds 'exact' or 'partial' matches for words
     methods:
@@ -57,8 +57,8 @@ class Trie(PartialTree):
 
     def add(self, key, value):
         '''
-        Adds a new word to the tree. The addition is done via recursive addNode
-        function.
+        Adds a new value to the tree. The addition is done via recursive addNode
+        function. The value is stored using the key.
         '''
         key = self.lukija.sanitize(key)
         if not key:
@@ -69,7 +69,10 @@ class Trie(PartialTree):
         self._addNode(key, value)
 
     def addFromReader(self, wordCount = None):
-        """ Adds all the words in the WordReader object to this tree """
+        """ Adds all the words in the WordReader object to this tree.
+            The optional parameter wordCount can be used to limit number
+            of words read in.
+        """
         if self.lukija:
             for item in self.lukija.words:
                 self.add(item[0], item[1:])
@@ -82,11 +85,23 @@ class Trie(PartialTree):
         self._wordCount = 0
 
     def find(self, word, output='full', sanitized=False):
+        """
+        Finds the word in this tree using intenal self._find method.
+        Output options are listed in super class Tree in method find.
+        The optional sanitized flag can be used if input is known to
+        be sanitized already. Do not use it for non-sanitized input.
+        """
         if self.wordCount() == 0:
             return None
         return self._find(word, 'exact', output, sanitized)
 
     def findPartial(self, word, output='full', sanitized=False):
+        """
+        Finds the keys beginning with word in this tree using intenal self._find
+        method. Output options are listed in super class Tree in method find.
+        The optional sanitized flag can be used if input is known to
+        be sanitized already. Do not use it for non-sanitized input.
+        """
         if self.wordCount() == 0:
             return None
         return self._find(word, 'partial', output, sanitized)

@@ -46,6 +46,7 @@ class  PyRedBlackTestCases(unittest.TestCase):
 
 
     def testMultiWordFind(self):
+        """ Tests that multiple instances of a word are found correctly """
         for object in MultiWordAdd:
             self.redblack.add(object[0], object[1:]) # Add words to Trie
 

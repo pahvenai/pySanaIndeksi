@@ -5,18 +5,29 @@ __date__ ="$10.8.2012 11:44:18$"
 from LinkedList import LinkedList
 import unittest
 
-linkedListVals = [1, 2, 3, 4]
+lastVal = 4
+linkedListVals = [1, 2, 3, lastVal]
+linkedListAfter = [1, 2, 3]
 
 class PyLinkedListTestCases(unittest.TestCase):
     def setUp(self):
         self.list = LinkedList()
 
     def testAddition(self):
-        """ Test adding multiple values to a linked list """
+        """ Test adding multiple values to a linked list
+            Tests, addLast(), values(), removeLast(), clear() and count
+        """
         for val in linkedListVals:
             self.list.addLast(val)
         self.assertEqual(self.list.values() , linkedListVals,
                          'Linked list did not add values properly')
+        self.assertEqual(self.list.removeLast() , lastVal,
+                         'Linked list did not return correct last value')
+        self.assertEqual(self.list.values(), linkedListAfter,
+                         'Linked list removing did not work')
+        self.list.clear()
+        self.assertFalse(self.list.values(), 'Linked list did not clear')
+        self.assertFalse(self.list.count, 'Linked list did not clear')
 
 def suite():
     return unittest.makeSuite(PyLinkedListTestCases,'test')

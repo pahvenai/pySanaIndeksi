@@ -16,6 +16,7 @@ sdist
 *private.xml
 develop-eggs
 .installed.cfg
+nbproject/private/private.properties
 
 # Data files
 src/punamustaAddToEmpty

@@ -87,6 +87,7 @@ def selectTree(tree):
     input = prompt('Choose the tree:', [0, len(trees)-1])
     treeName = trees[input].keys()[0]
     print 'Indexer changed to ' + treeName +  ' and it is now empty'
+    tree.clear()
     # retrieve a new tree from the chose input from the tree list
     tree = trees[input][treeName](tree.lukija)
     return tree
@@ -98,6 +99,8 @@ def printOperationOptions(status):
     for index, key in enumerate(sorted(operationOptions)):
         if not (index >= maxVal and status == 'empty'):
             print key, '\t', operationOptions[key]
+
+
 
 def operator(operation, tree, materialPath, status):
     """ Calls appropriate function according to the user's choice """
@@ -149,18 +152,16 @@ if __name__ == "__main__":
 
     print '*' * 50, '\n', ' ' * ((50 - (len(name)))/2-1), name , '\n', '*' * 50
 
-    cProfile.run('testRun()', 'testProf')
-    p = pstats.Stats('testProf')
-    p.sort_stats('cumulative').print_stats(10)
+#    cProfile.run('testRun()', 'testProf')
+#    p = pstats.Stats('testProf')
+#    p.sort_stats('cumulative').print_stats(10)
 
-#    status = 'empty'
-#    while(input):
-#        printOperationOptions(status)
-#        input = prompt('Choose option (0 to quit):',
-#                       limits = [0, len(operationOptions)-1])
-#        tree, status = operator(input, tree, materialPath, status)
-
-
+    status = 'empty'
+    while(input):
+        printOperationOptions(status)
+        input = prompt('Choose option (0 to quit):',
+                       limits = [0, len(operationOptions)-1])
+        tree, status = operator(input, tree, materialPath, status)
 
 
 

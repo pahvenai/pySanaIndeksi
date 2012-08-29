@@ -15,11 +15,10 @@ def openFile(filename, io='r'):
   '''
   try:
       file_handle = open(filename, io)
-  except:
+  except IOError:
       if io=='r': stri = 'read from'
       else: stri = 'write to'
-      print "ERROR: Could not %s file %s!" % (stri, filename)
-      exit()
+      raise IOError("Could not %s file '%s'!" % (stri, filename))
       
   return file_handle
 
