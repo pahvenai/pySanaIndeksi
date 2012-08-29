@@ -3,13 +3,26 @@ __author__="Patrik Ahvenainen"
 __date__ ="$10.8.2012 11:49:09$"
 
 from Searcher import Searcher
-from RedBlack import RedBlack
+from Trie import Trie
+from WordReader import WordReader
 import unittest
 
+MaterialFilePath = "../Material/Grimm's Fairy Tales.txt"
+
+operations = {"Basic": "brothers", "partial": "Grimm*",
+              "NOT": "grimm* NOT brothers", "OR": "Grimm* OR brothers",
+              "AND": "grimm* AND brothers", "XOR": "grimm XOR brothers"}
+
+binaryOperationsSearch = {"Grimm*": 10, "brothers": 40, "grimm* NOT brothers": 4,
+                          "Grimm* OR brothers": 44, "grimm* XOR brothers": 38,
+                          "grimm* AND brothers": 6,
+                          "fierce XOR rock": 8,
+                           "milk AND cow": 4}
 
 class  PySearcherTestCases(unittest.TestCase):
     def setUp(self):
-        self.finder = RedBlack()
+        self.reader = WordReader()
+        self.finder = Trie(self.reader)
         self.searcher = Searcher(self.finder, '')
 
     def testRandomWord(self):
@@ -25,14 +38,28 @@ class  PySearcherTestCases(unittest.TestCase):
        words = self.searcher.randomWord(5)
        self.assertTrue(len(set(words)) == 5, 'Did not find 5 unique words')
 
+    def testBinaryOperationsAreWorking(self):
+        """
+        Checks that operations are not identic and that correct number of hits
+        is returned for every known result.
+        """
+        self.reader.addFileName(MaterialFilePath, readNow=True)
+        self.finder.addFromReader()
 
-
+        results = []
+        for operation in operations:
+            results.append(self.searcher.search(operations[operation],
+                                                returnCount=True))
+        self.assertTrue(len(set(results)) == 6, #i.e. operations are not identic
+                        'Searcher failed binary operation check')
+        for searchTerm in binaryOperationsSearch:
+            print self.searcher.search(searchTerm, returnCount=True), binaryOperationsSearch[searchTerm]
+            self.assertEqual(self.searcher.search(searchTerm, returnCount=True),
+                             binaryOperationsSearch[searchTerm],
+                            'Searcher found wrong number of hits on some search')
 
 def suite():
     return unittest.makeSuite(PySearcherTestCases,'test')
-
-# Create unit tests
-
 
 
 if __name__ == "__main__":

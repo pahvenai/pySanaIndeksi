@@ -20,7 +20,7 @@ class Tree(object):
     properties:
     wordCount:  number of words added to the tree (not number of nodes)
     type:       finds 'exact' or 'partial' matches for words
-    methods:
+    public methods:
     self.add(key, value):   Adds one value with the given key to the tree
     self.addFromReader():   Adds words from own reader if possible
     self.clear():           Removes all words from the tree
@@ -39,11 +39,10 @@ class Tree(object):
     def type(self):
         raise NotImplementedError( "Type not implemented" )
 
-###############
-### METHODS ###
-###############
+######################
+### PUBLIC METHODS ###
+######################
 
-    #@accepts(Puu, String, object)
     @abstractmethod
     def add(self, key, value):
         """
@@ -70,8 +69,6 @@ class Tree(object):
         """
         raise NotImplementedError( "Clearing not implemented" )
 
-    #@accepts(Puu, String)
-    #@returns(list, int, int)
     @abstractmethod
     def find(self, key, output='list', sanitized=False):
         """

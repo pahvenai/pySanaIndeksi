@@ -13,7 +13,7 @@ class PyLinkedListTestCases(unittest.TestCase):
     def setUp(self):
         self.list = LinkedList()
 
-    def testAddition(self):
+    def testLinkedList(self):
         """ Test adding multiple values to a linked list
             Tests, addLast(), values(), removeLast(), clear() and count
         """
@@ -27,7 +27,7 @@ class PyLinkedListTestCases(unittest.TestCase):
                          'Linked list removing did not work')
         self.list.clear()
         self.assertFalse(self.list.values(), 'Linked list did not clear')
-        self.assertFalse(self.list.count, 'Linked list did not clear')
+        self.assertFalse(self.list.count(), 'Linked list did not clear')
 
 def suite():
     return unittest.makeSuite(PyLinkedListTestCases,'test')

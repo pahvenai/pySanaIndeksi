@@ -6,8 +6,6 @@ from Trie import Trie
 from RedBlack import RedBlack
 from Searcher import Searcher
 
-import cProfile
-import pstats
 import pickle
 
 if __name__ == "__main__":
@@ -45,12 +43,3 @@ if __name__ == "__main__":
     vals = pickle.load( open( "save.p", "rb" ) )
     print vals
 
-#    print 'Adding all words to Trie'
-##    trie.addFromReader()
-#    cProfile.run("trie.addFromReader()", 'testProf')
-#    p = pstats.Stats('testProf')
-#    p.sort_stats('cumulative').print_stats(25)
-#
-#    cProfile.run("for i in range(100000): trie.find('SANA', sanitized=True)", 'testProf')
-#    p = pstats.Stats('testProf')
-#    p.sort_stats('cumulative').print_stats(25)

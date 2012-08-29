@@ -27,8 +27,7 @@ class WordReader(object):
     
     Characters can be mapped to an indexed table via char2ind() function.
 
-    methods:
-
+    public methods:
     self.addFileName(filename)      Add a new file by giving its filename.
     self.addFileNames(filenames):   Add multiple files by giving a list
                                     containing their filenames.
@@ -82,15 +81,17 @@ class WordReader(object):
         self.filenames = filenames
         self.clear()
 
-###############
-### METHODS ###
-###############
+######################
+### PUBLIC METHODS ###
+######################
 
-    def addFileName(self, filename):
+    def addFileName(self, filename, readNow=False):
         self.filenames.append(filename)
-    def addFileNames(self, filenames):
+        if readNow: self.readWords() # Immediately read in new texts
+    def addFileNames(self, filenames, readNow=False):
         for filename in filenames:
             self.filenames.append(filename)
+        if readNow: self.readWords() # Immediately read in new texts
 
     def char2ind(self, char):
         """ Maps characters to indices"""

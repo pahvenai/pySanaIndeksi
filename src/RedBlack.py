@@ -18,15 +18,23 @@ class RedBlack(Tree):
 
     The tree is initially empty. The leaves are always empty black nodes.
 
+    All nodes are from class RedBlackNode.
+
     These properties and methods are defined by Tree class:
     properties:
     type:       type of searches stored; value is 'exact'
     wordCount:  number of words added to the tree (not number of nodes)
-    methods:
-    self.add(key, value):   Adds one value with the given key to the tree
-    self.addFromReader():   Adds words from own reader if possible
-    self.clear():           Removes all words from the tree
-    self.find(key):         Returns the hits when searching for key
+    public methods:
+    add(key, value):   Adds one value with the given key to the tree
+    addFromReader():   Adds words from own reader if possible
+    clear():           Removes all words from the tree
+    find(key):         Returns the hits when searching for key
+    private methods:
+    _binaryInsert(self, node):  Insert this value and when done, restore RB-tree
+    _internalFind(word):        Find the word in the tree, if it exists
+    _leftRotate(node):          Do a left-rotate for this node
+    _restoreProperties(node):   Starting from node, restore RB-tree
+    _rightRotate(node):         Do a right-rotate for this node
     '''
 
     def __init__(self, lukija=None):
@@ -45,9 +53,9 @@ class RedBlack(Tree):
     def wordCount(self):
         return self._wordCount
 
-###############
-### METHODS ###
-###############
+######################
+### PUBLIC METHODS ###
+######################
 
     def add(self, key, value):
         '''
@@ -168,7 +176,14 @@ class RedBlack(Tree):
         return node, vals, len(vals), len(set(vals))
 
     def _leftRotate(self, node):
-        """ Left rotate node """
+        """
+        Left rotate node
+
+        Algorithm modified from: 
+        http://code.activestate.com/recipes/576817-red-black-tree/
+        John Reid, Jun 20, 2009
+        originally from "Introduction to Algorithms" by Cormen et al.
+        """
         pivot = node.ri
         node.ri = pivot.le
         if pivot.le != self.empty:
@@ -185,9 +200,9 @@ class RedBlack(Tree):
 
     def _restoreProperties(self, node):
         """
-        This restores the Red Black tress properties so that the tree remains
-        balanced. There are six different cases and some require more fixing
-        than others. Left (and right) rotation are done in help routines.
+        This restores the Red Black tree's properties so that the tree remains
+        balanced. There are six different cases (and some require more fixing
+        than others). Left (and right) rotation are done in help routines.
         """
 
         pa = node.pa
@@ -224,7 +239,14 @@ class RedBlack(Tree):
         self.root.red = False # root is black
 
     def _rightRotate(self, node):
-        """ Right rotate node """
+        """
+        Right rotate node
+
+        Algorithm modified from: 
+        http://code.activestate.com/recipes/576817-red-black-tree/
+        John Reid, Jun 20, 2009
+        originally from "Introduction to Algorithms" by Cormen et al.
+        """
         pivot = node.le
         node.le = pivot.ri
         if pivot.ri != self.empty:
@@ -245,22 +267,22 @@ class RedBlackNode(object):
     '''
     Contains the information of one branch.
     The node knows its children (le[ft] and ri[ght]), its pa[rent], its color,
-    its key and its val[ue]. It also knows if it's empty (end-of-list-marker).
+    its key and its val[ue]. It also knows if it's empty (end-of-list flag).
     Note that nodes cannot store empty values.
 
-    Nodes know their family through
+    Nodes know their family through the following methods
     methods:
-    self.grandpa():         return the grandpa node or empty node
-    self.sibling():         return the sibling node
-    self.uncle():           return the uncle node or empty node
-    self.updateNode(val):   Add the val(ue) to this node
+    grandpa():         return the grandpa node or empty node
+    sibling():         return the sibling node
+    uncle():           return the uncle node or empty node
+    updateNode(val):   Add the val(ue) to this node
     '''
 
     def __init__(self, str='', val=None, pa=None, red=True):
         """ The node can be empty upon creation (if val is not given) """
         self.pa = pa
-        self.le = None #left
-        self.ri = None #right
+        self.le = None #left child
+        self.ri = None #right child
         self.red = red
         self.key = str
         self.val = LinkedList()
@@ -271,11 +293,11 @@ class RedBlackNode(object):
             self.empty = True
 
     def __str__(self):
-        """String representation."""
+        """ String representation: return key as string """
         return str(self.key)
 
     def __repr__(self):
-        """String representation."""
+        """ String representation: return key as string """
         return str(self.key)
 
     def grandpa(self):
@@ -306,32 +328,3 @@ class RedBlackNode(object):
         """ Add the value to this node """
         self.val.addLast(value)
 
-
-
-def dotWrite(tree, out = stdout, showNone=False):
-    "Write the tree in the dot language format to f."
-    def nodeID(node):
-        return 'N%d' % id(node)
-
-    def nodeColor(node):
-        if node.red:
-            return "red"
-        else:
-            return "black"
-
-    def visitNode(node):
-        "Visit a node."
-        print >> out, "  %s [label=\"%s\", color=\"%s\"];" % (nodeID(node), node, nodeColor(node))
-        if node.le:
-            if node.le != tree.empty or showNone:
-                visitNode(node.le)
-                print >> out, "  %s -> %s ;" % (nodeID(node), nodeID(node.le))
-        if node.ri:
-            if node.ri != tree.empty or showNone:
-                visitNode(node.ri)
-                print >> out, "  %s -> %s ;" % (nodeID(node), nodeID(node.ri))
-
-    print >> out, "// Created by rbtree.write_dot()"
-    print >> out, "digraph red_black_tree {"
-    visitNode(tree.root)
-    print >> out, "}"

@@ -26,7 +26,7 @@ class Trie(PartialTree):
     properties:
     wordCount:  number of words added to the tree (not number of nodes)
     type:       finds 'exact' or 'partial' matches for words
-    methods:
+    public methods:
     self.add(key, value):   Adds one value with the given key to the tree
     self.clear():           Removes all words from the tree
     self.find(key):         Returns the hits when searching for key
@@ -51,9 +51,9 @@ class Trie(PartialTree):
     def type(self):
         return self._type # type given in PartialTree class
 
-###############
-### METHODS ###
-###############
+######################
+### PUBLIC METHODS ###
+######################
 
     def add(self, key, value):
         '''
