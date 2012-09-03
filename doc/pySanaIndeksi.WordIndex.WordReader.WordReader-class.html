@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pySanaIndeksi.WordIndex.WordReader.WordReader</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pySanaIndeksi-module.html">Package&nbsp;pySanaIndeksi</a> ::
+        <a href="pySanaIndeksi.WordIndex-module.html">Package&nbsp;WordIndex</a> ::
+        <a href="pySanaIndeksi.WordIndex.WordReader-module.html">Module&nbsp;WordReader</a> ::
+        Class&nbsp;WordReader
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pySanaIndeksi.WordIndex.WordReader.WordReader-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== TYPE DESCRIPTION ==================== -->
+<h1 class="epydoc">type WordReader</h1><p class="nomargin-top"><span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">WordReader</strong>
+</pre>
+
+<hr />
+<pre class="literalblock">
+
+This class can be used to read words from one or multiple files. The file 
+names are given to the object upon initialization.
+
+Words will be stored in tuple self.words which contains the word and the
+row number in a file where this word appears and the file number.
+
+Accepted characters are determined when a new WordReader object is created.
+The case can be lower, upper or mixed. For lower and upper case only all
+letters are converted to lower and upper case, respectively. Numerals are
+accepted by default but can be excluded. Letters are from A to Z and any
+other letters and non alphanumerical characters can be passed in to the
+reader via specialCharacters.
+
+Characters can be mapped to an indexed table via char2ind() function.
+
+public methods:
+self.addFileName(filename)      Add a new file by giving its filename.
+self.addFileNames(filenames):   Add multiple files by giving a list
+                                containing their filenames.
+self.char2ind(char)             Returns the index corresponding to character
+self.clear()                    Forget any read words
+self.clearFileNames()           Empties the filename list
+self.getCharMapSize()           Returns the number of accepted characters
+self.ind2char(index)            Returns the character corresponding to index
+self.readWords()                Reads all words with accepted characters
+                                from all files.
+self.sanitize(word)             Removes non-accepted characters from the word
+
+private methods:
+self._createChrMap()            Creates the character-index-character
+                                mapping.
+
+</pre>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filenames</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">specialCharacters</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">-</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">\'</code><code class="variable-quote">'</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">acceptNumerals</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">acceptUpperCase</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">acceptLowerCase</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Upon initializing, there are no words in the WordReader.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#addFileName" class="summary-sig-name">addFileName</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">readNow</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Add the filename to the readers list.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.addFileName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#addFileNames" class="summary-sig-name">addFileNames</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filenames</span>,
+        <span class="summary-sig-arg">readNow</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Add the filenames to the readers list.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.addFileNames">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">integer</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#char2ind" class="summary-sig-name">char2ind</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">char</span>)</span><br />
+      Maps a character to index of the wordReader</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.char2ind">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="clear"></a><span class="summary-sig-name">clear</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">type</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">empty</code><code class="variable-quote">'</code></span>)</span><br />
+      Clears any words read so far</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.clear">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="clearFileNames"></a><span class="summary-sig-name">clearFileNames</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Clears the file name list of the WordReader</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.clearFileNames">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">integer</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#getCharMapSize" class="summary-sig-name">getCharMapSize</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns:
+      number of different accepted characters</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.getCharMapSize">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">character</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#ind2char" class="summary-sig-name">ind2char</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Maps an index of WordReader to a character</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.ind2char">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#readWords" class="summary-sig-name">readWords</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Reads all the words from the file specified in self.filenames.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.readWords">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#sanitize" class="summary-sig-name">sanitize</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">word</span>)</span><br />
+      Returns the sanitized word (remove non-allowed characters)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.sanitize">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#_createChrMap" class="summary-sig-name" onclick="show_private();">_createChrMap</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Creates a list of indices that correspond to accepted characters.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader._createChrMap">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filenames</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="sig-arg">specialCharacters</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">-</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">\'</code><code class="variable-quote">'</code><code class="variable-group">]</code></span>,
+        <span class="sig-arg">acceptNumerals</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">acceptUpperCase</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">acceptLowerCase</span>=<span class="sig-default">False</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Upon initializing, there are no words in the WordReader. During 
+  initialization accepted characters are mapped. They are</p>
+  <ul>
+    <li>
+      all characters in the specialCharacters list
+    </li>
+    <li>
+      numerals if acceptNumerals equals True
+    </li>
+    <li>
+      upper case letters if acceptUpperCase equals True
+    </li>
+    <li>
+      lower case letters if acceptLowerCase equals True.
+    </li>
+  </ul>
+  <p>If only one case is accepted all letters are considered to be of that 
+  case.</p>
+  <p>Filenames list the names of the files from which the words are read. 
+  They must be in a list form. After initialization new files can be added 
+  with addFileName(...) and addFileNames(...).</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addFileName"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addFileName</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filename</span>,
+        <span class="sig-arg">readNow</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.addFileName">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add the filename to the readers list.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filename</code></strong> (string of a filename) - filename to be added</li>
+        <li><strong class="pname"><code>readNow</code></strong> (boolean) - set to True to add the words from the given file immediately to 
+          the reader</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addFileNames"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addFileNames</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filenames</span>,
+        <span class="sig-arg">readNow</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.addFileNames">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add the filenames to the readers list.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filenames</code></strong> (a list of strings (filenames)) - filenames to be added</li>
+        <li><strong class="pname"><code>readNow</code></strong> (boolean) - set to True to add the words from the given files immediately to 
+          the reader</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="char2ind"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">char2ind</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">char</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.char2ind">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Maps a character to index of the wordReader</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>char</code></strong> (character) - the character to map</li>
+    </ul></dd>
+    <dt>Returns: integer</dt>
+        <dd>index of the mapped character</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getCharMapSize"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getCharMapSize</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.getCharMapSize">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: integer</dt>
+        <dd>number of different accepted characters</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="ind2char"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ind2char</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.ind2char">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Maps an index of WordReader to a character</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>index</code></strong> (integer) - the mapped index</li>
+    </ul></dd>
+    <dt>Returns: character</dt>
+        <dd>character matching the mapped index</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="readWords"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">readWords</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.readWords">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Reads all the words from the file specified in self.filenames. Method 
+  sanitize specifies the accepted word formatting.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="sanitize"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sanitize</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">word</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader.sanitize">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns the sanitized word (remove non-allowed characters)</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>word</code></strong> (string) - the word to be sanitized</li>
+    </ul></dd>
+    <dt>Returns: string</dt>
+        <dd>the same word sanitized, or empty string if the word is bad</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_createChrMap"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_createChrMap</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.WordReader-pysrc.html#WordReader._createChrMap">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Creates a list of indices that correspond to accepted characters. A 
+  complimentary dict that maps these characters to the same indices is also
+  created.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Sat Sep  1 18:30:39 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

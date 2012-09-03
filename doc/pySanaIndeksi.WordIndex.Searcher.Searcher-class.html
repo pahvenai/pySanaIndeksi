@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pySanaIndeksi.WordIndex.Searcher.Searcher</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pySanaIndeksi-module.html">Package&nbsp;pySanaIndeksi</a> ::
+        <a href="pySanaIndeksi.WordIndex-module.html">Package&nbsp;WordIndex</a> ::
+        <a href="pySanaIndeksi.WordIndex.Searcher-module.html">Module&nbsp;Searcher</a> ::
+        Class&nbsp;Searcher
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pySanaIndeksi.WordIndex.Searcher.Searcher-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== TYPE DESCRIPTION ==================== -->
+<h1 class="epydoc">type Searcher</h1><p class="nomargin-top"><span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">Searcher</strong>
+</pre>
+
+<hr />
+<pre class="literalblock">
+
+This class provides a simple set-based searching methods. Searches comprise
+of set operations between individual find-operations for each given word.
+
+The individual word searches are done with the input object finder using its
+find method for each word. Before word searches, the individual words are
+sanitized with sanitizer or finder's sanitizer using the sanitize method. If
+only a finder is given, its sanitizer holds the filenames of all texts that
+have been indexed. In that case the search function can be used to print the
+search results using file names and to show each line where a hit was found.
+
+The search supports keywords AND, NOT, OR and XOR corresponding to set
+operations intersection, difference, union and symmetric difference.
+
+Basic operation:
+searcher = Searcher(finderObject) # initialize
+results = searcher.search(&quot;word1 AND word2&quot;) # Get the hits from search term
+
+properties:
+status:     Is 'ok' (string) if current search phrase is ok
+maxHitPrint:Tells how many hits need to be found for lines not to be printed
+public methods:
+search():                  Completes the search and returns the hits
+randomWord():              Fetches a random English word from Internet
+
+private methods:
+_categorize(words):        Categorizes words according to type
+_checkString():            Checks that the seach phrase is good
+_linesByFiles(results):    Returns the search results sorted by file
+_prettyResults(results):   Prints the results using pretty formatting
+_recursiveSearch(index):   Starting from given index goes through the search
+                           string until it finds a closing paranthesis or
+                           runs out of search string
+_setOperate(left, right, operation):
+                           Does the given set operation to the two sets
+
+</pre>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.Searcher.Searcher-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">finder</span>,
+        <span class="summary-sig-arg">searchString</span>,
+        <span class="summary-sig-arg">sanitizer</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">maxHitPrint</span>=<span class="summary-sig-default">10</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.Searcher.Searcher-class.html#search" class="summary-sig-name">search</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">searchPhrase</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">printPretty</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">maxHitPrint</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">returnCount</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Search the given search phrase using recursive search.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher.search">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.Searcher.Searcher-class.html#randomWord" class="summary-sig-name">randomWord</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">count</span>=<span class="summary-sig-default">1</span>)</span><br />
+      Returns a random English word fetched from randomword.setgetgo.com</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher.randomWord">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_categorize"></a><span class="summary-sig-name">_categorize</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">words</span>)</span><br />
+      Categorize each word to self.types Categories are: operations 'O', 
+      paranthesis '(' and ')', words 'W' and -- if supported by finder -- 
+      beginnings of a word (partial words) 'P'.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher._categorize">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.Searcher.Searcher-class.html#_checkString" class="summary-sig-name" onclick="show_private();">_checkString</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      The searc term (which is a string) is searched for these things:</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher._checkString">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.Searcher.Searcher-class.html#_linesByFiles" class="summary-sig-name" onclick="show_private();">_linesByFiles</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>)</span><br />
+      Returns a dictionary that has filenames as keys.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher._linesByFiles">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_prettyResults"></a><span class="summary-sig-name">_prettyResults</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>,
+        <span class="summary-sig-arg">linesByFiles</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Prints the search results using pretty formatting</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher._prettyResults">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.WordIndex.Searcher.Searcher-class.html#_recursiveSearch" class="summary-sig-name" onclick="show_private();">_recursiveSearch</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      The actual search is done here.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher._recursiveSearch">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_setOperate"></a><span class="summary-sig-name">_setOperate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">left</span>,
+        <span class="summary-sig-arg">right</span>,
+        <span class="summary-sig-arg">operator</span>)</span><br />
+      Returns the set from the set operation of two sets</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher._setOperate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pySanaIndeksi.WordIndex.Searcher.Searcher-class.html#maxHitPrint" class="summary-name">maxHitPrint</a><br />
+      Returns the maximum number of lines printed per file when search term
+      is found
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pySanaIndeksi.WordIndex.Searcher.Searcher-class.html#status" class="summary-name">status</a><br />
+      Is 'ok' (string) if current search phrase is ok
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">finder</span>,
+        <span class="sig-arg">searchString</span>,
+        <span class="sig-arg">sanitizer</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">maxHitPrint</span>=<span class="sig-default">10</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="search"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">search</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">searchPhrase</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">printPretty</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">maxHitPrint</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">returnCount</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher.search">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Search the given search phrase using recursive search. If not given 
+  uses pre-existing search term, if it exists.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>searchPhrase</code></strong> - Use this string as a search phrase</li>
+        <li><strong class="pname"><code>printPretty</code></strong> - Print out hits as pretty as one can</li>
+        <li><strong class="pname"><code>maxHitPrint</code></strong> - If you find many terms, print them out less pretty. This value 
+          tells you how many is 'many'.</li>
+        <li><strong class="pname"><code>returnCount</code></strong> - If set to True, return only the number of hits</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>Returns hits as a set of tuples</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="randomWord"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">randomWord</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">count</span>=<span class="sig-default">1</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher.randomWord">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a random English word fetched from randomword.setgetgo.com</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>count</code></strong> - Set to larger than 1 to get more words</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>One random word or a list of random words</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_checkString"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_checkString</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher._checkString">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>The searc term (which is a string) is searched for these things:</p>
+  <ul>
+    <li>
+      operator after another operator
+    </li>
+    <li>
+      operator first or last item in search term
+    </li>
+    <li>
+      words with zero letters after sanitation
+    </li>
+    <li>
+      badly placed parantheses
+      <ul>
+        <li>
+          closed paranthesis must come after open paranthesis
+        </li>
+        <li>
+          equal number of open and closed parantheses
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <p>The status property is set to 'ok' if search term is good or to 'bad' 
+  otherwise.</p>
+  <p>Creates also a list telling how deep each paranthesis is in inner 
+  parantheses (in order to find a matching paranthesis). For example: 0    
+  1  0   2   0   0   0   2  0   0   1 0  1   0   0   0   1  # pVal word ( 
+  word ( word AND word ) NOT word ) or ( word XOR word )  # words</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_linesByFiles"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_linesByFiles</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">results</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher._linesByFiles">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a dictionary that has filenames as keys. The values are the 
+  row numbers. Sorts also the row number list. [(687,0), (25,0), (99,1)] 
+  -&gt; {'file1': [25, 687], 'file2': [99]}</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_recursiveSearch"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_recursiveSearch</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.WordIndex.Searcher-pysrc.html#Searcher._recursiveSearch">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>The actual search is done here. Calls recursively itself for each 
+  inner parantheses. Operations are done to left and right side, where both
+  sides are sets and may be a singe search term result, a term in 
+  parantheses or a current result. Search is done from left to right. When 
+  we have a left side and a right side, we do a set operation to them. If 
+  this operation is not given (operator between left and right side) we 
+  assume the operator to be 'AND'.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="maxHitPrint"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">maxHitPrint</h3>
+  <p>Returns the maximum number of lines printed per file when search term 
+  is found</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="status"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">status</h3>
+  <p>Is 'ok' (string) if current search phrase is ok</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Sat Sep  1 18:30:39 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

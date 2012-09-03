@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pySanaIndeksi.Trees.Trie.Trie</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pySanaIndeksi-module.html">Package&nbsp;pySanaIndeksi</a> ::
+        <a href="pySanaIndeksi.Trees-module.html">Package&nbsp;Trees</a> ::
+        <a href="pySanaIndeksi.Trees.Trie-module.html">Module&nbsp;Trie</a> ::
+        Class&nbsp;Trie
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pySanaIndeksi.Trees.Trie.Trie-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== ABCMETA DESCRIPTION ==================== -->
+<h1 class="epydoc">ABCMeta Trie</h1><p class="nomargin-top"><span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+         object --+        
+                  |        
+          <a href="pySanaIndeksi.Trees.Tree.Tree-class.html">Tree.Tree</a> --+    
+                      |    
+<a href="pySanaIndeksi.Trees.PartialTree.PartialTree-class.html">PartialTree.PartialTree</a> --+
+                          |
+                         <strong class="uidshort">Trie</strong>
+</pre>
+
+<hr />
+<pre class="literalblock">
+
+A Trie-type tree that can hold words containing alphanumerals, hyphens and
+aposthrophes. The WordReader module handles in reality the the word
+sanitizing.
+
+A trie instance is tied to its WordReader object: it gets the size of the
+child node list from it and the mapping of characters to indices in that
+list.
+
+The value of the trie node is determined by traversing from root to the 
+node. Each trie node holds two lists: one for positions where an exact match
+is found (if any) and one for all words that start with those letters. That
+it way it is a PartialTree.
+
+properties:
+wordCount:  number of words added to the tree (not number of nodes)
+type:       finds 'exact' or 'partial' matches for words according to type
+public methods:
+add(key, value):    Adds one value with the given key to the tree
+clear():            Removes all words from the tree
+find(key):          Returns the hits when searching for key
+findPartial(key):   Finds hits for keywords starting with key
+addFromReader():    Adds words from own reader if possible
+printRandomRoute(): Prints a random route from root to leaf.
+private methods:
+_addNode(key, value): Recursively adds each letter in the key to the tree
+                      (in correct place) and adds value to each node
+_find(word):          Handles mainly the type of output and calls _findRe...
+_findRecursive(word, charNo, type, node):
+                      Traverses the tree to find (if possible) the word
+
+</pre>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.Trees.Trie.Trie-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">wordreader</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.Trees.Trie.Trie-class.html#add" class="summary-sig-name">add</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      Adds a new value to the tree.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.add">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.Trees.Trie.Trie-class.html#addFromReader" class="summary-sig-name">addFromReader</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">wordCount</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Adds all the words in the WordReader object to this tree.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.addFromReader">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.Trees.Trie.Trie-class.html#clear" class="summary-sig-name">clear</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Clears all words from the tree</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.clear">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.Trees.Trie.Trie-class.html#find" class="summary-sig-name">find</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">word</span>,
+        <span class="summary-sig-arg">output</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">full</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">sanitized</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Finds the word in this tree using intenal self._find method.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.find">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.Trees.Trie.Trie-class.html#findPartial" class="summary-sig-name">findPartial</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">word</span>,
+        <span class="summary-sig-arg">output</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">full</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">sanitized</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Finds the keys beginning with word in this tree using intenal 
+      self._find method.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.findPartial">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="printRandomRoute"></a><span class="summary-sig-name">printRandomRoute</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Prints a random route from root to leaf.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.printRandomRoute">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.Trees.Trie.Trie-class.html#_addNode" class="summary-sig-name" onclick="show_private();">_addNode</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">charNo</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">node</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">root</code><code class="variable-quote">'</code></span>)</span><br />
+      Add one node at a time until the whole word is added.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie._addNode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.Trees.Trie.Trie-class.html#_find" class="summary-sig-name" onclick="show_private();">_find</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">word</span>,
+        <span class="summary-sig-arg">type</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">partial</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">output</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">full</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">sanitized</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Tries to find the asked word from the tree.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie._find">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pySanaIndeksi.Trees.Trie.Trie-class.html#_findRecursive" class="summary-sig-name" onclick="show_private();">_findRecursive</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">word</span>,
+        <span class="summary-sig-arg">charNo</span>,
+        <span class="summary-sig-arg">type</span>,
+        <span class="summary-sig-arg">node</span>,
+        <span class="summary-sig-arg">boolean</span>=<span class="summary-sig-default">False</span>)</span><br />
+      First we check that a required letter exist in the tree.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie._findRecursive">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__abstractmethods__"></a><span class="summary-name">__abstractmethods__</span> = <code title="frozenset([])"><code class="variable-group">frozenset([</code><code class="variable-group">])</code></code>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pySanaIndeksi.Trees.PartialTree.PartialTree-class.html">PartialTree.PartialTree</a></code></b> (private):
+      <code><a href="pySanaIndeksi.Trees.PartialTree.PartialTree-class.html#_type" onclick="show_private();">_type</a></code>
+      </p></div>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pySanaIndeksi.Trees.Tree.Tree-class.html">Tree.Tree</a></code></b> (private):
+      <code><a href="pySanaIndeksi.Trees.Tree.Tree-class.html#_abc_cache" onclick="show_private();">_abc_cache</a></code>,
+      <code><a href="pySanaIndeksi.Trees.Tree.Tree-class.html#_abc_negative_cache" onclick="show_private();">_abc_negative_cache</a></code>,
+      <code><a href="pySanaIndeksi.Trees.Tree.Tree-class.html#_abc_negative_cache_version" onclick="show_private();">_abc_negative_cache_version</a></code>,
+      <code><a href="pySanaIndeksi.Trees.Tree.Tree-class.html#_abc_registry" onclick="show_private();">_abc_registry</a></code>
+      </p></div>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pySanaIndeksi.Trees.Trie.Trie-class.html#wordCount" class="summary-name">wordCount</a><br />
+      number of words added to the tree (not number of nodes)
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pySanaIndeksi.Trees.Trie.Trie-class.html#type" class="summary-name">type</a><br />
+      finds 'exact' or 'partial' matches for words according to type
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">wordreader</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="add"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>,
+        <span class="sig-arg">value</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.add">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Adds a new value to the tree. The addition is done via recursive 
+  addNode function. The value is stored using the key.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>key</code></strong> - the key to the value to be added</li>
+        <li><strong class="pname"><code>value</code></strong> - the value to be added</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="pySanaIndeksi.Trees.Tree.Tree-class.html#add">Tree.Tree.add</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addFromReader"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addFromReader</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">wordCount</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.addFromReader">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Adds all the words in the WordReader object to this tree.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>wordCount</code></strong> (integer) - maximum number of words read from reader</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="pySanaIndeksi.Trees.Tree.Tree-class.html#addFromReader">Tree.Tree.addFromReader</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="clear"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clear</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.clear">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Clears all words from the tree</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pySanaIndeksi.Trees.Tree.Tree-class.html#clear">Tree.Tree.clear</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="find"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">find</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">word</span>,
+        <span class="sig-arg">output</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">full</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">sanitized</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.find">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Finds the word in this tree using intenal self._find method. Output 
+  options are listed in super class Tree in method find. The optional 
+  sanitized flag can be used if input is known to be sanitized already. Do 
+  not use it for non-sanitized input.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>word</code></strong> (string) - the word to be found</li>
+        <li><strong class="pname"><code>output</code></strong> (boolean) - the type of output desired</li>
+        <li><strong class="pname"><code>sanitized</code></strong> (boolean) - if set to True words are assumed to be sanitized</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd><ul>
+            <li>
+              output == 'boolean': 1:  A boolean value indicating whether 
+              the file was found
+            </li>
+            <li>
+              output == 'count': 1:  Number of found instances
+            </li>
+            <li>
+              output == 'full': 1:  A list of positions where this word was
+              found 2:  Number of found instances 3:  Number of lines where
+              the word was found
+            </li>
+            <li>
+              output == 'list': (default) 1:  A list of positions where 
+              this word was found
+            </li>
+          </ul></dd>
+    <dt>Overrides:
+        <a href="pySanaIndeksi.Trees.Tree.Tree-class.html#find">Tree.Tree.find</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="findPartial"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">findPartial</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">word</span>,
+        <span class="sig-arg">output</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">full</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">sanitized</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie.findPartial">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Finds the keys beginning with word in this tree using intenal 
+  self._find method. Output options are listed in super class Tree in 
+  method find. The optional sanitized flag can be used if input is known to
+  be sanitized already. Do not use it for non-sanitized input.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>word</code></strong> (string) - the word to be found</li>
+        <li><strong class="pname"><code>output</code></strong> (boolean) - the type of output desired</li>
+        <li><strong class="pname"><code>sanitized</code></strong> (boolean) - if set to True words are assumed to be sanitized</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd><ul>
+            <li>
+              output == 'boolean': 1:  A boolean value indicating whether 
+              the file was found
+            </li>
+            <li>
+              output == 'count': 1:  Number of found instances 2:  Number 
+              of lines where the word was found
+            </li>
+            <li>
+              output == 'full': 1:  A list of positions where this word was
+              found 2:  Number of found instances 3:  Number of lines where
+              the word was found
+            </li>
+            <li>
+              output == 'list': (default) 1:  A list of positions where 
+              this word was found
+            </li>
+          </ul></dd>
+    <dt>Overrides:
+        <a href="pySanaIndeksi.Trees.PartialTree.PartialTree-class.html#findPartial">PartialTree.PartialTree.findPartial</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_addNode"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_addNode</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>,
+        <span class="sig-arg">value</span>,
+        <span class="sig-arg">charNo</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">node</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">root</code><code class="variable-quote">'</code></span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie._addNode">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add one node at a time until the whole word is added. Each node 
+  represents a letter of that word. charNo tells which index of key we are 
+  adding.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_find"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_find</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">word</span>,
+        <span class="sig-arg">type</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">partial</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">output</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">full</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">sanitized</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie._find">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Tries to find the asked word from the tree. Can be used to find exact 
+  matches or the beginnings of the words. Uses recursion to travel in the 
+  trie-tree. Returns a list of the positions where that word was found (if 
+  any), the number of found instances and the number of different line 
+  where that word was found.</p>
+  <p>The word is first sanitized unless sanitized flag is up.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_findRecursive"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_findRecursive</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">word</span>,
+        <span class="sig-arg">charNo</span>,
+        <span class="sig-arg">type</span>,
+        <span class="sig-arg">node</span>,
+        <span class="sig-arg">boolean</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pySanaIndeksi.Trees.Trie-pysrc.html#Trie._findRecursive">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>First we check that a required letter exist in the tree. If not, we 
+  did not find the word. If we find it and it's the last letter to find, 
+  return the instances where this word was found. If it's not the last 
+  letter move on recursively to the next letter.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="wordCount"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">wordCount</h3>
+  <p>number of words added to the tree (not number of nodes)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="type"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">type</h3>
+  <p>finds 'exact' or 'partial' matches for words according to type</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Sat Sep  1 18:30:39 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

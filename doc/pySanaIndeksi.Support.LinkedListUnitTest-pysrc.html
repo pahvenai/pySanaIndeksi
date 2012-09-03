@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pySanaIndeksi.Support.LinkedListUnitTest</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pySanaIndeksi-module.html">Package&nbsp;pySanaIndeksi</a> ::
+        <a href="pySanaIndeksi.Support-module.html">Package&nbsp;Support</a> ::
+        Module&nbsp;LinkedListUnitTest
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pySanaIndeksi.Support.LinkedListUnitTest-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="pySanaIndeksi.Support.LinkedListUnitTest-module.html">Module pySanaIndeksi.Support.LinkedListUnitTest</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-name">__author__</tt><tt class="py-op">=</tt><tt class="py-docstring">"Patrik Ahvenainen"</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-name">__date__</tt> <tt class="py-op">=</tt><tt class="py-string">"$10.8.2012 11:44:18$"</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module pySanaIndeksi.Support.LinkedList=pySanaIndeksi.Support.LinkedList-module.html,Class pySanaIndeksi.Support.LinkedList.LinkedList=pySanaIndeksi.Support.LinkedList.LinkedList-class.html"><a title="pySanaIndeksi.Support.LinkedList
+pySanaIndeksi.Support.LinkedList.LinkedList" class="py-name" href="#" onclick="return doclink('link-0', 'LinkedList', 'link-0');">LinkedList</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="pySanaIndeksi.Support.LinkedList
+pySanaIndeksi.Support.LinkedList.LinkedList" class="py-name" href="#" onclick="return doclink('link-1', 'LinkedList', 'link-0');">LinkedList</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable pySanaIndeksi.Support.LinkedListUnitTest.lastVal=pySanaIndeksi.Support.LinkedListUnitTest-module.html#lastVal"><a title="pySanaIndeksi.Support.LinkedListUnitTest.lastVal" class="py-name" href="#" onclick="return doclink('link-2', 'lastVal', 'link-2');">lastVal</a></tt> <tt class="py-op">=</tt> <tt class="py-number">4</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable pySanaIndeksi.Support.LinkedListUnitTest.linkedListVals=pySanaIndeksi.Support.LinkedListUnitTest-module.html#linkedListVals"><a title="pySanaIndeksi.Support.LinkedListUnitTest.linkedListVals" class="py-name" href="#" onclick="return doclink('link-3', 'linkedListVals', 'link-3');">linkedListVals</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">,</tt> <tt class="py-number">3</tt><tt class="py-op">,</tt> <tt id="link-4" class="py-name"><a title="pySanaIndeksi.Support.LinkedListUnitTest.lastVal" class="py-name" href="#" onclick="return doclink('link-4', 'lastVal', 'link-2');">lastVal</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable pySanaIndeksi.Support.LinkedListUnitTest.linkedListAfter=pySanaIndeksi.Support.LinkedListUnitTest-module.html#linkedListAfter"><a title="pySanaIndeksi.Support.LinkedListUnitTest.linkedListAfter" class="py-name" href="#" onclick="return doclink('link-5', 'linkedListAfter', 'link-5');">linkedListAfter</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">,</tt> <tt class="py-number">3</tt><tt class="py-op">]</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="PyLinkedListTestCases"></a><div id="PyLinkedListTestCases-def"><a name="L12"></a><tt class="py-lineno">12</tt> <a class="py-toggle" href="#" id="PyLinkedListTestCases-toggle" onclick="return toggle('PyLinkedListTestCases');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="pySanaIndeksi.Support.LinkedListUnitTest.PyLinkedListTestCases-class.html">PyLinkedListTestCases</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PyLinkedListTestCases-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="PyLinkedListTestCases-expanded"><a name="PyLinkedListTestCases.setUp"></a><div id="PyLinkedListTestCases.setUp-def"><a name="L13"></a><tt class="py-lineno">13</tt> <a class="py-toggle" href="#" id="PyLinkedListTestCases.setUp-toggle" onclick="return toggle('PyLinkedListTestCases.setUp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.Support.LinkedListUnitTest.PyLinkedListTestCases-class.html#setUp">setUp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PyLinkedListTestCases.setUp-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PyLinkedListTestCases.setUp-expanded"><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">list</tt> <tt class="py-op">=</tt> <tt id="link-6" class="py-name"><a title="pySanaIndeksi.Support.LinkedList
+pySanaIndeksi.Support.LinkedList.LinkedList" class="py-name" href="#" onclick="return doclink('link-6', 'LinkedList', 'link-0');">LinkedList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="PyLinkedListTestCases.tearDown"></a><div id="PyLinkedListTestCases.tearDown-def"><a name="L16"></a><tt class="py-lineno">16</tt> <a class="py-toggle" href="#" id="PyLinkedListTestCases.tearDown-toggle" onclick="return toggle('PyLinkedListTestCases.tearDown');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.Support.LinkedListUnitTest.PyLinkedListTestCases-class.html#tearDown">tearDown</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PyLinkedListTestCases.tearDown-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PyLinkedListTestCases.tearDown-expanded"><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">list</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
+<a name="PyLinkedListTestCases.testLinkedList"></a><div id="PyLinkedListTestCases.testLinkedList-def"><a name="L19"></a><tt class="py-lineno">19</tt> <a class="py-toggle" href="#" id="PyLinkedListTestCases.testLinkedList-toggle" onclick="return toggle('PyLinkedListTestCases.testLinkedList');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.Support.LinkedListUnitTest.PyLinkedListTestCases-class.html#testLinkedList">testLinkedList</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PyLinkedListTestCases.testLinkedList-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PyLinkedListTestCases.testLinkedList-expanded"><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-docstring">""" Test adding multiple values to a linked list</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">            Tests, addLast(), values(), removeLast(), clear() and count</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">val</tt> <tt class="py-keyword">in</tt> <tt id="link-7" class="py-name"><a title="pySanaIndeksi.Support.LinkedListUnitTest.linkedListVals" class="py-name" href="#" onclick="return doclink('link-7', 'linkedListVals', 'link-3');">linkedListVals</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">list</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method pySanaIndeksi.Support.LinkedList.LinkedList.addLast()=pySanaIndeksi.Support.LinkedList.LinkedList-class.html#addLast"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.addLast" class="py-name" href="#" onclick="return doclink('link-8', 'addLast', 'link-8');">addLast</a></tt><tt class="py-op">(</tt><tt class="py-name">val</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">list</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method pySanaIndeksi.Support.LinkedList.LinkedList.values()=pySanaIndeksi.Support.LinkedList.LinkedList-class.html#values"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.values" class="py-name" href="#" onclick="return doclink('link-9', 'values', 'link-9');">values</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">,</tt> <tt id="link-10" class="py-name"><a title="pySanaIndeksi.Support.LinkedListUnitTest.linkedListVals" class="py-name" href="#" onclick="return doclink('link-10', 'linkedListVals', 'link-3');">linkedListVals</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">                         <tt class="py-string">'Linked list did not add values properly'</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">list</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method pySanaIndeksi.Support.LinkedList.LinkedList.removeLast()=pySanaIndeksi.Support.LinkedList.LinkedList-class.html#removeLast"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.removeLast" class="py-name" href="#" onclick="return doclink('link-11', 'removeLast', 'link-11');">removeLast</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">,</tt> <tt id="link-12" class="py-name"><a title="pySanaIndeksi.Support.LinkedListUnitTest.lastVal" class="py-name" href="#" onclick="return doclink('link-12', 'lastVal', 'link-2');">lastVal</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">                         <tt class="py-string">'Linked list did not return correct last value'</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">list</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.values" class="py-name" href="#" onclick="return doclink('link-13', 'values', 'link-9');">values</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt id="link-14" class="py-name"><a title="pySanaIndeksi.Support.LinkedListUnitTest.linkedListAfter" class="py-name" href="#" onclick="return doclink('link-14', 'linkedListAfter', 'link-5');">linkedListAfter</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">                         <tt class="py-string">'Linked list removing did not work'</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">list</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method pySanaIndeksi.Support.LinkedList.LinkedList.clear()=pySanaIndeksi.Support.LinkedList.LinkedList-class.html#clear,Method pySanaIndeksi.Trees.RedBlack.RedBlack.clear()=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#clear,Method pySanaIndeksi.Trees.Tree.Tree.clear()=pySanaIndeksi.Trees.Tree.Tree-class.html#clear,Method pySanaIndeksi.Trees.Trie.Trie.clear()=pySanaIndeksi.Trees.Trie.Trie-class.html#clear,Method pySanaIndeksi.WordIndex.WordReader.WordReader.clear()=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#clear"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.clear
+pySanaIndeksi.Trees.RedBlack.RedBlack.clear
+pySanaIndeksi.Trees.Tree.Tree.clear
+pySanaIndeksi.Trees.Trie.Trie.clear
+pySanaIndeksi.WordIndex.WordReader.WordReader.clear" class="py-name" href="#" onclick="return doclink('link-15', 'clear', 'link-15');">clear</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertFalse</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">list</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.values" class="py-name" href="#" onclick="return doclink('link-16', 'values', 'link-9');">values</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'Linked list did not clear'</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertFalse</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">list</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Variable pySanaIndeksi.Support.LinkedList.LinkedList.count=pySanaIndeksi.Support.LinkedList.LinkedList-class.html#count"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.count" class="py-name" href="#" onclick="return doclink('link-17', 'count', 'link-17');">count</a></tt><tt class="py-op">,</tt> <tt class="py-string">'Linked list did not clear'</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"> </tt>
+<a name="suite"></a><div id="suite-def"><a name="L35"></a><tt class="py-lineno">35</tt> <a class="py-toggle" href="#" id="suite-toggle" onclick="return toggle('suite');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.Support.LinkedListUnitTest-module.html#suite">suite</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="suite-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="suite-expanded"><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">makeSuite</tt><tt class="py-op">(</tt><tt id="link-18" class="py-name" targets="Class pySanaIndeksi.Support.LinkedListUnitTest.PyLinkedListTestCases=pySanaIndeksi.Support.LinkedListUnitTest.PyLinkedListTestCases-class.html"><a title="pySanaIndeksi.Support.LinkedListUnitTest.PyLinkedListTestCases" class="py-name" href="#" onclick="return doclink('link-18', 'PyLinkedListTestCases', 'link-18');">PyLinkedListTestCases</a></tt><tt class="py-op">,</tt><tt class="py-string">'test'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Running unit tests for LinkedList module"</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">    <tt class="py-name">runner</tt> <tt class="py-op">=</tt> <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">TextTestRunner</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">    <tt class="py-name">runner</tt><tt class="py-op">.</tt><tt class="py-name">run</tt><tt class="py-op">(</tt><tt id="link-19" class="py-name" targets="Function pySanaIndeksi.Support.DataHandlingUnitTest.suite()=pySanaIndeksi.Support.DataHandlingUnitTest-module.html#suite,Function pySanaIndeksi.Support.LinkedListUnitTest.suite()=pySanaIndeksi.Support.LinkedListUnitTest-module.html#suite,Function pySanaIndeksi.Trees.PartialTreeUnitTest.suite()=pySanaIndeksi.Trees.PartialTreeUnitTest-module.html#suite,Function pySanaIndeksi.Trees.RedBlackUnitTest.suite()=pySanaIndeksi.Trees.RedBlackUnitTest-module.html#suite,Function pySanaIndeksi.Trees.TreeUnitTest.suite()=pySanaIndeksi.Trees.TreeUnitTest-module.html#suite,Function pySanaIndeksi.Trees.TrieUnitTest.suite()=pySanaIndeksi.Trees.TrieUnitTest-module.html#suite,Function pySanaIndeksi.WordIndex.SearcherUnitTest.suite()=pySanaIndeksi.WordIndex.SearcherUnitTest-module.html#suite,Function pySanaIndeksi.WordIndex.WordReaderUnitTest.suite()=pySanaIndeksi.WordIndex.WordReaderUnitTest-module.html#suite"><a title="pySanaIndeksi.Support.DataHandlingUnitTest.suite
+pySanaIndeksi.Support.LinkedListUnitTest.suite
+pySanaIndeksi.Trees.PartialTreeUnitTest.suite
+pySanaIndeksi.Trees.RedBlackUnitTest.suite
+pySanaIndeksi.Trees.TreeUnitTest.suite
+pySanaIndeksi.Trees.TrieUnitTest.suite
+pySanaIndeksi.WordIndex.SearcherUnitTest.suite
+pySanaIndeksi.WordIndex.WordReaderUnitTest.suite" class="py-name" href="#" onclick="return doclink('link-19', 'suite', 'link-19');">suite</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Sat Sep  1 18:30:40 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

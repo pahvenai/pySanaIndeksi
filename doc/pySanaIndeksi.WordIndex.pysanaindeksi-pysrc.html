@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pySanaIndeksi.WordIndex.pysanaindeksi</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pySanaIndeksi-module.html">Package&nbsp;pySanaIndeksi</a> ::
+        <a href="pySanaIndeksi.WordIndex-module.html">Package&nbsp;WordIndex</a> ::
+        Module&nbsp;pysanaindeksi
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pySanaIndeksi.WordIndex.pysanaindeksi-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="pySanaIndeksi.WordIndex.pysanaindeksi-module.html">Module pySanaIndeksi.WordIndex.pysanaindeksi</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-name">__author__</tt><tt class="py-op">=</tt><tt class="py-docstring">"Patrik Ahvenainen"</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-name">__date__</tt> <tt class="py-op">=</tt><tt class="py-string">"$31.7.2012 12:14:26$"</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module pySanaIndeksi.WordIndex.WordReader=pySanaIndeksi.WordIndex.WordReader-module.html,Class pySanaIndeksi.WordIndex.WordReader.WordReader=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html"><a title="pySanaIndeksi.WordIndex.WordReader
+pySanaIndeksi.WordIndex.WordReader.WordReader" class="py-name" href="#" onclick="return doclink('link-0', 'WordReader', 'link-0');">WordReader</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="pySanaIndeksi.WordIndex.WordReader
+pySanaIndeksi.WordIndex.WordReader.WordReader" class="py-name" href="#" onclick="return doclink('link-1', 'WordReader', 'link-0');">WordReader</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Package pySanaIndeksi.Trees=pySanaIndeksi.Trees-module.html"><a title="pySanaIndeksi.Trees" class="py-name" href="#" onclick="return doclink('link-2', 'Trees', 'link-2');">Trees</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module pySanaIndeksi.Trees.RedBlack=pySanaIndeksi.Trees.RedBlack-module.html,Class pySanaIndeksi.Trees.RedBlack.RedBlack=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html"><a title="pySanaIndeksi.Trees.RedBlack
+pySanaIndeksi.Trees.RedBlack.RedBlack" class="py-name" href="#" onclick="return doclink('link-3', 'RedBlack', 'link-3');">RedBlack</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack
+pySanaIndeksi.Trees.RedBlack.RedBlack" class="py-name" href="#" onclick="return doclink('link-4', 'RedBlack', 'link-3');">RedBlack</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name"><a title="pySanaIndeksi.Trees" class="py-name" href="#" onclick="return doclink('link-5', 'Trees', 'link-2');">Trees</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Module pySanaIndeksi.Trees.Trie=pySanaIndeksi.Trees.Trie-module.html,Class pySanaIndeksi.Trees.Trie.Trie=pySanaIndeksi.Trees.Trie.Trie-class.html"><a title="pySanaIndeksi.Trees.Trie
+pySanaIndeksi.Trees.Trie.Trie" class="py-name" href="#" onclick="return doclink('link-6', 'Trie', 'link-6');">Trie</a></tt> <tt class="py-keyword">import</tt> <tt id="link-7" class="py-name"><a title="pySanaIndeksi.Trees.Trie
+pySanaIndeksi.Trees.Trie.Trie" class="py-name" href="#" onclick="return doclink('link-7', 'Trie', 'link-6');">Trie</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-8" class="py-name" targets="Package pySanaIndeksi.Support=pySanaIndeksi.Support-module.html"><a title="pySanaIndeksi.Support" class="py-name" href="#" onclick="return doclink('link-8', 'Support', 'link-8');">Support</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Module pySanaIndeksi.Support.DataHandling=pySanaIndeksi.Support.DataHandling-module.html"><a title="pySanaIndeksi.Support.DataHandling" class="py-name" href="#" onclick="return doclink('link-9', 'DataHandling', 'link-9');">DataHandling</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">File</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-10" class="py-name" targets="Module pySanaIndeksi.WordIndex.Searcher=pySanaIndeksi.WordIndex.Searcher-module.html,Class pySanaIndeksi.WordIndex.Searcher.Searcher=pySanaIndeksi.WordIndex.Searcher.Searcher-class.html"><a title="pySanaIndeksi.WordIndex.Searcher
+pySanaIndeksi.WordIndex.Searcher.Searcher" class="py-name" href="#" onclick="return doclink('link-10', 'Searcher', 'link-10');">Searcher</a></tt> <tt class="py-keyword">import</tt> <tt id="link-11" class="py-name"><a title="pySanaIndeksi.WordIndex.Searcher
+pySanaIndeksi.WordIndex.Searcher.Searcher" class="py-name" href="#" onclick="return doclink('link-11', 'Searcher', 'link-10');">Searcher</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">cProfile</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">pstats</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">sys</tt> <tt class="py-keyword">import</tt> <tt class="py-name">exit</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable pySanaIndeksi.WordIndex.pysanaindeksi.name=pySanaIndeksi.WordIndex.pysanaindeksi-module.html#name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.name" class="py-name" href="#" onclick="return doclink('link-12', 'name', 'link-12');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'pySanaIndeksi'</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="testRun"></a><div id="testRun-def"><a name="L19"></a><tt class="py-lineno"> 19</tt> <a class="py-toggle" href="#" id="testRun-toggle" onclick="return toggle('testRun');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.pysanaindeksi-module.html#testRun">testRun</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="testRun-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="testRun-expanded"><a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">    <tt class="py-name">lukija</tt> <tt class="py-op">=</tt> <tt id="link-13" class="py-name"><a title="pySanaIndeksi.WordIndex.WordReader
+pySanaIndeksi.WordIndex.WordReader.WordReader" class="py-name" href="#" onclick="return doclink('link-13', 'WordReader', 'link-0');">WordReader</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">"../Material/Grimm's Fairy Tales.txt"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">    <tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method pySanaIndeksi.WordIndex.WordReader.WordReader.readWords()=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#readWords"><a title="pySanaIndeksi.WordIndex.WordReader.WordReader.readWords" class="py-name" href="#" onclick="return doclink('link-14', 'readWords', 'link-14');">readWords</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt class="py-name">punamusta</tt> <tt class="py-op">=</tt> <tt id="link-15" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack
+pySanaIndeksi.Trees.RedBlack.RedBlack" class="py-name" href="#" onclick="return doclink('link-15', 'RedBlack', 'link-3');">RedBlack</a></tt><tt class="py-op">(</tt><tt class="py-name">lukija</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt class="py-name">trie</tt> <tt class="py-op">=</tt> <tt id="link-16" class="py-name"><a title="pySanaIndeksi.Trees.Trie
+pySanaIndeksi.Trees.Trie.Trie" class="py-name" href="#" onclick="return doclink('link-16', 'Trie', 'link-6');">Trie</a></tt><tt class="py-op">(</tt><tt class="py-name">lukija</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Adding words from selected material..."</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt class="py-name">intti</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt><tt class="py-op">;</tt> <tt class="py-name">setti</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">word</tt> <tt class="py-keyword">in</tt> <tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt class="py-name">words</tt><tt class="py-op">:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-name">trie</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method pySanaIndeksi.Trees.RedBlack.RedBlack.add()=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#add,Method pySanaIndeksi.Trees.Tree.Tree.add()=pySanaIndeksi.Trees.Tree.Tree-class.html#add,Method pySanaIndeksi.Trees.Trie.Trie.add()=pySanaIndeksi.Trees.Trie.Trie-class.html#add"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.add
+pySanaIndeksi.Trees.Tree.Tree.add
+pySanaIndeksi.Trees.Trie.Trie.add" class="py-name" href="#" onclick="return doclink('link-17', 'add', 'link-17');">add</a></tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">word</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-name">punamusta</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.add
+pySanaIndeksi.Trees.Tree.Tree.add
+pySanaIndeksi.Trees.Trie.Trie.add" class="py-name" href="#" onclick="return doclink('link-18', 'add', 'link-17');">add</a></tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">word</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">intti</tt> <tt class="py-op">=</tt> <tt class="py-name">intti</tt> <tt class="py-op">+</tt> <tt class="py-number">1</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">intti</tt> <tt class="py-op">&gt;</tt> <tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt class="py-name">wordcount</tt> <tt class="py-op">/</tt> <tt class="py-number">100.0</tt><tt class="py-op">:</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">            <tt class="py-name">setti</tt> <tt class="py-op">=</tt> <tt class="py-name">setti</tt> <tt class="py-op">+</tt> <tt class="py-number">1</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-name">setti</tt><tt class="py-op">,</tt> <tt class="py-string">'% of words added'</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">            <tt class="py-name">intti</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Searching for words in Grimm's Fairy tales and The Adventures of Tom Sawyer"</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">    <tt class="py-name">word</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_input</tt><tt class="py-op">(</tt> <tt class="py-string">"Find a word (or its beginning) in the text: "</tt> <tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">rstrip</tt><tt class="py-op">(</tt> <tt class="py-string">'\n'</tt> <tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt class="py-name">positions</tt><tt class="py-op">,</tt> <tt id="link-19" class="py-name" targets="Variable pySanaIndeksi.Support.LinkedList.LinkedList.count=pySanaIndeksi.Support.LinkedList.LinkedList-class.html#count"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.count" class="py-name" href="#" onclick="return doclink('link-19', 'count', 'link-19');">count</a></tt><tt class="py-op">,</tt> <tt class="py-name">linecount</tt> <tt class="py-op">=</tt> <tt class="py-name">trie</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method pySanaIndeksi.Trees.RedBlack.RedBlack.find()=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#find,Method pySanaIndeksi.Trees.Tree.Tree.find()=pySanaIndeksi.Trees.Tree.Tree-class.html#find,Method pySanaIndeksi.Trees.Trie.Trie.find()=pySanaIndeksi.Trees.Trie.Trie-class.html#find"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.find
+pySanaIndeksi.Trees.Tree.Tree.find
+pySanaIndeksi.Trees.Trie.Trie.find" class="py-name" href="#" onclick="return doclink('link-20', 'find', 'link-20');">find</a></tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Found"</tt><tt class="py-op">,</tt> <tt id="link-21" class="py-name"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.count" class="py-name" href="#" onclick="return doclink('link-21', 'count', 'link-19');">count</a></tt><tt class="py-op">,</tt> <tt class="py-string">"instances ("</tt><tt class="py-op">,</tt> <tt class="py-name">linecount</tt><tt class="py-op">,</tt> <tt class="py-string">"lines) @"</tt><tt class="py-op">,</tt> <tt class="py-name">positions</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt class="py-name">RBpositions</tt><tt class="py-op">,</tt> <tt class="py-name">RBcount</tt><tt class="py-op">,</tt> <tt class="py-name">RBlinecount</tt> <tt class="py-op">=</tt> <tt class="py-name">punamusta</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.find
+pySanaIndeksi.Trees.Tree.Tree.find
+pySanaIndeksi.Trees.Trie.Trie.find" class="py-name" href="#" onclick="return doclink('link-22', 'find', 'link-20');">find</a></tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Found"</tt><tt class="py-op">,</tt> <tt class="py-name">RBcount</tt><tt class="py-op">,</tt> <tt class="py-string">"instances ("</tt><tt class="py-op">,</tt> <tt class="py-name">RBlinecount</tt><tt class="py-op">,</tt> <tt class="py-string">"lines) @"</tt><tt class="py-op">,</tt> <tt class="py-name">RBpositions</tt> </tt>
+</div><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt id="link-23" class="py-name" targets="Variable pySanaIndeksi.WordIndex.pysanaindeksi.operationOptions=pySanaIndeksi.WordIndex.pysanaindeksi-module.html#operationOptions"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.operationOptions" class="py-name" href="#" onclick="return doclink('link-23', 'operationOptions', 'link-23');">operationOptions</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> <tt class="py-string">'Exit'</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt> <tt class="py-string">'Index file'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">:</tt> <tt class="py-string">'Choose indexer'</tt><tt class="py-op">,</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">                    <tt class="py-number">3</tt><tt class="py-op">:</tt> <tt class="py-string">'Unindex all files'</tt><tt class="py-op">,</tt>  <tt class="py-number">4</tt><tt class="py-op">:</tt> <tt class="py-string">'Do a search'</tt><tt class="py-op">}</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt id="link-24" class="py-name" targets="Variable pySanaIndeksi.WordIndex.pysanaindeksi.trees=pySanaIndeksi.WordIndex.pysanaindeksi-module.html#trees"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.trees" class="py-name" href="#" onclick="return doclink('link-24', 'trees', 'link-24');">trees</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt><tt class="py-string">'RedBlack'</tt><tt class="py-op">:</tt><tt id="link-25" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack
+pySanaIndeksi.Trees.RedBlack.RedBlack" class="py-name" href="#" onclick="return doclink('link-25', 'RedBlack', 'link-3');">RedBlack</a></tt><tt class="py-op">}</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt><tt class="py-string">'Trie'</tt><tt class="py-op">:</tt><tt id="link-26" class="py-name"><a title="pySanaIndeksi.Trees.Trie
+pySanaIndeksi.Trees.Trie.Trie" class="py-name" href="#" onclick="return doclink('link-26', 'Trie', 'link-6');">Trie</a></tt><tt class="py-op">}</tt><tt class="py-op">}</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="indexFile"></a><div id="indexFile-def"><a name="L55"></a><tt class="py-lineno"> 55</tt> <a class="py-toggle" href="#" id="indexFile-toggle" onclick="return toggle('indexFile');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.pysanaindeksi-module.html#indexFile">indexFile</a><tt class="py-op">(</tt><tt class="py-param">tree</tt><tt class="py-op">,</tt> <tt class="py-param">materialPath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="indexFile-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="indexFile-expanded"><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">    <tt class="py-docstring">""" Gives the user an option to choose which file to index to the tree """</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">    <tt class="py-name">fileList</tt> <tt class="py-op">=</tt> <tt class="py-name">File</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Function pySanaIndeksi.Support.DataHandling.getFileNames()=pySanaIndeksi.Support.DataHandling-module.html#getFileNames"><a title="pySanaIndeksi.Support.DataHandling.getFileNames" class="py-name" href="#" onclick="return doclink('link-27', 'getFileNames', 'link-27');">getFileNames</a></tt><tt class="py-op">(</tt><tt class="py-name">materialPath</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt class="py-name">printPath</tt> <tt class="py-op">=</tt> <tt class="py-name">File</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name" targets="Function pySanaIndeksi.Support.DataHandling.printFileList()=pySanaIndeksi.Support.DataHandling-module.html#printFileList"><a title="pySanaIndeksi.Support.DataHandling.printFileList" class="py-name" href="#" onclick="return doclink('link-28', 'printFileList', 'link-28');">printFileList</a></tt><tt class="py-op">(</tt><tt class="py-name">materialPath</tt><tt class="py-op">,</tt> <tt class="py-name">noPath</tt><tt class="py-op">=</tt><tt class="py-string">'yes'</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt class="py-name">input</tt> <tt class="py-op">=</tt> <tt id="link-29" class="py-name" targets="Function pySanaIndeksi.WordIndex.pysanaindeksi.prompt()=pySanaIndeksi.WordIndex.pysanaindeksi-module.html#prompt"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.prompt" class="py-name" href="#" onclick="return doclink('link-29', 'prompt', 'link-29');">prompt</a></tt><tt class="py-op">(</tt><tt class="py-string">'Choose file:'</tt><tt class="py-op">,</tt> <tt class="py-name">limits</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">fileList</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'Indexing "'</tt> <tt class="py-op">+</tt> <tt class="py-name">printPath</tt><tt class="py-op">[</tt><tt class="py-name">input</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">'" now...'</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Method pySanaIndeksi.Support.LinkedList.LinkedList.clear()=pySanaIndeksi.Support.LinkedList.LinkedList-class.html#clear,Method pySanaIndeksi.Trees.RedBlack.RedBlack.clear()=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#clear,Method pySanaIndeksi.Trees.Tree.Tree.clear()=pySanaIndeksi.Trees.Tree.Tree-class.html#clear,Method pySanaIndeksi.Trees.Trie.Trie.clear()=pySanaIndeksi.Trees.Trie.Trie-class.html#clear,Method pySanaIndeksi.WordIndex.WordReader.WordReader.clear()=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#clear"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.clear
+pySanaIndeksi.Trees.RedBlack.RedBlack.clear
+pySanaIndeksi.Trees.Tree.Tree.clear
+pySanaIndeksi.Trees.Trie.Trie.clear
+pySanaIndeksi.WordIndex.WordReader.WordReader.clear" class="py-name" href="#" onclick="return doclink('link-30', 'clear', 'link-30');">clear</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Method pySanaIndeksi.WordIndex.WordReader.WordReader.addFileName()=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#addFileName"><a title="pySanaIndeksi.WordIndex.WordReader.WordReader.addFileName" class="py-name" href="#" onclick="return doclink('link-31', 'addFileName', 'link-31');">addFileName</a></tt><tt class="py-op">(</tt><tt class="py-name">fileList</tt><tt class="py-op">[</tt><tt class="py-name">input</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">    <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="pySanaIndeksi.WordIndex.WordReader.WordReader.readWords" class="py-name" href="#" onclick="return doclink('link-32', 'readWords', 'link-14');">readWords</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Method pySanaIndeksi.Trees.RedBlack.RedBlack.addFromReader()=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#addFromReader,Method pySanaIndeksi.Trees.Tree.Tree.addFromReader()=pySanaIndeksi.Trees.Tree.Tree-class.html#addFromReader,Method pySanaIndeksi.Trees.Trie.Trie.addFromReader()=pySanaIndeksi.Trees.Trie.Trie-class.html#addFromReader"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.addFromReader
+pySanaIndeksi.Trees.Tree.Tree.addFromReader
+pySanaIndeksi.Trees.Trie.Trie.addFromReader" class="py-name" href="#" onclick="return doclink('link-33', 'addFromReader', 'link-33');">addFromReader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="unIndexAllFiles"></a><div id="unIndexAllFiles-def"><a name="L66"></a><tt class="py-lineno"> 66</tt> <a class="py-toggle" href="#" id="unIndexAllFiles-toggle" onclick="return toggle('unIndexAllFiles');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.pysanaindeksi-module.html#unIndexAllFiles">unIndexAllFiles</a><tt class="py-op">(</tt><tt class="py-param">tree</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="unIndexAllFiles-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="unIndexAllFiles-expanded"><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt class="py-docstring">""" Removes all indexed words from the tree"""</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.clear
+pySanaIndeksi.Trees.RedBlack.RedBlack.clear
+pySanaIndeksi.Trees.Tree.Tree.clear
+pySanaIndeksi.Trees.Trie.Trie.clear
+pySanaIndeksi.WordIndex.WordReader.WordReader.clear" class="py-name" href="#" onclick="return doclink('link-34', 'clear', 'link-30');">clear</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.clear
+pySanaIndeksi.Trees.RedBlack.RedBlack.clear
+pySanaIndeksi.Trees.Tree.Tree.clear
+pySanaIndeksi.Trees.Trie.Trie.clear
+pySanaIndeksi.WordIndex.WordReader.WordReader.clear" class="py-name" href="#" onclick="return doclink('link-35', 'clear', 'link-30');">clear</a></tt><tt class="py-op">(</tt><tt class="py-string">'all'</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'Removed all words from index.'</tt> </tt>
+</div><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="doSearch"></a><div id="doSearch-def"><a name="L72"></a><tt class="py-lineno"> 72</tt> <a class="py-toggle" href="#" id="doSearch-toggle" onclick="return toggle('doSearch');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.pysanaindeksi-module.html#doSearch">doSearch</a><tt class="py-op">(</tt><tt class="py-param">tree</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="doSearch-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="doSearch-expanded"><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">    <tt class="py-docstring">""" Searches the tree for the search phrase requested from the user """</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">    <tt class="py-name">input</tt> <tt class="py-op">=</tt> <tt id="link-36" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.prompt" class="py-name" href="#" onclick="return doclink('link-36', 'prompt', 'link-29');">prompt</a></tt><tt class="py-op">(</tt><tt class="py-string">'Give search phrase'</tt><tt class="py-op">,</tt> <tt id="link-37" class="py-name" targets="Variable pySanaIndeksi.Trees.RedBlack.RedBlack.type=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#type,Variable pySanaIndeksi.Trees.Tree.Tree.type=pySanaIndeksi.Trees.Tree.Tree-class.html#type,Variable pySanaIndeksi.Trees.Trie.Trie.type=pySanaIndeksi.Trees.Trie.Trie-class.html#type"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.type
+pySanaIndeksi.Trees.Tree.Tree.type
+pySanaIndeksi.Trees.Trie.Trie.type" class="py-name" href="#" onclick="return doclink('link-37', 'type', 'link-37');">type</a></tt><tt class="py-op">=</tt><tt class="py-string">'str'</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">input</tt><tt class="py-op">:</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'Cannot give an empty search phrase!'</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">    <tt class="py-name">searcher</tt> <tt class="py-op">=</tt> <tt id="link-38" class="py-name"><a title="pySanaIndeksi.WordIndex.Searcher
+pySanaIndeksi.WordIndex.Searcher.Searcher" class="py-name" href="#" onclick="return doclink('link-38', 'Searcher', 'link-10');">Searcher</a></tt><tt class="py-op">(</tt><tt class="py-name">tree</tt><tt class="py-op">,</tt> <tt class="py-name">input</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'Searching...'</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">    <tt class="py-name">searcher</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name" targets="Method pySanaIndeksi.WordIndex.Searcher.Searcher.search()=pySanaIndeksi.WordIndex.Searcher.Searcher-class.html#search"><a title="pySanaIndeksi.WordIndex.Searcher.Searcher.search" class="py-name" href="#" onclick="return doclink('link-39', 'search', 'link-39');">search</a></tt><tt class="py-op">(</tt><tt class="py-name">printPretty</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"> </tt>
+<a name="selectTree"></a><div id="selectTree-def"><a name="L82"></a><tt class="py-lineno"> 82</tt> <a class="py-toggle" href="#" id="selectTree-toggle" onclick="return toggle('selectTree');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.pysanaindeksi-module.html#selectTree">selectTree</a><tt class="py-op">(</tt><tt class="py-param">tree</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="selectTree-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="selectTree-expanded"><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt class="py-docstring">""" Gives the user the option to choose which tree to use """</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">index</tt> <tt class="py-keyword">in</tt> <tt id="link-40" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.trees" class="py-name" href="#" onclick="return doclink('link-40', 'trees', 'link-24');">trees</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">index</tt><tt class="py-op">,</tt> <tt id="link-41" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.trees" class="py-name" href="#" onclick="return doclink('link-41', 'trees', 'link-24');">trees</a></tt><tt class="py-op">[</tt><tt class="py-name">index</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-comment"># prints: 0 RedBlack etc.</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">    <tt class="py-name">input</tt> <tt class="py-op">=</tt> <tt id="link-42" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.prompt" class="py-name" href="#" onclick="return doclink('link-42', 'prompt', 'link-29');">prompt</a></tt><tt class="py-op">(</tt><tt class="py-string">'Choose the tree:'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-43" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.trees" class="py-name" href="#" onclick="return doclink('link-43', 'trees', 'link-24');">trees</a></tt><tt class="py-op">)</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-name">treeName</tt> <tt class="py-op">=</tt> <tt id="link-44" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.trees" class="py-name" href="#" onclick="return doclink('link-44', 'trees', 'link-24');">trees</a></tt><tt class="py-op">[</tt><tt class="py-name">input</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'Indexer changed to '</tt> <tt class="py-op">+</tt> <tt class="py-name">treeName</tt> <tt class="py-op">+</tt>  <tt class="py-string">' and it is now empty'</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.clear
+pySanaIndeksi.Trees.RedBlack.RedBlack.clear
+pySanaIndeksi.Trees.Tree.Tree.clear
+pySanaIndeksi.Trees.Trie.Trie.clear
+pySanaIndeksi.WordIndex.WordReader.WordReader.clear" class="py-name" href="#" onclick="return doclink('link-45', 'clear', 'link-30');">clear</a></tt><tt class="py-op">(</tt><tt class="py-string">'all'</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt class="py-comment"># retrieve a new tree from the chose input from the tree list</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt class="py-name">tree</tt> <tt class="py-op">=</tt> <tt id="link-46" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.trees" class="py-name" href="#" onclick="return doclink('link-46', 'trees', 'link-24');">trees</a></tt><tt class="py-op">[</tt><tt class="py-name">input</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">treeName</tt><tt class="py-op">]</tt><tt class="py-op">(</tt><tt class="py-name">tree</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">tree</tt> </tt>
+</div><a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"> </tt>
+<a name="printOperationOptions"></a><div id="printOperationOptions-def"><a name="L94"></a><tt class="py-lineno"> 94</tt> <a class="py-toggle" href="#" id="printOperationOptions-toggle" onclick="return toggle('printOperationOptions');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.pysanaindeksi-module.html#printOperationOptions">printOperationOptions</a><tt class="py-op">(</tt><tt class="py-param">status</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="printOperationOptions-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="printOperationOptions-expanded"><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt class="py-docstring">""" Prints out the options for the user """</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt class="py-name">maxVal</tt> <tt class="py-op">=</tt> <tt class="py-number">3</tt> <tt class="py-comment"># number of operation that can be done to an empty index</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">index</tt><tt class="py-op">,</tt> <tt class="py-name">key</tt> <tt class="py-keyword">in</tt> <tt class="py-name">enumerate</tt><tt class="py-op">(</tt><tt class="py-name">sorted</tt><tt class="py-op">(</tt><tt id="link-47" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.operationOptions" class="py-name" href="#" onclick="return doclink('link-47', 'operationOptions', 'link-23');">operationOptions</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-op">(</tt><tt class="py-name">index</tt> <tt class="py-op">&gt;=</tt> <tt class="py-name">maxVal</tt> <tt class="py-keyword">and</tt> <tt id="link-48" class="py-name" targets="Variable pySanaIndeksi.WordIndex.Searcher.Searcher.status=pySanaIndeksi.WordIndex.Searcher.Searcher-class.html#status"><a title="pySanaIndeksi.WordIndex.Searcher.Searcher.status" class="py-name" href="#" onclick="return doclink('link-48', 'status', 'link-48');">status</a></tt> <tt class="py-op">==</tt> <tt class="py-string">'empty'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-name">key</tt><tt class="py-op">,</tt> <tt class="py-string">'\t'</tt><tt class="py-op">,</tt> <tt id="link-49" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.operationOptions" class="py-name" href="#" onclick="return doclink('link-49', 'operationOptions', 'link-23');">operationOptions</a></tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"> </tt>
+<a name="operator"></a><div id="operator-def"><a name="L104"></a><tt class="py-lineno">104</tt> <a class="py-toggle" href="#" id="operator-toggle" onclick="return toggle('operator');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.pysanaindeksi-module.html#operator">operator</a><tt class="py-op">(</tt><tt class="py-param">operation</tt><tt class="py-op">,</tt> <tt class="py-param">tree</tt><tt class="py-op">,</tt> <tt class="py-param">materialPath</tt><tt class="py-op">,</tt> <tt class="py-param">status</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="operator-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="operator-expanded"><a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">    <tt class="py-docstring">""" Calls appropriate function according to the user's choice """</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">operation</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">operation</tt> <tt class="py-op">==</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt id="link-50" class="py-name" targets="Function pySanaIndeksi.WordIndex.pysanaindeksi.indexFile()=pySanaIndeksi.WordIndex.pysanaindeksi-module.html#indexFile"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.indexFile" class="py-name" href="#" onclick="return doclink('link-50', 'indexFile', 'link-50');">indexFile</a></tt><tt class="py-op">(</tt><tt class="py-name">tree</tt><tt class="py-op">,</tt> <tt class="py-name">materialPath</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt id="link-51" class="py-name"><a title="pySanaIndeksi.WordIndex.Searcher.Searcher.status" class="py-name" href="#" onclick="return doclink('link-51', 'status', 'link-48');">status</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'notEmpty'</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">operation</tt> <tt class="py-op">==</tt> <tt class="py-number">2</tt><tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-name">tree</tt> <tt class="py-op">=</tt> <tt id="link-52" class="py-name" targets="Function pySanaIndeksi.WordIndex.pysanaindeksi.selectTree()=pySanaIndeksi.WordIndex.pysanaindeksi-module.html#selectTree"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.selectTree" class="py-name" href="#" onclick="return doclink('link-52', 'selectTree', 'link-52');">selectTree</a></tt><tt class="py-op">(</tt><tt class="py-name">tree</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt id="link-53" class="py-name"><a title="pySanaIndeksi.WordIndex.Searcher.Searcher.status" class="py-name" href="#" onclick="return doclink('link-53', 'status', 'link-48');">status</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'empty'</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">operation</tt> <tt class="py-op">==</tt> <tt class="py-number">3</tt><tt class="py-op">:</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt id="link-54" class="py-name" targets="Function pySanaIndeksi.WordIndex.pysanaindeksi.unIndexAllFiles()=pySanaIndeksi.WordIndex.pysanaindeksi-module.html#unIndexAllFiles"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.unIndexAllFiles" class="py-name" href="#" onclick="return doclink('link-54', 'unIndexAllFiles', 'link-54');">unIndexAllFiles</a></tt><tt class="py-op">(</tt><tt class="py-name">tree</tt><tt class="py-op">)</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt id="link-55" class="py-name"><a title="pySanaIndeksi.WordIndex.Searcher.Searcher.status" class="py-name" href="#" onclick="return doclink('link-55', 'status', 'link-48');">status</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'empty'</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">operation</tt> <tt class="py-op">==</tt> <tt class="py-number">4</tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt id="link-56" class="py-name" targets="Function pySanaIndeksi.WordIndex.pysanaindeksi.doSearch()=pySanaIndeksi.WordIndex.pysanaindeksi-module.html#doSearch"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.doSearch" class="py-name" href="#" onclick="return doclink('link-56', 'doSearch', 'link-56');">doSearch</a></tt><tt class="py-op">(</tt><tt class="py-name">tree</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">tree</tt><tt class="py-op">,</tt> <tt id="link-57" class="py-name"><a title="pySanaIndeksi.WordIndex.Searcher.Searcher.status" class="py-name" href="#" onclick="return doclink('link-57', 'status', 'link-48');">status</a></tt> </tt>
+</div><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt>
+<a name="printStarred"></a><div id="printStarred-def"><a name="L121"></a><tt class="py-lineno">121</tt> <a class="py-toggle" href="#" id="printStarred-toggle" onclick="return toggle('printStarred');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.pysanaindeksi-module.html#printStarred">printStarred</a><tt class="py-op">(</tt><tt class="py-param">word</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="printStarred-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="printStarred-expanded"><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">    <tt class="py-docstring">""" Prints the word and stars above and below it """</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'*'</tt> <tt class="py-op">*</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'\n'</tt><tt class="py-op">,</tt> <tt class="py-name">word</tt><tt class="py-op">,</tt> <tt class="py-string">'\n'</tt><tt class="py-op">,</tt> <tt class="py-string">'*'</tt> <tt class="py-op">*</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"> </tt>
+<a name="prompt"></a><div id="prompt-def"><a name="L125"></a><tt class="py-lineno">125</tt> <a class="py-toggle" href="#" id="prompt-toggle" onclick="return toggle('prompt');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.pysanaindeksi-module.html#prompt">prompt</a><tt class="py-op">(</tt><tt class="py-param">request</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-param">limits</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-param">type</tt><tt class="py-op">=</tt><tt class="py-string">'int'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="prompt-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="prompt-expanded"><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">    <tt class="py-docstring">""" Asks the user for input, checks integer input for validity """</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">request</tt><tt class="py-op">:</tt> <tt id="link-58" class="py-name" targets="Function pySanaIndeksi.WordIndex.pysanaindeksi.printStarred()=pySanaIndeksi.WordIndex.pysanaindeksi-module.html#printStarred"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.printStarred" class="py-name" href="#" onclick="return doclink('link-58', 'printStarred', 'link-58');">printStarred</a></tt><tt class="py-op">(</tt><tt class="py-name">request</tt><tt class="py-op">)</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'&gt;&gt;'</tt><tt class="py-op">,</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">    <tt class="py-name">input</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_input</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">    <tt class="py-comment"># must be convertible to int</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-59" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.type
+pySanaIndeksi.Trees.Tree.Tree.type
+pySanaIndeksi.Trees.Trie.Trie.type" class="py-name" href="#" onclick="return doclink('link-59', 'type', 'link-37');">type</a></tt> <tt class="py-op">==</tt> <tt class="py-string">'int'</tt><tt class="py-op">:</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">            <tt class="py-name">input</tt> <tt class="py-op">=</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">input</tt><tt class="py-op">)</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">            <tt class="py-comment"># if limits given value must be in the given range</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">limits</tt><tt class="py-op">:</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">input</tt> <tt class="py-op">&lt;</tt> <tt class="py-name">limits</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-keyword">or</tt> <tt class="py-name">input</tt> <tt class="py-op">&gt;</tt> <tt class="py-name">limits</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                    <tt class="py-keyword">print</tt> <tt class="py-string">'Must give value between %d and %d'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">limits</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">limits</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">                    <tt class="py-name">input</tt> <tt class="py-op">=</tt> <tt id="link-60" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.prompt" class="py-name" href="#" onclick="return doclink('link-60', 'prompt', 'link-29');">prompt</a></tt><tt class="py-op">(</tt><tt class="py-name">request</tt><tt class="py-op">,</tt> <tt class="py-name">limits</tt><tt class="py-op">=</tt><tt class="py-name">limits</tt><tt class="py-op">,</tt> <tt id="link-61" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.type
+pySanaIndeksi.Trees.Tree.Tree.type
+pySanaIndeksi.Trees.Trie.Trie.type" class="py-name" href="#" onclick="return doclink('link-61', 'type', 'link-37');">type</a></tt><tt class="py-op">=</tt><tt id="link-62" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.type
+pySanaIndeksi.Trees.Tree.Tree.type
+pySanaIndeksi.Trees.Trie.Trie.type" class="py-name" href="#" onclick="return doclink('link-62', 'type', 'link-37');">type</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">ValueError</tt><tt class="py-op">:</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'You must give an integer as an option here.'</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">            <tt class="py-name">input</tt> <tt class="py-op">=</tt> <tt id="link-63" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.prompt" class="py-name" href="#" onclick="return doclink('link-63', 'prompt', 'link-29');">prompt</a></tt><tt class="py-op">(</tt><tt class="py-name">request</tt><tt class="py-op">,</tt> <tt class="py-name">limits</tt><tt class="py-op">=</tt><tt class="py-name">limits</tt><tt class="py-op">,</tt> <tt id="link-64" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.type
+pySanaIndeksi.Trees.Tree.Tree.type
+pySanaIndeksi.Trees.Trie.Trie.type" class="py-name" href="#" onclick="return doclink('link-64', 'type', 'link-37');">type</a></tt><tt class="py-op">=</tt><tt id="link-65" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.type
+pySanaIndeksi.Trees.Tree.Tree.type
+pySanaIndeksi.Trees.Trie.Trie.type" class="py-name" href="#" onclick="return doclink('link-65', 'type', 'link-37');">type</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">input</tt> </tt>
+</div><a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">    <tt class="py-name">lukija</tt> <tt class="py-op">=</tt> <tt id="link-66" class="py-name"><a title="pySanaIndeksi.WordIndex.WordReader
+pySanaIndeksi.WordIndex.WordReader.WordReader" class="py-name" href="#" onclick="return doclink('link-66', 'WordReader', 'link-0');">WordReader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">    <tt class="py-name">tree</tt> <tt class="py-op">=</tt> <tt id="link-67" class="py-name"><a title="pySanaIndeksi.Trees.Trie
+pySanaIndeksi.Trees.Trie.Trie" class="py-name" href="#" onclick="return doclink('link-67', 'Trie', 'link-6');">Trie</a></tt><tt class="py-op">(</tt><tt class="py-name">lukija</tt><tt class="py-op">)</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">    <tt class="py-name">materialPath</tt> <tt class="py-op">=</tt> <tt class="py-string">'../../Material/'</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">File</tt><tt class="py-op">.</tt><tt id="link-68" class="py-name"><a title="pySanaIndeksi.Support.DataHandling.getFileNames" class="py-name" href="#" onclick="return doclink('link-68', 'getFileNames', 'link-27');">getFileNames</a></tt><tt class="py-op">(</tt><tt class="py-name">materialPath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt><tt class="py-string">'Empty file path, cannot find material'</tt><tt class="py-op">)</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'*'</tt> <tt class="py-op">*</tt> <tt class="py-number">50</tt><tt class="py-op">,</tt> <tt class="py-string">'\n'</tt><tt class="py-op">,</tt> <tt class="py-string">' '</tt> <tt class="py-op">*</tt> <tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-number">50</tt> <tt class="py-op">-</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-69" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.name" class="py-name" href="#" onclick="return doclink('link-69', 'name', 'link-12');">name</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">/</tt><tt class="py-number">2</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt id="link-70" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.name" class="py-name" href="#" onclick="return doclink('link-70', 'name', 'link-12');">name</a></tt> <tt class="py-op">,</tt> <tt class="py-string">'\n'</tt><tt class="py-op">,</tt> <tt class="py-string">'*'</tt> <tt class="py-op">*</tt> <tt class="py-number">50</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-comment">#    cProfile.run('testRun()', 'testProf')</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-comment">#    p = pstats.Stats('testProf')</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-comment">#    p.sort_stats('cumulative').print_stats(10)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">    <tt id="link-71" class="py-name"><a title="pySanaIndeksi.WordIndex.Searcher.Searcher.status" class="py-name" href="#" onclick="return doclink('link-71', 'status', 'link-48');">status</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'empty'</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">    <tt class="py-keyword">while</tt><tt class="py-op">(</tt><tt class="py-name">input</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">        <tt id="link-72" class="py-name" targets="Function pySanaIndeksi.WordIndex.pysanaindeksi.printOperationOptions()=pySanaIndeksi.WordIndex.pysanaindeksi-module.html#printOperationOptions"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.printOperationOptions" class="py-name" href="#" onclick="return doclink('link-72', 'printOperationOptions', 'link-72');">printOperationOptions</a></tt><tt class="py-op">(</tt><tt id="link-73" class="py-name"><a title="pySanaIndeksi.WordIndex.Searcher.Searcher.status" class="py-name" href="#" onclick="return doclink('link-73', 'status', 'link-48');">status</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-name">input</tt> <tt class="py-op">=</tt> <tt id="link-74" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.prompt" class="py-name" href="#" onclick="return doclink('link-74', 'prompt', 'link-29');">prompt</a></tt><tt class="py-op">(</tt><tt class="py-string">'Choose option (0 to quit):'</tt><tt class="py-op">,</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">                       <tt class="py-name">limits</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-75" class="py-name"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.operationOptions" class="py-name" href="#" onclick="return doclink('link-75', 'operationOptions', 'link-23');">operationOptions</a></tt><tt class="py-op">)</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-name">tree</tt><tt class="py-op">,</tt> <tt id="link-76" class="py-name"><a title="pySanaIndeksi.WordIndex.Searcher.Searcher.status" class="py-name" href="#" onclick="return doclink('link-76', 'status', 'link-48');">status</a></tt> <tt class="py-op">=</tt> <tt id="link-77" class="py-name" targets="Function pySanaIndeksi.WordIndex.pysanaindeksi.operator()=pySanaIndeksi.WordIndex.pysanaindeksi-module.html#operator"><a title="pySanaIndeksi.WordIndex.pysanaindeksi.operator" class="py-name" href="#" onclick="return doclink('link-77', 'operator', 'link-77');">operator</a></tt><tt class="py-op">(</tt><tt class="py-name">input</tt><tt class="py-op">,</tt> <tt class="py-name">tree</tt><tt class="py-op">,</tt> <tt class="py-name">materialPath</tt><tt class="py-op">,</tt> <tt id="link-78" class="py-name"><a title="pySanaIndeksi.WordIndex.Searcher.Searcher.status" class="py-name" href="#" onclick="return doclink('link-78', 'status', 'link-48');">status</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Sat Sep  1 18:30:40 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

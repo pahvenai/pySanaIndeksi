@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pySanaIndeksi.Trees.RedBlackUnitTest</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pySanaIndeksi-module.html">Package&nbsp;pySanaIndeksi</a> ::
+        <a href="pySanaIndeksi.Trees-module.html">Package&nbsp;Trees</a> ::
+        Module&nbsp;RedBlackUnitTest
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pySanaIndeksi.Trees.RedBlackUnitTest-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="pySanaIndeksi.Trees.RedBlackUnitTest-module.html">Module pySanaIndeksi.Trees.RedBlackUnitTest</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-name">__author__</tt><tt class="py-op">=</tt><tt class="py-docstring">"Patrik Ahvenainen"</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-name">__date__</tt> <tt class="py-op">=</tt><tt class="py-string">"$10.8.2012 11:47:25$"</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module pySanaIndeksi.Trees.RedBlack=pySanaIndeksi.Trees.RedBlack-module.html,Class pySanaIndeksi.Trees.RedBlack.RedBlack=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html"><a title="pySanaIndeksi.Trees.RedBlack
+pySanaIndeksi.Trees.RedBlack.RedBlack" class="py-name" href="#" onclick="return doclink('link-0', 'RedBlack', 'link-0');">RedBlack</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack
+pySanaIndeksi.Trees.RedBlack.RedBlack" class="py-name" href="#" onclick="return doclink('link-1', 'RedBlack', 'link-0');">RedBlack</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Module pySanaIndeksi.WordIndex.WordReader=pySanaIndeksi.WordIndex.WordReader-module.html,Class pySanaIndeksi.WordIndex.WordReader.WordReader=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html"><a title="pySanaIndeksi.WordIndex.WordReader
+pySanaIndeksi.WordIndex.WordReader.WordReader" class="py-name" href="#" onclick="return doclink('link-2', 'WordReader', 'link-2');">WordReader</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name"><a title="pySanaIndeksi.WordIndex.WordReader
+pySanaIndeksi.WordIndex.WordReader.WordReader" class="py-name" href="#" onclick="return doclink('link-3', 'WordReader', 'link-2');">WordReader</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable pySanaIndeksi.Trees.RedBlackUnitTest.WordsToAdd=pySanaIndeksi.Trees.RedBlackUnitTest-module.html#WordsToAdd,Variable pySanaIndeksi.Trees.TrieUnitTest.WordsToAdd=pySanaIndeksi.Trees.TrieUnitTest-module.html#WordsToAdd"><a title="pySanaIndeksi.Trees.RedBlackUnitTest.WordsToAdd
+pySanaIndeksi.Trees.TrieUnitTest.WordsToAdd" class="py-name" href="#" onclick="return doclink('link-4', 'WordsToAdd', 'link-4');">WordsToAdd</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'ww3fwG'</tt><tt class="py-op">,</tt> <tt class="py-number">99</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'Sana'</tt><tt class="py-op">,</tt> <tt class="py-number">3</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'ed'</tt><tt class="py-op">,</tt> <tt class="py-number">2222</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">              <tt class="py-op">(</tt><tt class="py-string">'Tampere'</tt><tt class="py-op">,</tt> <tt class="py-number">1003</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'Rekka-auto'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">"Don't"</tt><tt class="py-op">,</tt> <tt class="py-number">22</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable pySanaIndeksi.Trees.RedBlackUnitTest.MultiWordAdd=pySanaIndeksi.Trees.RedBlackUnitTest-module.html#MultiWordAdd,Variable pySanaIndeksi.Trees.TrieUnitTest.MultiWordAdd=pySanaIndeksi.Trees.TrieUnitTest-module.html#MultiWordAdd"><a title="pySanaIndeksi.Trees.RedBlackUnitTest.MultiWordAdd
+pySanaIndeksi.Trees.TrieUnitTest.MultiWordAdd" class="py-name" href="#" onclick="return doclink('link-5', 'MultiWordAdd', 'link-5');">MultiWordAdd</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'c'</tt><tt class="py-op">,</tt> <tt class="py-number">20</tt><tt class="py-op">,</tt> <tt class="py-number">3</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'a'</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'c'</tt><tt class="py-op">,</tt> <tt class="py-number">23</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'b'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'a'</tt><tt class="py-op">,</tt> <tt class="py-number">3</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">                <tt class="py-op">(</tt><tt class="py-string">'a'</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt> <tt class="py-op">,</tt><tt class="py-number">2</tt> <tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'b'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'a'</tt><tt class="py-op">,</tt> <tt class="py-number">3</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'ade'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">,</tt> <tt class="py-number">3</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable pySanaIndeksi.Trees.RedBlackUnitTest.MultiWordFindA=pySanaIndeksi.Trees.RedBlackUnitTest-module.html#MultiWordFindA,Variable pySanaIndeksi.Trees.TrieUnitTest.MultiWordFindA=pySanaIndeksi.Trees.TrieUnitTest-module.html#MultiWordFindA"><a title="pySanaIndeksi.Trees.RedBlackUnitTest.MultiWordFindA
+pySanaIndeksi.Trees.TrieUnitTest.MultiWordFindA" class="py-name" href="#" onclick="return doclink('link-6', 'MultiWordFindA', 'link-6');">MultiWordFindA</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">3</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">3</tt><tt class="py-op">,</tt><tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable pySanaIndeksi.Trees.RedBlackUnitTest.MultiWordFindB=pySanaIndeksi.Trees.RedBlackUnitTest-module.html#MultiWordFindB,Variable pySanaIndeksi.Trees.TrieUnitTest.MultiWordFindB=pySanaIndeksi.Trees.TrieUnitTest-module.html#MultiWordFindB"><a title="pySanaIndeksi.Trees.RedBlackUnitTest.MultiWordFindB
+pySanaIndeksi.Trees.TrieUnitTest.MultiWordFindB" class="py-name" href="#" onclick="return doclink('link-7', 'MultiWordFindB', 'link-7');">MultiWordFindB</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">,</tt><tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
+<a name="PyRedBlackTestCases"></a><div id="PyRedBlackTestCases-def"><a name="L18"></a><tt class="py-lineno">18</tt> <a class="py-toggle" href="#" id="PyRedBlackTestCases-toggle" onclick="return toggle('PyRedBlackTestCases');">-</a><tt class="py-line"><tt class="py-keyword">class</tt>  <a class="py-def-name" href="pySanaIndeksi.Trees.RedBlackUnitTest.PyRedBlackTestCases-class.html">PyRedBlackTestCases</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PyRedBlackTestCases-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="PyRedBlackTestCases-expanded"><a name="PyRedBlackTestCases.setUp"></a><div id="PyRedBlackTestCases.setUp-def"><a name="L19"></a><tt class="py-lineno">19</tt> <a class="py-toggle" href="#" id="PyRedBlackTestCases.setUp-toggle" onclick="return toggle('PyRedBlackTestCases.setUp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.Trees.RedBlackUnitTest.PyRedBlackTestCases-class.html#setUp">setUp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PyRedBlackTestCases.setUp-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PyRedBlackTestCases.setUp-expanded"><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt> <tt class="py-op">=</tt> <tt id="link-8" class="py-name"><a title="pySanaIndeksi.WordIndex.WordReader
+pySanaIndeksi.WordIndex.WordReader.WordReader" class="py-name" href="#" onclick="return doclink('link-8', 'WordReader', 'link-2');">WordReader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-comment"># test addFileNames</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt> <tt class="py-op">=</tt> <tt id="link-9" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack
+pySanaIndeksi.Trees.RedBlack.RedBlack" class="py-name" href="#" onclick="return doclink('link-9', 'RedBlack', 'link-0');">RedBlack</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="PyRedBlackTestCases.tearDown"></a><div id="PyRedBlackTestCases.tearDown-def"><a name="L24"></a><tt class="py-lineno">24</tt> <a class="py-toggle" href="#" id="PyRedBlackTestCases.tearDown-toggle" onclick="return toggle('PyRedBlackTestCases.tearDown');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.Trees.RedBlackUnitTest.PyRedBlackTestCases-class.html#tearDown">tearDown</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PyRedBlackTestCases.tearDown-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PyRedBlackTestCases.tearDown-expanded"><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method pySanaIndeksi.Support.LinkedList.LinkedList.clear()=pySanaIndeksi.Support.LinkedList.LinkedList-class.html#clear,Method pySanaIndeksi.Trees.RedBlack.RedBlack.clear()=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#clear,Method pySanaIndeksi.Trees.Tree.Tree.clear()=pySanaIndeksi.Trees.Tree.Tree-class.html#clear,Method pySanaIndeksi.Trees.Trie.Trie.clear()=pySanaIndeksi.Trees.Trie.Trie-class.html#clear,Method pySanaIndeksi.WordIndex.WordReader.WordReader.clear()=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#clear"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.clear
+pySanaIndeksi.Trees.RedBlack.RedBlack.clear
+pySanaIndeksi.Trees.Tree.Tree.clear
+pySanaIndeksi.Trees.Trie.Trie.clear
+pySanaIndeksi.WordIndex.WordReader.WordReader.clear" class="py-name" href="#" onclick="return doclink('link-10', 'clear', 'link-10');">clear</a></tt><tt class="py-op">(</tt><tt class="py-string">'all'</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.clear
+pySanaIndeksi.Trees.RedBlack.RedBlack.clear
+pySanaIndeksi.Trees.Tree.Tree.clear
+pySanaIndeksi.Trees.Trie.Trie.clear
+pySanaIndeksi.WordIndex.WordReader.WordReader.clear" class="py-name" href="#" onclick="return doclink('link-11', 'clear', 'link-10');">clear</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="PyRedBlackTestCases.testSimpleAddFind"></a><div id="PyRedBlackTestCases.testSimpleAddFind-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="PyRedBlackTestCases.testSimpleAddFind-toggle" onclick="return toggle('PyRedBlackTestCases.testSimpleAddFind');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.Trees.RedBlackUnitTest.PyRedBlackTestCases-class.html#testSimpleAddFind">testSimpleAddFind</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> <tt class="py-comment"># Red Black would fail this test now</tt> </tt>
+</div><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-docstring">""" Add some objects to Red Black tree and see if you can find them """</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-name">checklist</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">object</tt> <tt class="py-keyword">in</tt> <tt id="link-12" class="py-name"><a title="pySanaIndeksi.Trees.RedBlackUnitTest.WordsToAdd
+pySanaIndeksi.Trees.TrieUnitTest.WordsToAdd" class="py-name" href="#" onclick="return doclink('link-12', 'WordsToAdd', 'link-4');">WordsToAdd</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method pySanaIndeksi.Trees.RedBlack.RedBlack.add()=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#add,Method pySanaIndeksi.Trees.Tree.Tree.add()=pySanaIndeksi.Trees.Tree.Tree-class.html#add,Method pySanaIndeksi.Trees.Trie.Trie.add()=pySanaIndeksi.Trees.Trie.Trie-class.html#add"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.add
+pySanaIndeksi.Trees.Tree.Tree.add
+pySanaIndeksi.Trees.Trie.Trie.add" class="py-name" href="#" onclick="return doclink('link-13', 'add', 'link-13');">add</a></tt><tt class="py-op">(</tt><tt class="py-name">object</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">object</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-comment"># Add words to Trie</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">word</tt> <tt class="py-keyword">in</tt> <tt id="link-14" class="py-name"><a title="pySanaIndeksi.Trees.RedBlackUnitTest.WordsToAdd
+pySanaIndeksi.Trees.TrieUnitTest.WordsToAdd" class="py-name" href="#" onclick="return doclink('link-14', 'WordsToAdd', 'link-4');">WordsToAdd</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">            <tt class="py-comment"># Get the position of each word</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">            <tt class="py-name">pos</tt><tt class="py-op">,</tt> <tt class="py-name">_</tt><tt class="py-op">,</tt>  <tt class="py-name">_</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method pySanaIndeksi.Trees.RedBlack.RedBlack.find()=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#find,Method pySanaIndeksi.Trees.Tree.Tree.find()=pySanaIndeksi.Trees.Tree.Tree-class.html#find,Method pySanaIndeksi.Trees.Trie.Trie.find()=pySanaIndeksi.Trees.Trie.Trie-class.html#find"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.find
+pySanaIndeksi.Trees.Tree.Tree.find
+pySanaIndeksi.Trees.Trie.Trie.find" class="py-name" href="#" onclick="return doclink('link-15', 'find', 'link-15');">find</a></tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">            <tt class="py-comment"># We add the word and the found positions to match list formatting</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">            <tt class="py-comment"># to the input</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">            <tt class="py-name">checklist</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">pos</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">pos</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">checklist</tt> <tt class="py-op">,</tt> <tt id="link-16" class="py-name"><a title="pySanaIndeksi.Trees.RedBlackUnitTest.WordsToAdd
+pySanaIndeksi.Trees.TrieUnitTest.WordsToAdd" class="py-name" href="#" onclick="return doclink('link-16', 'WordsToAdd', 'link-4');">WordsToAdd</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">                         <tt class="py-string">'Did not find all words that were supposed to add'</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.clear
+pySanaIndeksi.Trees.RedBlack.RedBlack.clear
+pySanaIndeksi.Trees.Tree.Tree.clear
+pySanaIndeksi.Trees.Trie.Trie.clear
+pySanaIndeksi.WordIndex.WordReader.WordReader.clear" class="py-name" href="#" onclick="return doclink('link-17', 'clear', 'link-10');">clear</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method pySanaIndeksi.WordIndex.WordReader.WordReader.readWords()=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#readWords"><a title="pySanaIndeksi.WordIndex.WordReader.WordReader.readWords" class="py-name" href="#" onclick="return doclink('link-18', 'readWords', 'link-18');">readWords</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method pySanaIndeksi.Trees.RedBlack.RedBlack.addFromReader()=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#addFromReader,Method pySanaIndeksi.Trees.Tree.Tree.addFromReader()=pySanaIndeksi.Trees.Tree.Tree-class.html#addFromReader,Method pySanaIndeksi.Trees.Trie.Trie.addFromReader()=pySanaIndeksi.Trees.Trie.Trie-class.html#addFromReader"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.addFromReader
+pySanaIndeksi.Trees.Tree.Tree.addFromReader
+pySanaIndeksi.Trees.Trie.Trie.addFromReader" class="py-name" href="#" onclick="return doclink('link-19', 'addFromReader', 'link-19');">addFromReader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"> </tt>
+<a name="PyRedBlackTestCases.testMultiWordFind"></a><div id="PyRedBlackTestCases.testMultiWordFind-def"><a name="L50"></a><tt class="py-lineno">50</tt> <a class="py-toggle" href="#" id="PyRedBlackTestCases.testMultiWordFind-toggle" onclick="return toggle('PyRedBlackTestCases.testMultiWordFind');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.Trees.RedBlackUnitTest.PyRedBlackTestCases-class.html#testMultiWordFind">testMultiWordFind</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PyRedBlackTestCases.testMultiWordFind-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PyRedBlackTestCases.testMultiWordFind-expanded"><a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-docstring">""" Tests that multiple instances of a word are found correctly """</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">object</tt> <tt class="py-keyword">in</tt> <tt id="link-20" class="py-name"><a title="pySanaIndeksi.Trees.RedBlackUnitTest.MultiWordAdd
+pySanaIndeksi.Trees.TrieUnitTest.MultiWordAdd" class="py-name" href="#" onclick="return doclink('link-20', 'MultiWordAdd', 'link-5');">MultiWordAdd</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.add
+pySanaIndeksi.Trees.Tree.Tree.add
+pySanaIndeksi.Trees.Trie.Trie.add" class="py-name" href="#" onclick="return doclink('link-21', 'add', 'link-13');">add</a></tt><tt class="py-op">(</tt><tt class="py-name">object</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">object</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-comment"># Add words to Trie</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">        <tt class="py-name">pos</tt><tt class="py-op">,</tt> <tt class="py-name">_</tt><tt class="py-op">,</tt> <tt class="py-name">_</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.find
+pySanaIndeksi.Trees.Tree.Tree.find
+pySanaIndeksi.Trees.Trie.Trie.find" class="py-name" href="#" onclick="return doclink('link-22', 'find', 'link-15');">find</a></tt><tt class="py-op">(</tt><tt class="py-string">'a'</tt><tt class="py-op">)</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">pos</tt><tt class="py-op">,</tt> <tt id="link-23" class="py-name"><a title="pySanaIndeksi.Trees.RedBlackUnitTest.MultiWordFindA
+pySanaIndeksi.Trees.TrieUnitTest.MultiWordFindA" class="py-name" href="#" onclick="return doclink('link-23', 'MultiWordFindA', 'link-6');">MultiWordFindA</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">                         <tt class="py-string">'RB: Error finding multiple instances of a word'</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">        <tt class="py-name">pos</tt><tt class="py-op">,</tt> <tt class="py-name">_</tt><tt class="py-op">,</tt> <tt class="py-name">_</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.find
+pySanaIndeksi.Trees.Tree.Tree.find
+pySanaIndeksi.Trees.Trie.Trie.find" class="py-name" href="#" onclick="return doclink('link-24', 'find', 'link-15');">find</a></tt><tt class="py-op">(</tt><tt class="py-string">'b'</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">pos</tt><tt class="py-op">,</tt> <tt id="link-25" class="py-name"><a title="pySanaIndeksi.Trees.RedBlackUnitTest.MultiWordFindB
+pySanaIndeksi.Trees.TrieUnitTest.MultiWordFindB" class="py-name" href="#" onclick="return doclink('link-25', 'MultiWordFindB', 'link-7');">MultiWordFindB</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">                         <tt class="py-string">'RB: Error finding multiple instances of a word'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"> </tt>
+<a name="PyRedBlackTestCases.testWordCounter"></a><div id="PyRedBlackTestCases.testWordCounter-def"><a name="L62"></a><tt class="py-lineno">62</tt> <a class="py-toggle" href="#" id="PyRedBlackTestCases.testWordCounter-toggle" onclick="return toggle('PyRedBlackTestCases.testWordCounter');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.Trees.RedBlackUnitTest.PyRedBlackTestCases-class.html#testWordCounter">testWordCounter</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PyRedBlackTestCases.testWordCounter-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PyRedBlackTestCases.testWordCounter-expanded"><a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-docstring">""" Tests that both the reader and the tree can count the words """</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.clear
+pySanaIndeksi.Trees.RedBlack.RedBlack.clear
+pySanaIndeksi.Trees.Tree.Tree.clear
+pySanaIndeksi.Trees.Trie.Trie.clear
+pySanaIndeksi.WordIndex.WordReader.WordReader.clear" class="py-name" href="#" onclick="return doclink('link-26', 'clear', 'link-10');">clear</a></tt><tt class="py-op">(</tt><tt class="py-string">'all'</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Method pySanaIndeksi.WordIndex.WordReader.WordReader.addFileNames()=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#addFileNames"><a title="pySanaIndeksi.WordIndex.WordReader.WordReader.addFileNames" class="py-name" href="#" onclick="return doclink('link-27', 'addFileNames', 'link-27');">addFileNames</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">"../../Material/50words_in_UTF-8.txt"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt class="py-name">wordcount</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">,</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">                         <tt class="py-string">'RB: WordReader clearing failed'</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="pySanaIndeksi.WordIndex.WordReader.WordReader.readWords" class="py-name" href="#" onclick="return doclink('link-28', 'readWords', 'link-18');">readWords</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt class="py-name">wordcount</tt><tt class="py-op">,</tt> <tt class="py-number">50</tt><tt class="py-op">,</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">                         <tt class="py-string">'RB: WordReader failed in reading words'</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.clear
+pySanaIndeksi.Trees.RedBlack.RedBlack.clear
+pySanaIndeksi.Trees.Tree.Tree.clear
+pySanaIndeksi.Trees.Trie.Trie.clear
+pySanaIndeksi.WordIndex.WordReader.WordReader.clear" class="py-name" href="#" onclick="return doclink('link-29', 'clear', 'link-10');">clear</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.addFromReader
+pySanaIndeksi.Trees.Tree.Tree.addFromReader
+pySanaIndeksi.Trees.Trie.Trie.addFromReader" class="py-name" href="#" onclick="return doclink('link-30', 'addFromReader', 'link-19');">addFromReader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">redblack</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Variable pySanaIndeksi.Trees.RedBlack.RedBlack.wordCount=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#wordCount,Variable pySanaIndeksi.Trees.Tree.Tree.wordCount=pySanaIndeksi.Trees.Tree.Tree-class.html#wordCount,Variable pySanaIndeksi.Trees.Trie.Trie.wordCount=pySanaIndeksi.Trees.Trie.Trie-class.html#wordCount"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.wordCount
+pySanaIndeksi.Trees.Tree.Tree.wordCount
+pySanaIndeksi.Trees.Trie.Trie.wordCount" class="py-name" href="#" onclick="return doclink('link-31', 'wordCount', 'link-31');">wordCount</a></tt><tt class="py-op">,</tt> <tt class="py-number">50</tt><tt class="py-op">,</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">                         <tt class="py-string">'RB: word counting failed'</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line"> </tt>
+<a name="suite"></a><div id="suite-def"><a name="L76"></a><tt class="py-lineno">76</tt> <a class="py-toggle" href="#" id="suite-toggle" onclick="return toggle('suite');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.Trees.RedBlackUnitTest-module.html#suite">suite</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="suite-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="suite-expanded"><a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">makeSuite</tt><tt class="py-op">(</tt><tt id="link-32" class="py-name" targets="Class pySanaIndeksi.Trees.RedBlackUnitTest.PyRedBlackTestCases=pySanaIndeksi.Trees.RedBlackUnitTest.PyRedBlackTestCases-class.html"><a title="pySanaIndeksi.Trees.RedBlackUnitTest.PyRedBlackTestCases" class="py-name" href="#" onclick="return doclink('link-32', 'PyRedBlackTestCases', 'link-32');">PyRedBlackTestCases</a></tt><tt class="py-op">,</tt><tt class="py-string">'test'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line"> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line"> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line"> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Running unit tests for RedBlack module"</tt> </tt>
+<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line">    <tt class="py-name">runner</tt> <tt class="py-op">=</tt> <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">TextTestRunner</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line">    <tt class="py-name">runner</tt><tt class="py-op">.</tt><tt class="py-name">run</tt><tt class="py-op">(</tt><tt id="link-33" class="py-name" targets="Function pySanaIndeksi.Support.DataHandlingUnitTest.suite()=pySanaIndeksi.Support.DataHandlingUnitTest-module.html#suite,Function pySanaIndeksi.Support.LinkedListUnitTest.suite()=pySanaIndeksi.Support.LinkedListUnitTest-module.html#suite,Function pySanaIndeksi.Trees.PartialTreeUnitTest.suite()=pySanaIndeksi.Trees.PartialTreeUnitTest-module.html#suite,Function pySanaIndeksi.Trees.RedBlackUnitTest.suite()=pySanaIndeksi.Trees.RedBlackUnitTest-module.html#suite,Function pySanaIndeksi.Trees.TreeUnitTest.suite()=pySanaIndeksi.Trees.TreeUnitTest-module.html#suite,Function pySanaIndeksi.Trees.TrieUnitTest.suite()=pySanaIndeksi.Trees.TrieUnitTest-module.html#suite,Function pySanaIndeksi.WordIndex.SearcherUnitTest.suite()=pySanaIndeksi.WordIndex.SearcherUnitTest-module.html#suite,Function pySanaIndeksi.WordIndex.WordReaderUnitTest.suite()=pySanaIndeksi.WordIndex.WordReaderUnitTest-module.html#suite"><a title="pySanaIndeksi.Support.DataHandlingUnitTest.suite
+pySanaIndeksi.Support.LinkedListUnitTest.suite
+pySanaIndeksi.Trees.PartialTreeUnitTest.suite
+pySanaIndeksi.Trees.RedBlackUnitTest.suite
+pySanaIndeksi.Trees.TreeUnitTest.suite
+pySanaIndeksi.Trees.TrieUnitTest.suite
+pySanaIndeksi.WordIndex.SearcherUnitTest.suite
+pySanaIndeksi.WordIndex.WordReaderUnitTest.suite" class="py-name" href="#" onclick="return doclink('link-33', 'suite', 'link-33');">suite</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Sat Sep  1 18:30:40 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

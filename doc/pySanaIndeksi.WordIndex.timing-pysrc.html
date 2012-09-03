@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pySanaIndeksi.WordIndex.timing</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pySanaIndeksi-module.html">Package&nbsp;pySanaIndeksi</a> ::
+        <a href="pySanaIndeksi.WordIndex-module.html">Package&nbsp;WordIndex</a> ::
+        Module&nbsp;timing
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pySanaIndeksi.WordIndex.timing-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="pySanaIndeksi.WordIndex.timing-module.html">Module pySanaIndeksi.WordIndex.timing</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">random</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-name">__author__</tt><tt class="py-op">=</tt><tt class="py-string">"Patrik Ahvenainen"</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-name">__date__</tt> <tt class="py-op">=</tt><tt class="py-string">"$14.8.2012 12:02:36$"</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module pySanaIndeksi.WordIndex.WordReader=pySanaIndeksi.WordIndex.WordReader-module.html,Class pySanaIndeksi.WordIndex.WordReader.WordReader=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html"><a title="pySanaIndeksi.WordIndex.WordReader
+pySanaIndeksi.WordIndex.WordReader.WordReader" class="py-name" href="#" onclick="return doclink('link-0', 'WordReader', 'link-0');">WordReader</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="pySanaIndeksi.WordIndex.WordReader
+pySanaIndeksi.WordIndex.WordReader.WordReader" class="py-name" href="#" onclick="return doclink('link-1', 'WordReader', 'link-0');">WordReader</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Module pySanaIndeksi.Trees.RedBlack=pySanaIndeksi.Trees.RedBlack-module.html,Class pySanaIndeksi.Trees.RedBlack.RedBlack=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html"><a title="pySanaIndeksi.Trees.RedBlack
+pySanaIndeksi.Trees.RedBlack.RedBlack" class="py-name" href="#" onclick="return doclink('link-2', 'RedBlack', 'link-2');">RedBlack</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack
+pySanaIndeksi.Trees.RedBlack.RedBlack" class="py-name" href="#" onclick="return doclink('link-3', 'RedBlack', 'link-2');">RedBlack</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-4" class="py-name" targets="Module pySanaIndeksi.Trees.Trie=pySanaIndeksi.Trees.Trie-module.html,Class pySanaIndeksi.Trees.Trie.Trie=pySanaIndeksi.Trees.Trie.Trie-class.html"><a title="pySanaIndeksi.Trees.Trie
+pySanaIndeksi.Trees.Trie.Trie" class="py-name" href="#" onclick="return doclink('link-4', 'Trie', 'link-4');">Trie</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name"><a title="pySanaIndeksi.Trees.Trie
+pySanaIndeksi.Trees.Trie.Trie" class="py-name" href="#" onclick="return doclink('link-5', 'Trie', 'link-4');">Trie</a></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-6" class="py-name" targets="Module pySanaIndeksi.Support.DataHandling=pySanaIndeksi.Support.DataHandling-module.html"><a title="pySanaIndeksi.Support.DataHandling" class="py-name" href="#" onclick="return doclink('link-6', 'DataHandling', 'link-6');">DataHandling</a></tt> <tt class="py-keyword">import</tt> <tt id="link-7" class="py-name" targets="Function pySanaIndeksi.Support.DataHandling.openFile()=pySanaIndeksi.Support.DataHandling-module.html#openFile"><a title="pySanaIndeksi.Support.DataHandling.openFile" class="py-name" href="#" onclick="return doclink('link-7', 'openFile', 'link-7');">openFile</a></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">pickle</tt> </tt>
+<a name="timeThis"></a><div id="timeThis-def"><a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt> <a class="py-toggle" href="#" id="timeThis-toggle" onclick="return toggle('timeThis');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.timing-module.html#timeThis">timeThis</a><tt class="py-op">(</tt><tt class="py-param">func</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="timeThis-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="timeThis-expanded"><a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">    <tt class="py-keyword">def</tt> <tt class="py-def-name">wrapper</tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-param">arg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">        <tt class="py-name">t1</tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">        <tt class="py-name">res</tt> <tt class="py-op">=</tt> <tt class="py-name">func</tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-name">arg</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">        <tt class="py-name">t2</tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">        <tt class="py-name">runtime</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">t2</tt><tt class="py-op">-</tt><tt class="py-name">t1</tt><tt class="py-op">)</tt><tt class="py-op">*</tt><tt class="py-number">1000.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">runtime</tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">wrapper</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="average"></a><div id="average-def"><a name="L24"></a><tt class="py-lineno"> 24</tt> <a class="py-toggle" href="#" id="average-toggle" onclick="return toggle('average');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.timing-module.html#average">average</a><tt class="py-op">(</tt><tt class="py-param">values</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="average-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="average-expanded"><a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">sum</tt><tt class="py-op">(</tt><tt id="link-8" class="py-name" targets="Method pySanaIndeksi.Support.LinkedList.LinkedList.values()=pySanaIndeksi.Support.LinkedList.LinkedList-class.html#values"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.values" class="py-name" href="#" onclick="return doclink('link-8', 'values', 'link-8');">values</a></tt><tt class="py-op">)</tt> <tt class="py-op">/</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.values" class="py-name" href="#" onclick="return doclink('link-9', 'values', 'link-8');">values</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="repeat"></a><div id="repeat-def"><a name="L27"></a><tt class="py-lineno"> 27</tt> <a class="py-toggle" href="#" id="repeat-toggle" onclick="return toggle('repeat');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.timing-module.html#repeat">repeat</a><tt class="py-op">(</tt><tt class="py-param">repeats</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="repeat-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="repeat-expanded"><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt class="py-keyword">def</tt> <tt class="py-def-name">wrap</tt><tt class="py-op">(</tt><tt class="py-param">f</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-keyword">def</tt> <tt class="py-def-name">wrapped_f</tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">            <tt class="py-name">runtimes</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-name">repeats</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">                <tt class="py-name">runtimes</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">f</tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">runtimes</tt> </tt>
+</div><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">wrapped_f</tt> </tt>
+</div><a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">wrap</tt> </tt>
+</div><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="addWordsToEmptyList"></a><div id="addWordsToEmptyList-def"><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt> <a class="py-toggle" href="#" id="addWordsToEmptyList-toggle" onclick="return toggle('addWordsToEmptyList');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.timing-module.html#addWordsToEmptyList">addWordsToEmptyList</a><tt class="py-op">(</tt><tt class="py-param">tree</tt><tt class="py-op">,</tt> <tt class="py-param">words</tt><tt class="py-op">,</tt> <tt class="py-param">repeats</tt><tt class="py-op">,</tt> <tt class="py-param">string</tt><tt class="py-op">,</tt> <tt class="py-param">printout</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="addWordsToEmptyList-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="addWordsToEmptyList-expanded"><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">timeThis</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt class="py-keyword">def</tt> <tt class="py-def-name">boo</tt><tt class="py-op">(</tt><tt class="py-param">tree</tt><tt class="py-op">,</tt> <tt class="py-param">words</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method pySanaIndeksi.Trees.RedBlack.RedBlack.addFromReader()=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#addFromReader,Method pySanaIndeksi.Trees.Tree.Tree.addFromReader()=pySanaIndeksi.Trees.Tree.Tree-class.html#addFromReader,Method pySanaIndeksi.Trees.Trie.Trie.addFromReader()=pySanaIndeksi.Trees.Trie.Trie-class.html#addFromReader"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.addFromReader
+pySanaIndeksi.Trees.Tree.Tree.addFromReader
+pySanaIndeksi.Trees.Trie.Trie.addFromReader" class="py-name" href="#" onclick="return doclink('link-10', 'addFromReader', 'link-10');">addFromReader</a></tt><tt class="py-op">(</tt><tt class="py-name">words</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt class="py-name">runtimes</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-name">repeats</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method pySanaIndeksi.Support.LinkedList.LinkedList.clear()=pySanaIndeksi.Support.LinkedList.LinkedList-class.html#clear,Method pySanaIndeksi.Trees.RedBlack.RedBlack.clear()=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#clear,Method pySanaIndeksi.Trees.Tree.Tree.clear()=pySanaIndeksi.Trees.Tree.Tree-class.html#clear,Method pySanaIndeksi.Trees.Trie.Trie.clear()=pySanaIndeksi.Trees.Trie.Trie-class.html#clear,Method pySanaIndeksi.WordIndex.WordReader.WordReader.clear()=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#clear"><a title="pySanaIndeksi.Support.LinkedList.LinkedList.clear
+pySanaIndeksi.Trees.RedBlack.RedBlack.clear
+pySanaIndeksi.Trees.Tree.Tree.clear
+pySanaIndeksi.Trees.Trie.Trie.clear
+pySanaIndeksi.WordIndex.WordReader.WordReader.clear" class="py-name" href="#" onclick="return doclink('link-11', 'clear', 'link-11');">clear</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">        <tt class="py-name">runtimes</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt> <tt class="py-name">boo</tt><tt class="py-op">(</tt><tt class="py-name">tree</tt><tt class="py-op">,</tt> <tt class="py-name">words</tt><tt class="py-op">)</tt> <tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">sleep</tt><tt class="py-op">(</tt><tt class="py-number">0.01</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">printout</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">string</tt> <tt class="py-op">+</tt> <tt class="py-string">'%8.3f ms %8.3f ms'</tt> <tt class="py-op">%</tt>  <tt class="py-op">(</tt><tt id="link-12" class="py-name" targets="Function pySanaIndeksi.WordIndex.timing.average()=pySanaIndeksi.WordIndex.timing-module.html#average"><a title="pySanaIndeksi.WordIndex.timing.average" class="py-name" href="#" onclick="return doclink('link-12', 'average', 'link-12');">average</a></tt><tt class="py-op">(</tt><tt class="py-name">runtimes</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt id="link-13" class="py-name"><a title="pySanaIndeksi.WordIndex.timing.average" class="py-name" href="#" onclick="return doclink('link-13', 'average', 'link-12');">average</a></tt><tt class="py-op">(</tt><tt class="py-name">runtimes</tt><tt class="py-op">)</tt><tt class="py-op">/</tt><tt class="py-name">words</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-14" class="py-name"><a title="pySanaIndeksi.WordIndex.timing.average" class="py-name" href="#" onclick="return doclink('link-14', 'average', 'link-12');">average</a></tt><tt class="py-op">(</tt><tt class="py-name">runtimes</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="findWords"></a><div id="findWords-def"><a name="L54"></a><tt class="py-lineno"> 54</tt> <a class="py-toggle" href="#" id="findWords-toggle" onclick="return toggle('findWords');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pySanaIndeksi.WordIndex.timing-module.html#findWords">findWords</a><tt class="py-op">(</tt><tt class="py-param">tree</tt><tt class="py-op">,</tt> <tt class="py-param">words</tt><tt class="py-op">,</tt> <tt class="py-param">repeats</tt><tt class="py-op">,</tt> <tt class="py-param">string</tt><tt class="py-op">=</tt><tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-param">printout</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="findWords-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="findWords-expanded"><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">timeThis</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">    <tt class="py-keyword">def</tt> <tt class="py-def-name">boo</tt><tt class="py-op">(</tt><tt class="py-param">tree</tt><tt class="py-op">,</tt> <tt class="py-param">word</tt><tt class="py-op">,</tt> <tt class="py-param">repeatcount</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-name">repeatcount</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">            <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method pySanaIndeksi.Trees.RedBlack.RedBlack.find()=pySanaIndeksi.Trees.RedBlack.RedBlack-class.html#find,Method pySanaIndeksi.Trees.Tree.Tree.find()=pySanaIndeksi.Trees.Tree.Tree-class.html#find,Method pySanaIndeksi.Trees.Trie.Trie.find()=pySanaIndeksi.Trees.Trie.Trie-class.html#find"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.find
+pySanaIndeksi.Trees.Tree.Tree.find
+pySanaIndeksi.Trees.Trie.Trie.find" class="py-name" href="#" onclick="return doclink('link-15', 'find', 'link-15');">find</a></tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">,</tt> <tt class="py-name">sanitized</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">output</tt><tt class="py-op">=</tt><tt class="py-string">'boolean'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-name">runtimes</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-name">repeats</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-name">word</tt> <tt class="py-op">=</tt> <tt class="py-name">random</tt><tt class="py-op">.</tt><tt class="py-name">choice</tt><tt class="py-op">(</tt><tt class="py-name">words</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">word</tt> <tt class="py-op">=</tt> <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method pySanaIndeksi.WordIndex.WordReader.WordReader.sanitize()=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#sanitize"><a title="pySanaIndeksi.WordIndex.WordReader.WordReader.sanitize" class="py-name" href="#" onclick="return doclink('link-16', 'sanitize', 'link-16');">sanitize</a></tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">runtimes</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt> <tt class="py-name">boo</tt><tt class="py-op">(</tt><tt class="py-name">tree</tt><tt class="py-op">,</tt> <tt class="py-name">word</tt><tt class="py-op">,</tt> <tt class="py-number">1000</tt><tt class="py-op">)</tt> <tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">sleep</tt><tt class="py-op">(</tt><tt class="py-number">0.01</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">printout</tt><tt class="py-op">:</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-17" class="py-name"><a title="pySanaIndeksi.WordIndex.timing.average" class="py-name" href="#" onclick="return doclink('link-17', 'average', 'link-12');">average</a></tt><tt class="py-op">(</tt><tt class="py-name">runtimes</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">string</tt> <tt class="py-op">+</tt> <tt class="py-string">'%20.3f ms'</tt> <tt class="py-op">%</tt>  <tt class="py-op">(</tt><tt class="py-name">sum</tt><tt class="py-op">(</tt><tt class="py-name">runtimes</tt><tt class="py-op">)</tt> <tt class="py-op">/</tt> <tt class="py-name">repeats</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Hello World"</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt class="py-name">trieAddFile</tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name"><a title="pySanaIndeksi.Support.DataHandling.openFile" class="py-name" href="#" onclick="return doclink('link-18', 'openFile', 'link-7');">openFile</a></tt><tt class="py-op">(</tt><tt class="py-string">'trieAddToEmpty'</tt><tt class="py-op">,</tt> <tt class="py-string">'w'</tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">    <tt class="py-name">punamustaAddFile</tt> <tt class="py-op">=</tt> <tt id="link-19" class="py-name"><a title="pySanaIndeksi.Support.DataHandling.openFile" class="py-name" href="#" onclick="return doclink('link-19', 'openFile', 'link-7');">openFile</a></tt><tt class="py-op">(</tt><tt class="py-string">'punamustaAddToEmpty'</tt><tt class="py-op">,</tt> <tt class="py-string">'w'</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">    <tt class="py-name">trieFindLengthFile</tt> <tt class="py-op">=</tt> <tt id="link-20" class="py-name"><a title="pySanaIndeksi.Support.DataHandling.openFile" class="py-name" href="#" onclick="return doclink('link-20', 'openFile', 'link-7');">openFile</a></tt><tt class="py-op">(</tt><tt class="py-string">'trieFindWordLength'</tt><tt class="py-op">,</tt> <tt class="py-string">'w'</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">    <tt class="py-name">punamustaFindLengthFile</tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="pySanaIndeksi.Support.DataHandling.openFile" class="py-name" href="#" onclick="return doclink('link-21', 'openFile', 'link-7');">openFile</a></tt><tt class="py-op">(</tt><tt class="py-string">'punamustaFindWordLength'</tt><tt class="py-op">,</tt> <tt class="py-string">'w'</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">    <tt class="py-name">trieFindWordCountFile</tt> <tt class="py-op">=</tt> <tt id="link-22" class="py-name"><a title="pySanaIndeksi.Support.DataHandling.openFile" class="py-name" href="#" onclick="return doclink('link-22', 'openFile', 'link-7');">openFile</a></tt><tt class="py-op">(</tt><tt class="py-string">'trieFindWordCount'</tt><tt class="py-op">,</tt> <tt class="py-string">'w'</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt class="py-name">punamustaFindWordCountFile</tt> <tt class="py-op">=</tt> <tt id="link-23" class="py-name"><a title="pySanaIndeksi.Support.DataHandling.openFile" class="py-name" href="#" onclick="return doclink('link-23', 'openFile', 'link-7');">openFile</a></tt><tt class="py-op">(</tt><tt class="py-string">'punamustaFindWordCoun'</tt><tt class="py-op">,</tt> <tt class="py-string">'w'</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt class="py-name">lukija</tt> <tt class="py-op">=</tt> <tt id="link-24" class="py-name"><a title="pySanaIndeksi.WordIndex.WordReader
+pySanaIndeksi.WordIndex.WordReader.WordReader" class="py-name" href="#" onclick="return doclink('link-24', 'WordReader', 'link-0');">WordReader</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">"../Material/Grimm's Fairy Tales.txt"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">    <tt class="py-name">lukija</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method pySanaIndeksi.WordIndex.WordReader.WordReader.readWords()=pySanaIndeksi.WordIndex.WordReader.WordReader-class.html#readWords"><a title="pySanaIndeksi.WordIndex.WordReader.WordReader.readWords" class="py-name" href="#" onclick="return doclink('link-25', 'readWords', 'link-25');">readWords</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">    <tt class="py-name">punamusta</tt> <tt class="py-op">=</tt> <tt id="link-26" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack
+pySanaIndeksi.Trees.RedBlack.RedBlack" class="py-name" href="#" onclick="return doclink('link-26', 'RedBlack', 'link-2');">RedBlack</a></tt><tt class="py-op">(</tt><tt class="py-name">lukija</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">    <tt class="py-name">trie</tt> <tt class="py-op">=</tt> <tt id="link-27" class="py-name"><a title="pySanaIndeksi.Trees.Trie
+pySanaIndeksi.Trees.Trie.Trie" class="py-name" href="#" onclick="return doclink('link-27', 'Trie', 'link-4');">Trie</a></tt><tt class="py-op">(</tt><tt class="py-name">lukija</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt class="py-name">words</tt> <tt class="py-op">=</tt> <tt class="py-name">pickle</tt><tt class="py-op">.</tt><tt class="py-name">load</tt><tt class="py-op">(</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt> <tt class="py-string">"randomWordList"</tt><tt class="py-op">,</tt> <tt class="py-string">"rb"</tt> <tt class="py-op">)</tt> <tt class="py-op">)</tt> <tt class="py-comment"># indexed by word len</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt class="py-name">repeats</tt> <tt class="py-op">=</tt> <tt class="py-number">100</tt><tt class="py-op">;</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt class="py-name">runtimes</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">,</tt><tt class="py-number">17</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-name">runtime</tt> <tt class="py-op">=</tt> <tt id="link-28" class="py-name" targets="Function pySanaIndeksi.WordIndex.timing.addWordsToEmptyList()=pySanaIndeksi.WordIndex.timing-module.html#addWordsToEmptyList"><a title="pySanaIndeksi.WordIndex.timing.addWordsToEmptyList" class="py-name" href="#" onclick="return doclink('link-28', 'addWordsToEmptyList', 'link-28');">addWordsToEmptyList</a></tt><tt class="py-op">(</tt><tt class="py-name">trie</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">**</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">repeats</tt><tt class="py-op">,</tt> <tt class="py-string">'%25s\t%10d\t'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-string">'trie:add'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">**</tt><tt class="py-name">i</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'%25s\t%10d\t\t%14.3f ms'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-string">'trie:addToEmpty'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">**</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-name">trieAddFile</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">'%10d\t%8.3f\n'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">**</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-name">runtimes</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt id="link-29" class="py-name" targets="Function pySanaIndeksi.WordIndex.timing.findWords()=pySanaIndeksi.WordIndex.timing-module.html#findWords"><a title="pySanaIndeksi.WordIndex.timing.findWords" class="py-name" href="#" onclick="return doclink('link-29', 'findWords', 'link-29');">findWords</a></tt><tt class="py-op">(</tt><tt class="py-name">trie</tt><tt class="py-op">,</tt> <tt class="py-name">words</tt><tt class="py-op">[</tt><tt class="py-number">7</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">repeats</tt><tt class="py-op">,</tt> <tt class="py-name">printout</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">index</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt> <tt class="py-keyword">in</tt> <tt class="py-name">enumerate</tt><tt class="py-op">(</tt><tt class="py-name">runtimes</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'%25s\t%10d\t\t%14.3f ms'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-string">'trie:findWordCount'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">**</tt><tt class="py-op">(</tt><tt class="py-name">index</tt><tt class="py-op">+</tt><tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-name">trieFindWordCountFile</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">'%10d\t%14.3f\n'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">**</tt><tt class="py-op">(</tt><tt class="py-name">index</tt><tt class="py-op">+</tt><tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">    <tt class="py-name">runtimes</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">,</tt><tt class="py-number">17</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-name">runtime</tt> <tt class="py-op">=</tt> <tt id="link-30" class="py-name"><a title="pySanaIndeksi.WordIndex.timing.addWordsToEmptyList" class="py-name" href="#" onclick="return doclink('link-30', 'addWordsToEmptyList', 'link-28');">addWordsToEmptyList</a></tt><tt class="py-op">(</tt><tt class="py-name">punamusta</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">**</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">repeats</tt><tt class="py-op">,</tt> <tt class="py-string">'%25s\t%10d\t'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-string">'punamusta:addToEmpty'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">**</tt><tt class="py-name">i</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'%25s\t%10d\t\t%14.3f ms'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-string">'punamusta:addToEmpty'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">**</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-name">punamustaAddFile</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">'%10d\t%8.3f\n'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">**</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-name">runtimes</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt id="link-31" class="py-name"><a title="pySanaIndeksi.WordIndex.timing.findWords" class="py-name" href="#" onclick="return doclink('link-31', 'findWords', 'link-29');">findWords</a></tt><tt class="py-op">(</tt><tt class="py-name">punamusta</tt><tt class="py-op">,</tt> <tt class="py-name">words</tt><tt class="py-op">[</tt><tt class="py-number">7</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">repeats</tt><tt class="py-op">,</tt> <tt class="py-name">printout</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">index</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt> <tt class="py-keyword">in</tt> <tt class="py-name">enumerate</tt><tt class="py-op">(</tt><tt class="py-name">runtimes</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'%25s\t%10d\t%8.3f ms'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-string">'punamusta:findWordCount'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">**</tt><tt class="py-op">(</tt><tt class="py-name">index</tt><tt class="py-op">+</tt><tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-name">punamustaFindWordCountFile</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">'%10d\t%14.3f\n'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">**</tt><tt class="py-op">(</tt><tt class="py-name">index</tt><tt class="py-op">+</tt><tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'Adding all words to Punamusta'</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">    <tt class="py-name">punamusta</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.addFromReader
+pySanaIndeksi.Trees.Tree.Tree.addFromReader
+pySanaIndeksi.Trees.Trie.Trie.addFromReader" class="py-name" href="#" onclick="return doclink('link-32', 'addFromReader', 'link-10');">addFromReader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'Adding all words to Trie'</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">    <tt class="py-name">trie</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="pySanaIndeksi.Trees.RedBlack.RedBlack.addFromReader
+pySanaIndeksi.Trees.Tree.Tree.addFromReader
+pySanaIndeksi.Trees.Trie.Trie.addFromReader" class="py-name" href="#" onclick="return doclink('link-33', 'addFromReader', 'link-10');">addFromReader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-number">4</tt><tt class="py-op">,</tt><tt class="py-number">10</tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-name">runtime</tt> <tt class="py-op">=</tt> <tt id="link-34" class="py-name"><a title="pySanaIndeksi.WordIndex.timing.findWords" class="py-name" href="#" onclick="return doclink('link-34', 'findWords', 'link-29');">findWords</a></tt><tt class="py-op">(</tt><tt class="py-name">trie</tt><tt class="py-op">,</tt> <tt class="py-name">words</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">repeats</tt><tt class="py-op">,</tt> <tt class="py-name">printout</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'%25s\t%10d\t\t%14.3f ms'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-string">'trie:findWordLength'</tt><tt class="py-op">,</tt> <tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">trieFindLengthFile</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">'%10d\t%14.3f\n'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-number">4</tt><tt class="py-op">,</tt><tt class="py-number">10</tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-name">runtime</tt> <tt class="py-op">=</tt> <tt id="link-35" class="py-name"><a title="pySanaIndeksi.WordIndex.timing.findWords" class="py-name" href="#" onclick="return doclink('link-35', 'findWords', 'link-29');">findWords</a></tt><tt class="py-op">(</tt><tt class="py-name">punamusta</tt><tt class="py-op">,</tt> <tt class="py-name">words</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">repeats</tt><tt class="py-op">,</tt> <tt class="py-name">printout</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'%25s\t%10d\t\t%14.3f ms'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-string">'punamusta:findWordLength'</tt><tt class="py-op">,</tt> <tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt><tt class="py-op">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-name">punamustaFindLengthFile</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">'%10d\t%14.3f\n'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">runtime</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pySanaIndeksi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Sat Sep  1 18:30:39 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
