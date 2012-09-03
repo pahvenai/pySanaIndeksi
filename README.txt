@@ -1,10 +1,11 @@
 # Font encoding: UTF-8
-Patrik Ahvenainen / 013326292
+Patrik Ahvenainen / patrik.ahvenainen@alumni.helsinki.fi
 1.9.2012
 
 Sanaindeksi
 Tietorakenteiden harjoitustyö
-Elokuu 2012Ohjaaja: Kristiina Paloheimo
+Elokuu 2012
+Ohjaaja: Kristiina Paloheimo
 
 
 Tässä työssä on toteutettu tekstitiedostojen indeksoimiseen
@@ -19,7 +20,8 @@ doc/
 	(API_documentation.pdf).
 documents/
 	Työn palautukseen vaaditut dokumentit PDF-muodossa:
-	Käyttöohje.pdf, Määrittelydokumentti.pdf,	Testausdokumentti.pdf, Toteutusdokumentti.pdf
+	Käyttöohje.pdf, Määrittelydokumentti.pdf,
+	Testausdokumentti.pdf, Toteutusdokumentti.pdf
 Material/
 	Työn testaukseen käytetyt testimateriaalit.
 nbproject/
